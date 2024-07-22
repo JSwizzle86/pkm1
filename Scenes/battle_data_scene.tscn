@@ -1,0 +1,188 @@
+[gd_scene load_steps=11 format=3 uid="uid://icm87veo0v73"]
+
+[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/battle_data_scene.gd" id="1_flhg7"]
+[ext_resource type="Texture2D" uid="uid://os1s0fl8o37r" path="res://Dex_Scene_Stuff/sprite.png" id="2_row1y"]
+[ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="4_lkftm"]
+
+[sub_resource type="Gradient" id="Gradient_o3rvm"]
+offsets = PackedFloat32Array(0.00566572, 1)
+colors = PackedColorArray(0.608695, 0.633491, 0.92627, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ys6f0"]
+gradient = SubResource("Gradient_o3rvm")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hov5x"]
+font = ExtResource("4_lkftm")
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5pa60"]
+line_spacing = 8.0
+font = ExtResource("4_lkftm")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uog6c"]
+font = ExtResource("4_lkftm")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1ot6"]
+line_spacing = 0.0
+font = ExtResource("4_lkftm")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ojq4u"]
+line_spacing = 8.0
+font = ExtResource("4_lkftm")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="BattleDataScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_flhg7")
+type_sprites = {}
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ys6f0")
+
+[node name="Footprint_Sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 113.0
+offset_top = 103.0
+offset_right = 129.0
+offset_bottom = 119.0
+
+[node name="Mini_Sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 118.0
+offset_top = 19.0
+offset_right = 150.0
+offset_bottom = 51.0
+
+[node name="High_Res_Sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 140.0
+offset_top = 15.0
+offset_right = 240.0
+offset_bottom = 117.0
+
+[node name="Type Container" type="HBoxContainer" parent="."]
+editor_description = "Just Switch this to a vbox container if you want it vertical instead."
+layout_mode = 0
+offset_left = 2.0
+offset_top = 86.0
+offset_right = 85.0
+offset_bottom = 125.0
+alignment = 1
+
+[node name="Typing_1_Sprite" type="TextureRect" parent="Type Container"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 2
+
+[node name="Typing_2_Sprite" type="TextureRect" parent="Type Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.223529)
+position = Vector2(120, 89)
+scale = Vector2(0.206897, 0.252137)
+texture = ExtResource("2_row1y")
+
+[node name="Information" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 7.0
+offset_right = 184.0
+offset_bottom = 100.0
+theme_override_constants/separation = -2
+metadata/_edit_group_ = true
+
+[node name="HSeparator2" type="HSeparator" parent="Information"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Dnum_Name" type="Label" parent="Information"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "No.[DN]: [NAME]"
+label_settings = SubResource("LabelSettings_hov5x")
+
+[node name="HSeparator" type="HSeparator" parent="Information"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Information"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Poking Mon"
+label_settings = SubResource("LabelSettings_5pa60")
+
+[node name="HSeparator4" type="HSeparator" parent="Information"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Height" type="Label" parent="Information"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "HT [HI] [HM]"
+label_settings = SubResource("LabelSettings_uog6c")
+vertical_alignment = 2
+
+[node name="HSeparator3" type="HSeparator" parent="Information"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Width" type="Label" parent="Information"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "WT [WI] [WM]"
+label_settings = SubResource("LabelSettings_f1ot6")
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 130.0
+offset_right = 240.0
+offset_bottom = 180.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="Description" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "FSKDSFJLSJDFSJFDJLSDJLKSDJFSDFJLSKJDFLKSDJFLS.asdfadfadfasdfadsfasdfasdfasdfadfasdfasdf"
+label_settings = SubResource("LabelSettings_ojq4u")
+autowrap_mode = 3
+text_overrun_behavior = 3

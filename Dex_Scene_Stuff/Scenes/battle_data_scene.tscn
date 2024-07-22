@@ -1,0 +1,234 @@
+[gd_scene load_steps=17 format=3 uid="uid://icm87veo0v73"]
+
+[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/battle_data_scene.gd" id="1_flhg7"]
+[ext_resource type="Texture2D" uid="uid://os1s0fl8o37r" path="res://Dex_Scene_Stuff/sprite.png" id="2_row1y"]
+[ext_resource type="Texture2D" uid="uid://30bsuxlj4co3" path="res://Dex_Scene_Stuff/Assets/ftp__154.png" id="2_xe62x"]
+[ext_resource type="Texture2D" uid="uid://dt7fdaa2x11us" path="res://Dex_Scene_Stuff/Assets/meg1.png" id="3_un4n2"]
+[ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="4_lkftm"]
+[ext_resource type="Texture2D" uid="uid://dt033u26jh406" path="res://Dex_Scene_Stuff/Assets/meg2.png" id="4_naxb4"]
+[ext_resource type="Texture2D" uid="uid://b5excwm6jre60" path="res://Dex_Scene_Stuff/Assets/spr_g_154-modified.png" id="5_y1qu7"]
+
+[sub_resource type="Gradient" id="Gradient_o3rvm"]
+offsets = PackedFloat32Array(0.00566572, 1)
+colors = PackedColorArray(0.608695, 0.633491, 0.92627, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ys6f0"]
+gradient = SubResource("Gradient_o3rvm")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_4rxwt"]
+frames = 2
+frame_0/texture = ExtResource("3_un4n2")
+frame_1/texture = ExtResource("4_naxb4")
+frame_1/duration = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_hov5x"]
+line_spacing = 0.0
+font = ExtResource("4_lkftm")
+font_size = 7
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5pa60"]
+line_spacing = 8.0
+font = ExtResource("4_lkftm")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uog6c"]
+font = ExtResource("4_lkftm")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1ot6"]
+line_spacing = 0.0
+font = ExtResource("4_lkftm")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lngke"]
+bg_color = Color(0.93408, 0.93408, 0.93408, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ojq4u"]
+line_spacing = 8.0
+font = ExtResource("4_lkftm")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="BattleDataScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_flhg7")
+type_sprites = {}
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ys6f0")
+
+[node name="Footprint_Sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 117.0
+offset_top = 104.0
+offset_right = 137.0
+offset_bottom = 125.0
+texture = ExtResource("2_xe62x")
+
+[node name="Mini_Sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 135.0
+offset_top = 5.0
+offset_right = 167.0
+offset_bottom = 37.0
+texture = SubResource("AnimatedTexture_4rxwt")
+
+[node name="High_Res_Sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 140.0
+offset_top = 33.0
+offset_right = 237.0
+offset_bottom = 128.0
+texture = ExtResource("5_y1qu7")
+
+[node name="Type Container" type="HBoxContainer" parent="."]
+editor_description = "Just Switch this to a vbox container if you want it vertical instead."
+layout_mode = 0
+offset_left = 2.0
+offset_top = 86.0
+offset_right = 85.0
+offset_bottom = 125.0
+alignment = 1
+
+[node name="Typing_1_Sprite" type="TextureRect" parent="Type Container"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 2
+
+[node name="Typing_2_Sprite" type="TextureRect" parent="Type Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Reference" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.223529)
+position = Vector2(120, 89)
+scale = Vector2(0.206897, 0.252137)
+texture = ExtResource("2_row1y")
+
+[node name="Information" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 23.0
+offset_right = 131.0
+offset_bottom = 115.0
+theme_override_constants/separation = -2
+metadata/_edit_group_ = true
+
+[node name="HSeparator2" type="HSeparator" parent="Information"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Dnum_Name" type="Label" parent="Information"]
+unique_name_in_owner = true
+editor_description = "This is fucked up due to the font. If you increase the font size the characters become are too wide. You can stretch it upwards, but it'll look ass. You'll have to find a better font. It'll fuck things up temporarily but w/e"
+texture_filter = 1
+layout_mode = 2
+text = "No.[DN]:1234567891"
+label_settings = SubResource("LabelSettings_hov5x")
+text_overrun_behavior = 1
+
+[node name="HSeparator" type="HSeparator" parent="Information"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="Title" type="Label" parent="Information"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Poking Mon"
+label_settings = SubResource("LabelSettings_5pa60")
+
+[node name="HSeparator4" type="HSeparator" parent="Information"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Height" type="Label" parent="Information"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "HT: [HI] [HM]"
+label_settings = SubResource("LabelSettings_uog6c")
+vertical_alignment = 2
+
+[node name="HSeparator3" type="HSeparator" parent="Information"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Width" type="Label" parent="Information"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "WT: [WI] [WM]"
+label_settings = SubResource("LabelSettings_f1ot6")
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 130.0
+offset_right = 240.0
+offset_bottom = 180.0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lngke")
+
+[node name="Description" type="Label" parent="MarginContainer/Panel"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -14.5
+offset_right = 114.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Meganium is HIM. The king of anything goes. The GOAT."
+label_settings = SubResource("LabelSettings_ojq4u")
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3

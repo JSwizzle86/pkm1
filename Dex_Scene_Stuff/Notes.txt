@@ -1,0 +1,11 @@
+Everything here is self-contained. Meaning that you can just open the Battle dex scene and as long as you are using
+my pokemon dex data object, most everything should work fine.
+
+The only thing I haven't done is the habitat map:
+	You'll notice under the assets folder, there's a habitat tilemap. Use this to draw over the map. It has auto tilign and everythign.
+
+I don't know how you guys will handle the data for the pokemon.
+Take your Pokemon species object and put the PokemonDexData onto the pokemon.
+
+Here's my advice, you'll have to use a spreadsheet and a parser then connect that shit
+back to the PokemonDexData for each pokemon species. 
