@@ -11,5 +11,16 @@ config_version=5
 [application]
 
 config/name="Pkm 1"
+run/main_scene="res://Dex_Scene_Stuff/Scenes/BattleDexScene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+FakePokedex="*res://Dex_Scene_Stuff/Scripts/FakeDexData.gd"
+
+[display]
+
+window/size/viewport_width=240
+window/size/viewport_height=180
+window/stretch/mode="canvas_items"

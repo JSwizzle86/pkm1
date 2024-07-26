@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://kjy6eba8d053"]
-
-[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/FakeDexData.gd" id="1_j2nka"]
-[ext_resource type="Resource" uid="uid://ble2m3mmo4wgp" path="res://Dex_Scene_Stuff/Resources/Meganium.tres" id="2_bfh1l"]
-
-[node name="FakePokedex" type="Node"]
-script = ExtResource("1_j2nka")
-pokedex_array = Array[Resource("res://Dex_Scene_Stuff/Scripts/pokemon_species_test.gd")]([ExtResource("2_bfh1l")])
