@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8yjyhusijptw"
-path="res://.godot/imported/Final_sprites (1).png-59e6f26eb6aa808448aab9e87231a963.ctex"
+uid="uid://dae0wnkp6dvc5"
+path="res://.godot/imported/NPC(temp).png-57f45cf964d1960aaac35e659df86683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png"
-dest_files=["res://.godot/imported/Final_sprites (1).png-59e6f26eb6aa808448aab9e87231a963.ctex"]
+source_file="res://Assets/NPC(temp).png"
+dest_files=["res://.godot/imported/NPC(temp).png-57f45cf964d1960aaac35e659df86683.ctex"]
 
 [params]
 
