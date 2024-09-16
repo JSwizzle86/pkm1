@@ -1,15 +1,16 @@
 extends CharacterBody2D
 
-const SPEED = 50
+const SPEED = 50.0  
 const RUN_MULTIPLIER = 1.5  
 const JUMP_VELOCITY = -400.0
 
-var gravity = 0
-var friction = 5
+var gravity = 0.0
+var friction = 5.0
 #the lower the friction is the stronger it is
 var looking = "UP"
 var moving = false
 var current_speed = SPEED  
+var is_running = false  
 
 func _physics_process(delta):
 
@@ -20,7 +21,11 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 
 	
-	if Input.is_action_pressed("run"):  
+	if Input.is_action_just_pressed("run_toggle"):  
+		is_running = not is_running  
+
+	
+	if is_running:
 		current_speed = SPEED * RUN_MULTIPLIER
 	else:
 		current_speed = SPEED
@@ -37,7 +42,7 @@ func move_up_and_down():
 	if Input.is_action_pressed("Up"):
 		if not Input.is_action_pressed("Down"):
 			velocity.y = -current_speed
-	if  not Input.is_action_pressed("Up") or not Input.is_action_pressed("Down"):
+	if not Input.is_action_pressed("Up") or not Input.is_action_pressed("Down"):
 		velocity.y = move_toward(velocity.y, 0, current_speed / friction)
 	if Input.is_action_pressed("Down"):
 		if not Input.is_action_pressed("Up"):
