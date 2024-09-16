@@ -29,7 +29,7 @@ layer_0/tile_data = PackedInt32Array(0, 65539, 1, 65536, 65539, 1, 131072, 65539
 
 [node name="StaticNPC" parent="." instance=ExtResource("2_jbplf")]
 position = Vector2(49, 38)
-dialogue_sentences = Array[String](["Hello Amigo !", "How Are you now ?"])
+dialogue_sentences = Array[String](["Hello", "How are you"])
 
 [node name="pkm1 player" parent="." instance=ExtResource("3_hxtcc")]
 position = Vector2(92, 125)

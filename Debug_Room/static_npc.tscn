@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ksyha1cm1b6o"]
 
-[ext_resource type="Texture2D" path="res://Assets/NPC(temp).png" id="1_0apit"]
+[ext_resource type="Texture2D" uid="uid://dae0wnkp6dvc5" path="res://Assets/NPC(temp).png" id="1_0apit"]
 [ext_resource type="Script" path="res://Debug_Room/static_npc.gd" id="1_koqe8"]
 [ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="3_v53sx"]
 

@@ -1,12 +1,27 @@
 [gd_scene load_steps=7 format=3 uid="uid://dafmm3aliw3mb"]
 
-[ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="1_hsr10"]
-[ext_resource type="Script" path="res://Debug_Room/dialog.gd" id="1_ihq3l"]
+[ext_resource type="Script" path="res://Debug_Room/dialogue_system.gd" id="1_ooax5"]
+[ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="2_2p33v"]
 
 [sub_resource type="FontVariation" id="FontVariation_ioa62"]
-base_font = ExtResource("1_hsr10")
+base_font = ExtResource("2_2p33v")
 spacing_space = -2
 spacing_top = 5
+
+[sub_resource type="Animation" id="Animation_a32dv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialoguePanel/HBoxContainer/Sentence:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_4sxdr"]
 resource_name = "talking_animation"
@@ -24,29 +39,14 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_a32dv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DialoguePanel/HBoxContainer/Sentence:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bulqi"]
 _data = {
 "RESET": SubResource("Animation_a32dv"),
 "talking_animation": SubResource("Animation_4sxdr")
 }
 
-[node name="Dialog" type="CanvasLayer"]
-script = ExtResource("1_ihq3l")
+[node name="DialogueSystem" type="CanvasLayer"]
+script = ExtResource("1_ooax5")
 
 [node name="DialoguePanel" type="Panel" parent="."]
 anchors_preset = 12
