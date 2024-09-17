@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const SPEED = 50.0  
 const RUN_MULTIPLIER = 1.5  

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drv4tncokpk2r"]
+
+[ext_resource type="Script" path="res://Talkable_Objects/NPCs/Inherited/KinmaticNPC.gd" id="1_qwg7h"]
+
+[node name="KinmaticNPC" type="CharacterBody2D"]
+script = ExtResource("1_qwg7h")
