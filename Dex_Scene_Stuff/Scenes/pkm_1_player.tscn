@@ -235,33 +235,33 @@ region = Rect2(256, 64, 32, 32)
 atlas = ExtResource("4_afrh5")
 region = Rect2(288, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kojh3"]
-atlas = ExtResource("4_afrh5")
-region = Rect2(320, 64, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8y0po"]
 atlas = ExtResource("4_afrh5")
 region = Rect2(352, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1plx8"]
-atlas = ExtResource("4_afrh5")
-region = Rect2(384, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fauwr"]
-atlas = ExtResource("4_afrh5")
-region = Rect2(416, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4cs6i"]
-atlas = ExtResource("4_afrh5")
-region = Rect2(448, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rwij"]
 atlas = ExtResource("4_afrh5")
 region = Rect2(480, 64, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cs6i"]
+atlas = ExtResource("4_afrh5")
+region = Rect2(448, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fauwr"]
+atlas = ExtResource("4_afrh5")
+region = Rect2(416, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1plx8"]
+atlas = ExtResource("4_afrh5")
+region = Rect2(384, 64, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7151"]
 atlas = ExtResource("4_afrh5")
 region = Rect2(512, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kojh3"]
+atlas = ExtResource("4_afrh5")
+region = Rect2(320, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j546p"]
 atlas = ExtResource("4_afrh5")
@@ -499,7 +499,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_744rk")
 }],
-"loop": true,
+"loop": false,
 "name": &"turn_left",
 "speed": 5.0
 }, {
@@ -508,30 +508,30 @@ animations = [{
 "texture": SubResource("AtlasTexture_v75y5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kojh3")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8y0po")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1plx8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fauwr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4cs6i")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7rwij")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4cs6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fauwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1plx8")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y7151")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kojh3")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j546p")
 }],
-"loop": true,
+"loop": false,
 "name": &"turn_right",
 "speed": 5.0
 }, {
@@ -575,4 +575,4 @@ position_smoothing_speed = 20.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_w3k2j")
-animation = &"turn_right"
+animation = &"up "
