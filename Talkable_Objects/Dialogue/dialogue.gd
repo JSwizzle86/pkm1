@@ -30,11 +30,16 @@ func _reset_dialogue() -> void:
 	typing_speed = normal_speed
 	sentence_label.text = ""
 
-func _start_dialogue(resource: TalkableObjectResource, object: Node2D) -> void:
+func _start_dialogue(resource: TalkableObjectData, object: TalkableObject2D) -> void:
 	show()
 	set_process_input(true)
 	sentences = resource._sentences
 	talkable_object = object
+	
+	# Simple way. to make player can't control.
+	if talkable_object is StaticObject2D:
+		talkable_object.player_node.set_physics_process(false)
+		talkable_object.player_node.set_process(false)
 	
 	if sentences.size() > 0:
 		current_sentence_index = 0
@@ -83,4 +88,9 @@ func _finish_dialogue() -> void:
 	hide()
 	_reset_dialogue()
 	talkable_object.is_talking = false
+	
+	# Simple way.
+	talkable_object.player_node.set_physics_process(true)
+	talkable_object.player_node.set_process(true)
+	
 	talkable_object = null

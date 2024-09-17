@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq0xirdci77u4"]
-
-[ext_resource type="Script" path="res://Talkable_Objects/NPCs/Class/StaticNPC.gd" id="1_ei1a2"]
-
-[node name="StaticNPC" type="CharacterBody2D"]
-script = ExtResource("1_ei1a2")

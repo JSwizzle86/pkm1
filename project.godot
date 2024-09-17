@@ -32,10 +32,8 @@ folder_colors={
 "res://Talkable_Objects/": "yellow",
 "res://Talkable_Objects/Areas/": "blue",
 "res://Talkable_Objects/Assets/": "pink",
+"res://Talkable_Objects/Class/": "red",
 "res://Talkable_Objects/Dialogue/": "purple",
-"res://Talkable_Objects/NPCs/": "green",
-"res://Talkable_Objects/NPCs/Class/": "red",
-"res://Talkable_Objects/NPCs/Inherited/": "blue",
 "res://Talkable_Objects/Resources/": "orange"
 }
 
