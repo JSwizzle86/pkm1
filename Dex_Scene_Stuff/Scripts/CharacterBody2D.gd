@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody2D
+class_name pkm1_player extends CharacterBody2D
 
 const SPEED = 50.0  
 const RUN_MULTIPLIER = 1.5  
@@ -29,11 +29,13 @@ func _physics_process(delta):
 
 	# Handle running input
 	if Input.is_action_pressed("run"):
-		is_running = true
+		is_running = true  # Start running when the run button is held
+	elif Input.is_action_just_released("run"):  # Use is_action_just_released
+		is_running = false  # Stop running when the run button is released
 	else:
 		# Check if run toggle is active
 		if Input.is_action_just_pressed("run_toggle"):
-			is_running = not is_running  
+			is_running = not is_running  # Toggle run mode if run_toggle is pressed
 
 	# running speed
 	if is_running:
@@ -74,7 +76,7 @@ func _process(delta):
 	animation_control()
 
 func detect_direction_change():
-	# detect way player is faceing to turn
+	# detect way player is facing to turn
 	var current_direction = ""
 	if Input.is_action_pressed("Left"):
 		current_direction = "LEFT"
@@ -116,7 +118,7 @@ func play_turn_animation(turn_animation, new_direction):
 		turning = true  # Block other animations and movement updates during the turn
 
 func _on_animation_finished():
-	# Update way player is faceing after turn animation finishes and resume normal player movement
+	# Update way player is facing after turn animation finishes and resume normal player movement
 	if turning:
 		looking = target_direction
 		turning = false  # allow normal play stuff again
@@ -157,7 +159,7 @@ func animation_control():
 			$AnimatedSprite2D.play("up")
 	
 	else:
-		# Idle animations when theirs no  input
+		# Idle animations when there's no input
 		if looking == "LEFT":
 			$AnimatedSprite2D.play("left_idle")
 		elif looking == "RIGHT":
