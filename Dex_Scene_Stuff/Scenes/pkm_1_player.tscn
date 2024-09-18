@@ -562,15 +562,15 @@ script = ExtResource("1_fh3j7")
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q7x08")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_w3k2j")
+animation = &"turn_left"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_w3k2j")
-animation = &"stop_down"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
