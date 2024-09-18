@@ -1,7 +1,9 @@
-[gd_scene load_steps=74 format=3 uid="uid://cyomxow7kne24"]
+[gd_scene load_steps=76 format=3 uid="uid://cyomxow7kne24"]
 
 [ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/CharacterBody2D.gd" id="1_virwx"]
+[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/Hitbox.gd" id="3_x5qfo"]
 [ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="4_afrh5"]
+[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/HurtBox.gd" id="4_xim4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7x08"]
 size = Vector2(18, 18)
@@ -569,3 +571,13 @@ sprite_frames = SubResource("SpriteFrames_w3k2j")
 animation = &"turn_right"
 frame = 8
 frame_progress = 1.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_x5qfo")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("4_xim4s")

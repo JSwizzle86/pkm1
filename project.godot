@@ -80,6 +80,11 @@ run_toggle={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="hitboxes"
+2d_physics/layer_3="hurtboxes"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
