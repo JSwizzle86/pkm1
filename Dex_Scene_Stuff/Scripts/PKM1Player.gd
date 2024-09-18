@@ -2,14 +2,23 @@ class_name Player extends CharacterBody2D
 
 const SPEED = 50.0  
 const RUN_MULTIPLIER = 1.5  
-const JUMP_VELOCITY = -400.0
 
-var gravity = 0.0
 var friction = 5.0
 var looking = "UP"  # current facing direction
 var moving = false  # check if the character is moving
 var current_speed = SPEED  
-var is_running = false  # Toggle for running mode
+
+
+var is_running = false:  # Toggle for running mode
+	set(value):
+		is_running = value
+		# running speed
+		# Adjust running speed if the run button is pressed or toggled
+		if is_running: current_speed = SPEED * RUN_MULTIPLIER
+		else: current_speed = SPEED 
+
+
+ 
 var last_direction = ""  # check last movement for turns
 var turning = false  # Checking if player is in the middle of a turn animation
 var target_direction = ""  # The direction the character should face after turning
@@ -23,16 +32,7 @@ func _physics_process(delta):
 	if turning:
 		return  # Ignore inputs while turning
 	
-	# stay on floor
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Jumping idk if this being used?
-	# Add gravity when the player is not on the floor
-	# Jump if the player presses the accept button while on the floor
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
+	
 	# Handle running input
 	if Input.is_action_pressed("run"):
 		is_running = true  # Start running when the run button is held
@@ -45,42 +45,28 @@ func _physics_process(delta):
 
 	# running speed
 	# Adjust running speed if the run button is pressed or toggled
-	# If running, use a higher speed multiplier
-	if is_running:
-		current_speed = SPEED * RUN_MULTIPLIER
-	else:
-		current_speed = SPEED
 
-	# movement
-	var direction = Input.get_axis("Left", "Right")
-	if direction:
-		velocity.x = direction * current_speed
-	else:
-		# Smoothly decelerate when no horizontal input
-		velocity.x = move_toward(velocity.x, 0, current_speed / friction)
+
 	
-	move_up_and_down()  # Handle vertical movement
+	handle_movement()  # Handle vertical movement
 	
 	move_and_slide()  # Apply movement and sliding
 
-func move_up_and_down():
-	# Handle vertical movement based on input
-	# If the player presses "Up" without pressing "Down", move up
-	if Input.is_action_pressed("Up"):
-		if not Input.is_action_pressed("Down"):
-			velocity.y = -current_speed  # Move up
-	# Smoothly decelerate when no vertical input
-	if not Input.is_action_pressed("Up") or not Input.is_action_pressed("Down"):
-		velocity.y = move_toward(velocity.y, 0, current_speed / friction)
-	# If the player presses "Down" without pressing "Up", move down
-	if Input.is_action_pressed("Down"):
-		if not Input.is_action_pressed("Up"):
-			velocity.y = current_speed  # Move down
+func handle_movement():
+
+	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up","ui_down")
+	# disable vertical movement in case of turning
+	if turning: input_dir.x = 0.0
+		
+	if input_dir:
+		velocity = input_dir.normalized() * current_speed
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, friction)
 
 func _process(delta):
 	# Process vertical movement outside of physics
 	if not turning:
-		move_up_and_down()
+		pass
 	detect_direction_change()
 	animation_control()
 

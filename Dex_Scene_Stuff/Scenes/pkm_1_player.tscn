@@ -1,9 +1,8 @@
 [gd_scene load_steps=76 format=3 uid="uid://cyomxow7kne24"]
 
-[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/CharacterBody2D.gd" id="1_virwx"]
+[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/PKM1Player.gd" id="1_fh3j7"]
 [ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/Hitbox.gd" id="3_x5qfo"]
 [ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="4_afrh5"]
-[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/HurtBox.gd" id="4_xim4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7x08"]
 size = Vector2(18, 18)
@@ -554,8 +553,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmdxe"]
+radius = 10.0499
+
 [node name="PKM!Player" type="CharacterBody2D" groups=["player"]]
-script = ExtResource("1_virwx")
+script = ExtResource("1_fh3j7")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q7x08")
@@ -568,16 +570,13 @@ position_smoothing_speed = 20.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_w3k2j")
-animation = &"turn_right"
-frame = 8
-frame_progress = 1.0
+animation = &"stop_down"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("3_x5qfo")
 
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("4_xim4s")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-12, 0)
+shape = SubResource("CircleShape2D_qmdxe")
