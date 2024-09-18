@@ -8,17 +8,19 @@ var looking = "UP"  # current facing direction
 var moving = false  # check if the character is moving
 var current_speed = SPEED  
 
+# Underlying variable to store running state
+var _is_running = false
 
-var is_running = false:  # Toggle for running mode
+# Use the setter for running mode
+var is_running = false:
 	set(value):
-		is_running = value
-		# running speed
-		# Adjust running speed if the run button is pressed or toggled
-		if is_running: current_speed = SPEED * RUN_MULTIPLIER
-		else: current_speed = SPEED 
+		_is_running = value
+		# Adjust running speed when toggled
+		if _is_running:
+			current_speed = SPEED * RUN_MULTIPLIER
+		else:
+			current_speed = SPEED
 
-
- 
 var last_direction = ""  # check last movement for turns
 var turning = false  # Checking if player is in the middle of a turn animation
 var target_direction = ""  # The direction the character should face after turning
@@ -32,32 +34,24 @@ func _physics_process(delta):
 	if turning:
 		return  # Ignore inputs while turning
 	
-	
 	# Handle running input
 	if Input.is_action_pressed("run"):
 		is_running = true  # Start running when the run button is held
-	elif Input.is_action_just_released("run"):  # Use is_action_just_released
-		is_running = false  # Stop running when the run button is released
+	elif Input.is_action_just_released("run"):  # Stop running when the run button is released
+		is_running = false  
 	else:
-		# Check if run toggle is active
+		# Check if the run toggle is active
 		if Input.is_action_just_pressed("run_toggle"):
-			is_running = not is_running  # Toggle run mode if run_toggle is pressed
+			is_running = not _is_running  # Toggle run mode correctly by setting the property
 
-	# running speed
-	# Adjust running speed if the run button is pressed or toggled
-
-
-	
-	handle_movement()  # Handle vertical movement
-	
+	handle_movement()  # Handle movement
 	move_and_slide()  # Apply movement and sliding
 
 func handle_movement():
-
-	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up","ui_down")
-	# disable vertical movement in case of turning
+	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	# Disable vertical movement in case of turning
 	if turning: input_dir.x = 0.0
-		
+	
 	if input_dir:
 		velocity = input_dir.normalized() * current_speed
 	else:
@@ -84,7 +78,7 @@ func detect_direction_change():
 	
 	# If the direction has changed and the player is running, handle the turn
 	if current_direction != last_direction and last_direction != "":
-		if is_running:
+		if _is_running:
 			if (last_direction == "LEFT" and current_direction == "RIGHT") or (last_direction == "RIGHT" and current_direction == "LEFT"):
 				# Horizontal direction change (left-right)
 				if last_direction == "LEFT":
@@ -126,7 +120,7 @@ func animation_control():
 	if Input.is_action_pressed("Left"):
 		looking = "LEFT"
 		last_direction = "LEFT"
-		if is_running:
+		if _is_running:
 			$AnimatedSprite2D.play("run_left")
 		else:
 			$AnimatedSprite2D.play("left")
@@ -134,21 +128,21 @@ func animation_control():
 	elif Input.is_action_pressed("Right"):
 		looking = "RIGHT"
 		last_direction = "RIGHT"
-		if is_running:
+		if _is_running:
 			$AnimatedSprite2D.play("run_right")
 		else:
 			$AnimatedSprite2D.play("right")
 	
 	elif Input.is_action_pressed("Down"):
 		looking = "DOWN"
-		if is_running:
+		if _is_running:
 			$AnimatedSprite2D.play("run_down")  # Play running animation when running down
 		else:
 			$AnimatedSprite2D.play("down")
 	
 	elif Input.is_action_pressed("Up"):
 		looking = "UP"
-		if is_running:
+		if _is_running:
 			$AnimatedSprite2D.play("run_up")  # Play running animation when running up
 		else:
 			$AnimatedSprite2D.play("up ")
