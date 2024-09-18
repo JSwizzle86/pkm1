@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="4_afrh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7x08"]
-size = Vector2(40, 38)
+size = Vector2(18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gjui"]
 atlas = ExtResource("4_afrh5")
