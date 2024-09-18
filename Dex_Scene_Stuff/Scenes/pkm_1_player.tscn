@@ -1,8 +1,7 @@
-[gd_scene load_steps=75 format=3 uid="uid://cyomxow7kne24"]
+[gd_scene load_steps=74 format=3 uid="uid://cyomxow7kne24"]
 
 [ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/CharacterBody2D.gd" id="1_virwx"]
-[ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="2_xrlkn"]
-[ext_resource type="Texture2D" uid="uid://miar6wdr4617" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="4_afrh5"]
+[ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="4_afrh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7x08"]
 size = Vector2(18, 18)
@@ -553,26 +552,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="pkm1 player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+[node name="PKM!Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_virwx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q7x08")
 
-[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
-visible = false
-position = Vector2(0, -0.125001)
-scale = Vector2(0.300781, 0.294922)
-texture = ExtResource("2_xrlkn")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_w3k2j")
-animation = &"up "
+animation = &"turn_right"
+frame = 8
+frame_progress = 1.0
