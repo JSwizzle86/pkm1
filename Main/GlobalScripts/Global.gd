@@ -1,6 +1,7 @@
 extends Node
 
 var global_tile : int = 16
+var player_node : Player
 
 
 # Called when the node enters the scene tree for the first time.

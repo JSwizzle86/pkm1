@@ -11,4 +11,4 @@ func _input(event):
 		if can_talk and event.is_action_pressed("DialogueInteract") and !is_talking:
 			can_talk = false
 			is_talking = true
-			DialogueLoad._start_dialogue(object_data, self)
+		#	DialogueLoad._start_dialogue(object_data, self)

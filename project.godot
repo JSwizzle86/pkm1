@@ -33,6 +33,7 @@ folder_colors={
 "res://Main/": "red",
 "res://Main/GlobalScripts/": "yellow",
 "res://Main/MainScene/": "purple",
+"res://Objects/": "green",
 "res://Talkable_Objects/": "yellow",
 "res://Talkable_Objects/Areas/": "blue",
 "res://Talkable_Objects/Assets/": "pink",
