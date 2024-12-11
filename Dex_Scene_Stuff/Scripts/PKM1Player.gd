@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 const SPEED = 50.0  
 const RUN_MULTIPLIER = 1.5  
 
-var friction = 5.0
+var friction = 10.0
 var looking = "UP"  # current facing direction
 var moving = false  # check if the character is moving
 var current_speed = SPEED  
@@ -29,7 +29,7 @@ func _ready():
 	# Connect the animation_finished signal to handle the completion of turn animations
 	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Block input processing during turn
 	if turning:
 		return  # Ignore inputs while turning
@@ -50,6 +50,8 @@ func _physics_process(delta):
 func handle_movement():
 	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	# Disable vertical movement in case of turning
+	
+	
 	if turning: input_dir.x = 0.0
 	
 	if input_dir:
@@ -57,7 +59,12 @@ func handle_movement():
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction)
 
-func _process(delta):
+
+func movement(newdirection):
+	pass
+
+
+func _process(_delta):
 	# Process vertical movement outside of physics
 	if not turning:
 		pass
@@ -75,6 +82,8 @@ func detect_direction_change():
 		current_direction = "DOWN"
 	elif Input.is_action_pressed("Up"):
 		current_direction = "UP"
+	
+	interaction_collision_direction(current_direction)
 	
 	# If the direction has changed and the player is running, handle the turn
 	if current_direction != last_direction and last_direction != "":
@@ -157,3 +166,18 @@ func animation_control():
 			$AnimatedSprite2D.play("down_idle")
 		elif looking == "UP":
 			$AnimatedSprite2D.play("up_idle")
+
+func interaction_collision_direction(new_current_direction):
+	match new_current_direction:
+		"LEFT":
+			%CollisionShape2D.position = Vector2(-10, 0)
+			%CollisionShape2D.rotation = deg_to_rad(90)
+		"RIGHT":
+			%CollisionShape2D.position = Vector2(10, 0)
+			%CollisionShape2D.rotation = deg_to_rad(-90)
+		"DOWN":
+			%CollisionShape2D.position = Vector2(0, 8)
+			%CollisionShape2D.rotation = deg_to_rad(0)
+		"UP":
+			%CollisionShape2D.position = Vector2(0, -8)
+			%CollisionShape2D.rotation = deg_to_rad(180)

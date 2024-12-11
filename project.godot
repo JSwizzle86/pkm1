@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pkm 1"
-run/main_scene="res://Dex_Scene_Stuff/Scenes/BattleDexScene.tscn"
+run/main_scene="res://Debug_Room/debug_room.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 FakePokedex="*res://Dex_Scene_Stuff/Scripts/FakeDexData.gd"
 DialogueLoad="*res://Talkable_Objects/Dialogue/dialogue.tscn"
+Global="*res://Main/GlobalScripts/Global.gd"
 
 [display]
 
@@ -29,6 +30,9 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://Main/": "red",
+"res://Main/GlobalScripts/": "yellow",
+"res://Main/MainScene/": "purple",
 "res://Talkable_Objects/": "yellow",
 "res://Talkable_Objects/Areas/": "blue",
 "res://Talkable_Objects/Assets/": "pink",

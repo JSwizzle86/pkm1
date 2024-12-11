@@ -1,12 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmvgi3vyuhg3g"]
+[gd_scene load_steps=10 format=3 uid="uid://dmvgi3vyuhg3g"]
 
 [ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="1_pcbu7"]
 [ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Debug_Room/Simpletileset.png" id="1_rppv1"]
+[ext_resource type="PackedScene" uid="uid://dkvfkf012hd70" path="res://Debug_Room/Props/floor_sign.tscn" id="3_2lvif"]
 [ext_resource type="PackedScene" uid="uid://cyomxow7kne24" path="res://Dex_Scene_Stuff/Scenes/pkm_1_player.tscn" id="3_hxtcc"]
-[ext_resource type="Script" path="res://Talkable_Objects/Class/Static/static_object.gd" id="3_hxtfc"]
-[ext_resource type="Texture2D" uid="uid://dae0wnkp6dvc5" path="res://Talkable_Objects/Assets/human.png" id="4_pe83v"]
-[ext_resource type="PackedScene" uid="uid://cvqm0spuwe3yi" path="res://Talkable_Objects/Areas/talking_area.tscn" id="5_46jc2"]
-[ext_resource type="Script" path="res://Talkable_Objects/Resources/talkable-object-data.gd" id="6_opo1a"]
+[ext_resource type="PackedScene" uid="uid://hxsf37bshyt7" path="res://Debug_Room/Props/wall_sign.tscn" id="4_7t0sj"]
+[ext_resource type="PackedScene" uid="uid://c73ul8aj2atq1" path="res://Debug_Room/TestNPCS/guard.tscn" id="6_dim0v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qt3hw"]
 texture = ExtResource("1_rppv1")
@@ -62,36 +61,6 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_axtv2")
 sources/0 = SubResource("TileSetAtlasSource_qt3hw")
 
-[sub_resource type="Gradient" id="Gradient_20cvs"]
-colors = PackedColorArray(1, 1, 1, 1, 0.787399, 0.00112441, 1.92523e-07, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6puk5"]
-gradient = SubResource("Gradient_20cvs")
-width = 16
-
-[sub_resource type="Resource" id="Resource_naf7e"]
-script = ExtResource("6_opo1a")
-_name = "Village's Sign"
-_texture = SubResource("GradientTexture1D_6puk5")
-_sentences = Array[String](["Are you an adventurer?
-Welcome to our village.", "this village has a lot of pokemon inside.", "just go the portal and say \"Hunter\".", "you'll find a lot of monsters.
-OhoHoOoOhHhHoO!!"])
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q5m3h"]
-radius = 6.08276
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_oqhxy"]
-radius = 5.83095
-
-[sub_resource type="Resource" id="Resource_3h1bw"]
-script = ExtResource("6_opo1a")
-_name = "Guard"
-_texture = ExtResource("4_pe83v")
-_sentences = Array[String](["Hey you !", "Get out from here !", "Hm !"])
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cro1l"]
-radius = 5.0
-
 [node name="DebugRoom" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -103,70 +72,35 @@ layer_0/tile_data = PackedInt32Array(-196610, 262144, 1, -131074, 262144, 2, -19
 layer_1/name = "Wall"
 layer_1/tile_data = PackedInt32Array(-262141, 131072, 0, -262140, 196608, 0, -262139, 262144, 0, -262138, 196608, 0, -262137, 262144, 0, -262136, 196608, 0, -262135, 262144, 0, -262134, 196608, 0, -262133, 262144, 0, -262132, 196608, 0, -262131, 262144, 0, -262130, 196608, 0, -262129, 262144, 0, -262128, 196608, 0, -262127, 262144, 0, -262126, 196608, 0, -262125, 196608, 0, -262124, 327680, 0, -196588, 196608, 1342177280, -131052, 262144, 1342177280, -65516, 196608, 1342177280, 20, 262144, 1342177280, 65556, 196608, 1342177280, 131092, 262144, 1342177280, 196628, 196608, 1342177280, 262164, 262144, 1342177280, 327700, 196608, 1342177280, 393236, 262144, 1342177280, 458772, 196608, 1342177280, 524308, 262144, 1342177280, 589844, 196608, 1342177280, 655380, 262144, 1342177280, 720916, 196608, 1342177280, 786452, 262144, 1342177280, 851988, 196608, 1342177280, 917524, 131072, 805306368, 917509, 196608, 805306368, 917511, 196608, 805306368, 917510, 262144, 805306368, 917513, 196608, 805306368, 917512, 262144, 805306368, 917515, 196608, 805306368, 917514, 262144, 805306368, 917517, 196608, 805306368, 917516, 262144, 805306368, 917519, 196608, 805306368, 917518, 262144, 805306368, 917521, 196608, 805306368, 917520, 262144, 805306368, 917523, 196608, 805306368, 917522, 262144, 805306368, 917508, 262144, 805306368, 589827, 196608, 1610612736, 655363, 262144, 1610612736, 720899, 196608, 1610612736, 786435, 262144, 1610612736, 851971, 196608, 1610612736, -196605, 196608, 1610612736, -131069, 262144, 1610612736, -65533, 196608, 1610612736, 3, 262144, 1610612736, 65539, 196608, 1610612736, 131075, 262144, 1610612736, 196611, 196608, 805306368, 917507, 131072, 1610612736, 589823, 262144, 0, 524288, 196608, 0, 524289, 262144, 0, 524290, 196608, 0, 524291, 262144, 0, 589822, 196608, 0, 262143, 196608, 805306368, 262142, 262144, 805306368, 196609, 196608, 805306368, 196608, 262144, 805306368, 196610, 262144, 805306368, 262141, 262144, 1610612736, 327677, 196608, 1610612736, 393213, 262144, 1610612736, 458749, 196608, 1610612736, 524285, 262144, 1610612736, 589821, 196608, 1610612736)
 
-[node name="pkm1 player" parent="." instance=ExtResource("3_hxtcc")]
-position = Vector2(-1, 106)
+[node name="Objects" type="Node2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 
-[node name="FloorSign" type="CharacterBody2D" parent="."]
-position = Vector2(55, 67)
-script = ExtResource("3_hxtfc")
-object_type = 1
-object_data = SubResource("Resource_naf7e")
+[node name="Props" type="Node2D" parent="Objects"]
+z_as_relative = false
+y_sort_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="FloorSign"]
-texture_filter = 1
-texture = ExtResource("1_rppv1")
-region_enabled = true
-region_rect = Rect2(17, 33, 14, 12)
+[node name="FloorSign" parent="Objects/Props" instance=ExtResource("3_2lvif")]
+z_as_relative = false
+y_sort_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorSign"]
-shape = SubResource("CircleShape2D_q5m3h")
+[node name="WallSign" parent="Objects/Props" instance=ExtResource("4_7t0sj")]
+z_as_relative = false
+y_sort_enabled = true
 
-[node name="TalkingArea" parent="FloorSign" instance=ExtResource("5_46jc2")]
+[node name="Player" type="Node2D" parent="Objects"]
+z_as_relative = false
+y_sort_enabled = true
 
-[node name="WallSign" type="CharacterBody2D" parent="."]
-position = Vector2(-8, 54)
-script = ExtResource("3_hxtfc")
-object_type = 2
+[node name="pkm1 player" parent="Objects/Player" instance=ExtResource("3_hxtcc")]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(-8, 104)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallSign"]
-texture_filter = 1
-texture = ExtResource("1_rppv1")
-region_enabled = true
-region_rect = Rect2(17, 33, 14, 12)
+[node name="NPCs" type="Node2D" parent="Objects"]
+z_as_relative = false
+y_sort_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallSign"]
-shape = SubResource("CircleShape2D_oqhxy")
-
-[node name="TalkingArea" parent="WallSign" instance=ExtResource("5_46jc2")]
-
-[node name="Guard" type="CharacterBody2D" parent="."]
-position = Vector2(134, 136)
-rotation = 1.5708
-script = ExtResource("3_hxtfc")
-object_data = SubResource("Resource_3h1bw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Guard"]
-texture_filter = 1
-texture = ExtResource("4_pe83v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Guard"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_cro1l")
-
-[node name="TalkingArea" parent="Guard" instance=ExtResource("5_46jc2")]
-
-[node name="Guard2" type="CharacterBody2D" parent="."]
-position = Vector2(136, 59)
-rotation = 1.5708
-script = ExtResource("3_hxtfc")
-object_data = SubResource("Resource_3h1bw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Guard2"]
-texture_filter = 1
-texture = ExtResource("4_pe83v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Guard2"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_cro1l")
-
-[node name="TalkingArea" parent="Guard2" instance=ExtResource("5_46jc2")]
+[node name="Guard" parent="Objects/NPCs" instance=ExtResource("6_dim0v")]
+z_as_relative = false
+y_sort_enabled = true
