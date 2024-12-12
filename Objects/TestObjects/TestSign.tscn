@@ -18,7 +18,7 @@ size = Vector2(16, 15)
 [sub_resource type="Resource" id="Resource_gw3m8"]
 script = ExtResource("4_7un31")
 _name = ""
-_sentences = Array[String]([])
+_sentences = Array[String](["This is a test", "Apologies for deleting the old test Mudkip ", "I can be a goofball xD"])
 
 [node name="StaticObjects" instance=ExtResource("1_8l5fm")]
 
