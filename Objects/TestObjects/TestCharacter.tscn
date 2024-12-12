@@ -13,8 +13,7 @@ size = Vector2(10, 9)
 script = ExtResource("5_swwd6")
 _name = "Npc"
 _texture = ExtResource("2_nkyv3")
-_sentences = Array[String](["I love walking
-in circles..
+_sentences = Array[String](["Hi!
 "])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhsd6"]

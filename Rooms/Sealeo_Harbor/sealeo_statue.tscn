@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_u3sd5"]
 script = ExtResource("3_yk3hv")
 _name = "Sealeo Statue"
-_sentences = Array[String](["Sealeo Statue", "It's beautiful!"])
+_sentences = Array[String](["A Statue of Sealeo", "It's beautiful!"])
 
 [node name="StaticObjects" instance=ExtResource("1_1otje")]
 
