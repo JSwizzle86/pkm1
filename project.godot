@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Pkm 1"
-run/main_scene="res://Debug_Room/debug_room.tscn"
+run/main_scene="res://Rooms/Debug_Room/debug_room.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 FakePokedex="*res://Dex_Scene_Stuff/Scripts/FakeDexData.gd"
-DialogueLoad="*res://Talkable_Objects/Dialogue/dialogue.tscn"
+DialogueLoad="res://Scripts/Components/Talkable_Objects/Dialogue/dialogue.tscn"
 Global="*res://Main/GlobalScripts/Global.gd"
 
 [display]
@@ -30,16 +30,10 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://Main/": "red",
 "res://Main/GlobalScripts/": "yellow",
 "res://Main/MainScene/": "purple",
-"res://Objects/": "green",
-"res://Talkable_Objects/": "yellow",
-"res://Talkable_Objects/Areas/": "blue",
-"res://Talkable_Objects/Assets/": "pink",
-"res://Talkable_Objects/Class/": "red",
-"res://Talkable_Objects/Dialogue/": "purple",
-"res://Talkable_Objects/Resources/": "orange"
+"res://Scripts/Components/Talkable_Objects/Dialogue/": "purple",
+"res://Scripts/Components/Talkable_Objects/Resources/": "orange"
 }
 
 [input]

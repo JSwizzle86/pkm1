@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/PKM1Player.gd" id="1_fh3j7"]
 [ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/Hitbox.gd" id="3_x5qfo"]
-[ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="4_afrh5"]
+[ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Objects/PlayerObject/PlayerAssets/Final_sprites (1).png" id="4_afrh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7x08"]
 size = Vector2(18, 18)
@@ -585,8 +585,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_kdg03"]
-length = 9.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpc86"]
 
 [node name="PKM!Player" type="CharacterBody2D" groups=["player"]]
 slide_on_ceiling = false
@@ -602,7 +601,6 @@ sprite_frames = SubResource("SpriteFrames_w3k2j")
 animation = &"up "
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
@@ -615,4 +613,4 @@ script = ExtResource("3_x5qfo")
 unique_name_in_owner = true
 position = Vector2(0, -8)
 rotation = 3.14159
-shape = SubResource("SeparationRayShape2D_kdg03")
+shape = SubResource("CircleShape2D_vpc86")

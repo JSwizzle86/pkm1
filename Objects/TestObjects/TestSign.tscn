@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bvygi4a5rcdc"]
 
 [ext_resource type="PackedScene" uid="uid://cdy4ui6h12v8x" path="res://Objects/BaseObjects/static_objects.tscn" id="1_8l5fm"]
-[ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Debug_Room/Simpletileset.png" id="2_jplpm"]
-[ext_resource type="Script" path="res://Scripts/Components/Talkable.gd" id="3_6n18v"]
-[ext_resource type="Script" path="res://Talkable_Objects/Resources/talkable-object-data.gd" id="4_7un31"]
+[ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Rooms/Debug_Room/Simpletileset.png" id="2_jplpm"]
+[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="3_6n18v"]
+[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="4_7un31"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5j4k"]
 atlas = ExtResource("2_jplpm")

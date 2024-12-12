@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqyhfuupjdr4q"]
+
+[ext_resource type="PackedScene" uid="uid://bnpwugpnqa56d" path="res://Objects/BaseObjects/kinematic_objects.tscn" id="1_hrkja"]
+[ext_resource type="Texture2D" uid="uid://dae0wnkp6dvc5" path="res://Assets/Placeholders/human.png" id="2_nkyv3"]
+[ext_resource type="Script" path="res://Scripts/Components/Movements/Movement1.gd" id="3_r2bh6"]
+[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="4_5bveq"]
+[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="5_swwd6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sifhd"]
+size = Vector2(10, 9)
+
+[sub_resource type="Resource" id="Resource_njmna"]
+script = ExtResource("5_swwd6")
+_name = "Npc"
+_texture = ExtResource("2_nkyv3")
+_sentences = Array[String](["I love walking
+in circles..
+"])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhsd6"]
+size = Vector2(12, 16)
+
+[node name="KinematicObjects" instance=ExtResource("1_hrkja")]
+slide_on_ceiling = false
+floor_constant_speed = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteHolder" index="0"]
+texture = ExtResource("2_nkyv3")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_sifhd")
+
+[node name="Movement" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("actor", "area")]
+script = ExtResource("3_r2bh6")
+type = 1
+speed = 20.0
+steps = 100
+actor = NodePath("../..")
+area = NodePath("../../InteractionArea")
+
+[node name="Talkable" type="Node" parent="Componenets" index="1" node_paths=PackedStringArray("movement_comp", "actor", "area", "sprite")]
+script = ExtResource("4_5bveq")
+talk_data = SubResource("Resource_njmna")
+movement_comp = NodePath("../Movement")
+actor = NodePath("../..")
+area = NodePath("../../InteractionArea")
+sprite = NodePath("../../SpriteHolder/Sprite2D")
+
+[node name="InteractionArea" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+shape = SubResource("RectangleShape2D_yhsd6")

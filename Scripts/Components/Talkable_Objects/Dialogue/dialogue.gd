@@ -40,6 +40,10 @@ func _start_dialogue(resource: TalkableObjectData, object: Component) -> void:
 	if talkable_object is Component:
 		Global.player_node.set_physics_process(false)
 		Global.player_node.set_process(false)
+		
+		if talkable_object.movement_comp:
+			talkable_object.movement_comp.set_process(false)
+			talkable_object.movement_comp.set_physics_process(false)
 	
 	if sentences.size() > 0:
 		current_sentence_index = 0
@@ -93,4 +97,8 @@ func _finish_dialogue() -> void:
 	Global.player_node.set_physics_process(true)
 	Global.player_node.set_process(true)
 	
+	if talkable_object.movement_comp:
+		talkable_object.movement_comp.set_process(true)
+		talkable_object.movement_comp.set_physics_process(true)
+
 	talkable_object = null

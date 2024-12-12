@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmvgi3vyuhg3g"]
+[gd_scene load_steps=11 format=3 uid="uid://dmvgi3vyuhg3g"]
 
+[ext_resource type="Script" path="res://Scripts/base_room.gd" id="1_0agj3"]
 [ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="1_pcbu7"]
-[ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Debug_Room/Simpletileset.png" id="1_rppv1"]
-[ext_resource type="PackedScene" uid="uid://cyomxow7kne24" path="res://Dex_Scene_Stuff/Scenes/pkm_1_player.tscn" id="3_hxtcc"]
-[ext_resource type="PackedScene" uid="uid://hxsf37bshyt7" path="res://Debug_Room/Props/wall_sign.tscn" id="4_7t0sj"]
+[ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Rooms/Debug_Room/Simpletileset.png" id="1_rppv1"]
+[ext_resource type="PackedScene" uid="uid://cyomxow7kne24" path="res://Objects/PlayerObject/pkm_1_player.tscn" id="3_hxtcc"]
+[ext_resource type="PackedScene" uid="uid://dupg1heoka3u8" path="res://Objects/TestObjects/RigidBird.tscn" id="4_4gswn"]
 [ext_resource type="PackedScene" uid="uid://bvygi4a5rcdc" path="res://Objects/TestObjects/TestSign.tscn" id="4_vye78"]
-[ext_resource type="PackedScene" uid="uid://c73ul8aj2atq1" path="res://Debug_Room/TestNPCS/guard.tscn" id="6_dim0v"]
+[ext_resource type="PackedScene" uid="uid://dqyhfuupjdr4q" path="res://Objects/TestObjects/TestCharacter.tscn" id="6_fi8v0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qt3hw"]
 texture = ExtResource("1_rppv1")
@@ -61,7 +62,13 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_axtv2")
 sources/0 = SubResource("TileSetAtlasSource_qt3hw")
 
-[node name="DebugRoom" type="Node2D"]
+[node name="DebugRoom" type="Node2D" node_paths=PackedStringArray("players_in_room")]
+script = ExtResource("1_0agj3")
+players_in_room = NodePath("Objects/Player")
+max_cam_x = 336
+min_cam_x = -48
+max_cam_y = 240
+min_cam_y = -64
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8nurw")
@@ -80,12 +87,13 @@ y_sort_enabled = true
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="WallSign" parent="Objects/Props" instance=ExtResource("4_7t0sj")]
-z_as_relative = false
-y_sort_enabled = true
-
 [node name="NewSign" parent="Objects/Props" instance=ExtResource("4_vye78")]
 position = Vector2(56, 89)
+
+[node name="PhysicsProps" type="Node2D" parent="Objects"]
+
+[node name="RegidObjects" parent="Objects/PhysicsProps" instance=ExtResource("4_4gswn")]
+position = Vector2(192, 129)
 
 [node name="Player" type="Node2D" parent="Objects"]
 z_as_relative = false
@@ -100,6 +108,5 @@ position = Vector2(-8, 104)
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="Guard" parent="Objects/NPCs" instance=ExtResource("6_dim0v")]
-z_as_relative = false
-y_sort_enabled = true
+[node name="KinematicObjects" parent="Objects/NPCs" instance=ExtResource("6_fi8v0")]
+position = Vector2(168, 24)

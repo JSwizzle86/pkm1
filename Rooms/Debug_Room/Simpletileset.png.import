@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8tt47u50x83y"
-path="res://.godot/imported/idles.png-5ea263dc36e95cd8ee065d5990511318.ctex"
+uid="uid://qfrykxoeryox"
+path="res://.godot/imported/Simpletileset.png-efa5749b5c72762c367a75e35e8f4967.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dex_Scene_Stuff/Assets/idles.png"
-dest_files=["res://.godot/imported/idles.png-5ea263dc36e95cd8ee065d5990511318.ctex"]
+source_file="res://Rooms/Debug_Room/Simpletileset.png"
+dest_files=["res://.godot/imported/Simpletileset.png-efa5749b5c72762c367a75e35e8f4967.ctex"]
 
 [params]
 

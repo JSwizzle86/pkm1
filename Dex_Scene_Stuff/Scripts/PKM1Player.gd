@@ -60,10 +60,6 @@ func handle_movement():
 		velocity = velocity.move_toward(Vector2.ZERO, friction)
 
 
-func movement(newdirection):
-	pass
-
-
 func _process(_delta):
 	# Process vertical movement outside of physics
 	if not turning:
