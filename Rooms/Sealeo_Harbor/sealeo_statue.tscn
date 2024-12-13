@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd15ypmfb8d22"]
+
+[ext_resource type="PackedScene" uid="uid://bvygi4a5rcdc" path="res://Objects/TestObjects/TestSign.tscn" id="1_1otje"]
+[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="3_yk3hv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vdi4k"]
+
+[sub_resource type="Resource" id="Resource_u3sd5"]
+script = ExtResource("3_yk3hv")
+_name = "Sealeo Statue"
+_sentences = Array[String](["A Statue of Sealeo", "It's beautiful!"])
+
+[node name="StaticObjects" instance=ExtResource("1_1otje")]
+
+[node name="Sprite2D" parent="SpriteHolder" index="0"]
+modulate = Color(0.447059, 0.447059, 0.447059, 1)
+position = Vector2(0, 3.5)
+scale = Vector2(16, 15)
+texture = SubResource("CanvasTexture_vdi4k")
+
+[node name="Coll" parent="InteractionArea" index="0"]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 3.5)
+
+[node name="Talkable" parent="Componenets" index="0"]
+talk_data = SubResource("Resource_u3sd5")
+movement_comp = NodePath("")

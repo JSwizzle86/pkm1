@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 FakePokedex="*res://Dex_Scene_Stuff/Scripts/FakeDexData.gd"
-DialogueLoad="res://Scripts/Components/Talkable_Objects/Dialogue/dialogue.tscn"
 Global="*res://Main/GlobalScripts/Global.gd"
 
 [display]

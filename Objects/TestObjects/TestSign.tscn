@@ -10,17 +10,15 @@ atlas = ExtResource("2_jplpm")
 region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dntb5"]
-size = Vector2(28, 27.5)
+size = Vector2(16, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oartv"]
-size = Vector2(24, 24)
+size = Vector2(14, 6)
 
-[sub_resource type="Resource" id="Resource_q5sf1"]
+[sub_resource type="Resource" id="Resource_gw3m8"]
 script = ExtResource("4_7un31")
-_name = "Test Sign"
-_texture = SubResource("AtlasTexture_p5j4k")
-_sentences = Array[String](["This is a test.", "Test Test Test", "Uh MUDKIP!
-okay, sorry"])
+_name = ""
+_sentences = Array[String](["This is a test", "Apologies for deleting the old test Mudkip ", "I can be a goofball xD"])
 
 [node name="StaticObjects" instance=ExtResource("1_8l5fm")]
 
@@ -42,7 +40,7 @@ shape = SubResource("RectangleShape2D_oartv")
 
 [node name="Talkable" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("actor", "area", "sprite")]
 script = ExtResource("3_6n18v")
-talk_data = SubResource("Resource_q5sf1")
+talk_data = SubResource("Resource_gw3m8")
 actor = NodePath("../..")
 area = NodePath("../../InteractionArea")
 sprite = NodePath("../../SpriteHolder/Sprite2D")
