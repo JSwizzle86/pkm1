@@ -1,6 +1,6 @@
 extends MiniState
 
-@export var speed : float = 1000.0
+@export var speed : float = 35
 @export var run_multiplier : float = 1.5 
 @export var hit_box : CollisionShape2D
 @export var ray : RayCast2D
@@ -33,7 +33,7 @@ func _process(delta):
 		if direction != Vector2.ZERO and input_pressed:
 			if can_move_to():
 				moving = true
-				target_position = state_machine.actor.position + direction * grid_size
+				target_position = snapped_position(state_machine.actor.position + direction * grid_size)
 				stopped_moving = false
 				
 			else:
@@ -47,6 +47,8 @@ func _process(delta):
 				stopped_moving = true
 				
 
+func snapped_position(position: Vector2) -> Vector2:
+	return position.snapped(grid_size)
 
 func handle_input():
 	new_direction = Vector2.ZERO 

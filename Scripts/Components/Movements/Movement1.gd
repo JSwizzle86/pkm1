@@ -3,68 +3,63 @@ extends MovementComponent
 var steps_counter : int = 0
 var current_direction : int = 0
 
-@export var ray : RayCast2D
-var current_speed : float = 35
+@export var ray : Area2D
+@export var og_place : StaticBody2D
+@export var new_place : StaticBody2D
+var current_speed : float = 20
 var friction = 10.0
 var moving : bool = false
-var grid_size: Vector2 = Vector2(Global.global_tile, Global.global_tile)  # Size of each grid cell
-var target_position: Vector2 = Vector2.ZERO  # Target position the player moves toward
-# Movement direction
+var grid_size: Vector2 = Vector2(Global.global_tile, Global.global_tile)  
+var target_position: Vector2 = Vector2.ZERO 
 var direction: Vector2 = Vector2.ZERO
-var new_direction: Vector2 = Vector2.ZERO  # For storing quick direction change
+var new_direction: Vector2 = Vector2.ZERO 
 var step_counter : int = 0
 var current_dir : int = 0
+var touching_player : bool = false
 
 func _ready():
-	area.body_entered.connect(stop_walking)
-	area.body_exited.connect(start_walking)
-
+	ray.body_entered.connect(ray_body_entered)
+	ray.body_exited.connect(ray_body_exited)
 
 # Called every frame
 func _process(delta):
-	handle_input()
-	# If already moving, interpolate to the target position
 	if moving:
+		if steps_counter > steps-1:
+			current_dir = wrap(current_dir + 1, 0, 4)
+			steps_counter = 0
 		current_speed = is_running()
 		move_player(delta)
+		
 	else:
-		# Once the player reaches the grid position, they can start moving again
-		if direction != Vector2.ZERO:
-			# Check if the next position is valid before moving
-			if can_move_to():
-				moving = true
-				target_position = actor.position + direction * grid_size
+		handle_input()
+		if !moving:
+			target_position = actor.position + direction * grid_size
+			new_place.position = actor.global_position + direction * grid_size
+			
+			moving = true
+			
+		else:
+			direction = new_direction
+			
+			moving = false
 				
-				steps_counter += 1
-				
-			else:
-				# If can't move, reset the direction and stop the movement
-				direction = new_direction
-				moving = false
-	if steps_counter >= steps:
-		current_dir = wrap(current_dir + 1, 0, 4)
-		steps_counter = 0
-	steps_counter += 1
 
-# Handle player input for quick direction changes
 func handle_input():
-	new_direction = Vector2.ZERO  # Reset direction each frame
+	new_direction = Vector2.ZERO 
 
 	match current_dir:
 		0:
 			new_direction.y = -1
+			ray.get_node("Ray").rotation = deg_to_rad(180)
 		1:
 			new_direction.x = -1
-			
+			ray.get_node("Ray").rotation = deg_to_rad(90)
 		2:
 			new_direction.y = 1
+			ray.get_node("Ray").rotation = deg_to_rad(0)
 		3:
 			new_direction.x = 1
-		
-	# If direction changes, but we're not moving yet, switch to the new direction
-	if ray.is_colliding():
-		moving = false
-	
+			ray.get_node("Ray").rotation = deg_to_rad(-90)
 	check_dire()
 
 # Check direction change logic
@@ -72,27 +67,16 @@ func check_dire():
 	if new_direction != direction and not moving:
 		direction = new_direction
 
-# Check if the next position is valid (no collision)
-func can_move_to() -> bool:
-	ray.target_position = new_direction * (grid_size / 2)
-	ray.force_raycast_update()
-	return !ray.is_colliding()
-
 func move_player(delta):
 	var movement_vector = direction * current_speed * delta
-	actor.position += movement_vector
-	
-	if actor.position.distance_to(target_position) < 1:
-		actor.position = target_position
-		moving = false
-			
-		'''
-		if can_move_to():
-			moving = true
-			handle_input()
-			direction = new_direction
-			target_position = actor.position + direction * grid_size'''
+	actor.position = actor.position + movement_vector
 
+	if actor.position.distance_to(target_position) < 1:
+		
+		actor.position = target_position.snapped(grid_size)
+		og_place.position = actor.global_position
+		steps_counter += 1
+		moving = false
 
 func is_running() -> float:
 	if running:
@@ -100,13 +84,21 @@ func is_running() -> float:
 	else:
 		return speed
 
-
-func stop_walking(body : Object):
+func ray_body_entered(body : Object):
 	if body is Player:
-		if actor.get_real_velocity() != actor.velocity:
-			set_process(false)
+		touching_player = true
+		set_process(false)
 
-
-func start_walking(body : Object):
+func ray_body_exited(body : Object):
 	if body is Player:
-		set_process(true)
+		if Global.dialogue.talkable_object != actor:
+			touching_player = false
+			await get_tree().create_timer(0.5).timeout
+			set_process(true)
+
+func set_processes():
+	if touching_player:
+		return
+	
+	set_process(true)
+	set_physics_process(true)

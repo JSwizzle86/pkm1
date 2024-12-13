@@ -458,6 +458,8 @@ animations = [{
 motion_mode = 1
 slide_on_ceiling = false
 floor_constant_speed = true
+platform_on_leave = 2
+platform_floor_layers = 0
 script = ExtResource("1_fh3j7")
 movement_state = NodePath("StateMachine/Movement")
 
@@ -473,7 +475,7 @@ animation = &"left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(12, 12)
-position_smoothing_enabled = true
+zoom = Vector2(0.8, 0.8)
 position_smoothing_speed = 40.0
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -498,6 +500,7 @@ collision_mask = 3
 [node name="NPCDetect" type="RayCast2D" parent="RaycastHolder"]
 target_position = Vector2(0, 24)
 collision_mask = 4
+hit_from_inside = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("4_ng5bs")

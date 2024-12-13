@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cym3i31jm4svn"]
+[gd_scene load_steps=7 format=3 uid="uid://cym3i31jm4svn"]
 
 [ext_resource type="PackedScene" uid="uid://cdkuvcv17omjl" path="res://Rooms/BaseRooms/base_room.tscn" id="1_k3q1j"]
 [ext_resource type="Texture2D" uid="uid://bxmh2wgjpkvqx" path="res://Rooms/Sealeo_Harbor/basic_tileset.png" id="2_5hoyk"]
 [ext_resource type="PackedScene" uid="uid://cyomxow7kne24" path="res://Objects/PlayerObject/pkm_1_player.tscn" id="3_cce1m"]
+[ext_resource type="PackedScene" uid="uid://dqyhfuupjdr4q" path="res://Objects/TestObjects/TestCharacter.tscn" id="4_htfra"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xumpp"]
 texture = ExtResource("2_5hoyk")
@@ -54,3 +55,6 @@ position = Vector2(298, 203)
 
 [node name="PKM!Player" parent="Objects/Player" index="0" instance=ExtResource("3_cce1m")]
 position = Vector2(192, 240)
+
+[node name="KinematicObjects" parent="Objects/NPCs" index="0" instance=ExtResource("4_htfra")]
+position = Vector2(288, 312)
