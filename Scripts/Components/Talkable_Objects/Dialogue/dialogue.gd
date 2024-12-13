@@ -38,8 +38,11 @@ func _start_dialogue(resource: TalkableObjectData, object: Component) -> void:
 	
 	# Simple way. to make player can't control.
 	if talkable_object is Component:
-		Global.player_node.set_physics_process(false)
-		Global.player_node.set_process(false)
+		Global.player_node.movement_state.direction = Vector2.ZERO
+		Global.player_node.movement_state.state_machine.new_state.emit()
+		Global.player_node.movement_state.set_physics_process(false)
+		Global.player_node.movement_state.set_process(false)
+		
 		
 		if talkable_object.movement_comp:
 			talkable_object.movement_comp.set_process(false)
@@ -94,8 +97,8 @@ func _finish_dialogue() -> void:
 	talkable_object.is_talking = false
 	
 	# Simple way.
-	Global.player_node.set_physics_process(true)
-	Global.player_node.set_process(true)
+	Global.player_node.movement_state.set_physics_process(true)
+	Global.player_node.movement_state.set_process(true)
 	
 	if talkable_object.movement_comp:
 		talkable_object.movement_comp.set_process(true)

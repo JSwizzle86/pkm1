@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="5_swwd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sifhd"]
-size = Vector2(10, 9)
+size = Vector2(24, 24)
 
 [sub_resource type="Resource" id="Resource_njmna"]
 script = ExtResource("5_swwd6")
@@ -18,24 +18,35 @@ in circles..
 "])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhsd6"]
-size = Vector2(12, 16)
+size = Vector2(26, 26)
 
 [node name="KinematicObjects" instance=ExtResource("1_hrkja")]
+collision_layer = 5
+collision_mask = 5
+motion_mode = 1
 slide_on_ceiling = false
 floor_constant_speed = true
+
+[node name="SpriteHolder" parent="." index="0"]
+position = Vector2(12, 12)
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteHolder" index="0"]
 texture = ExtResource("2_nkyv3")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 0.5)
+position = Vector2(12, 12)
 shape = SubResource("RectangleShape2D_sifhd")
 
-[node name="Movement" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("actor", "area")]
+[node name="RayCast2D" type="RayCast2D" parent="." index="2"]
+position = Vector2(12, 12)
+target_position = Vector2(0, 24)
+
+[node name="Movement" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("ray", "actor", "area")]
 script = ExtResource("3_r2bh6")
-type = 1
-speed = 20.0
-steps = 100
+ray = NodePath("../../RayCast2D")
+type = 2
+speed = 50.0
+steps = 4
 actor = NodePath("../..")
 area = NodePath("../../InteractionArea")
 
@@ -47,7 +58,8 @@ actor = NodePath("../..")
 area = NodePath("../../InteractionArea")
 sprite = NodePath("../../SpriteHolder/Sprite2D")
 
-[node name="InteractionArea" type="Area2D" parent="." index="3"]
+[node name="InteractionArea" type="Area2D" parent="." index="4"]
+position = Vector2(12, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
 shape = SubResource("RectangleShape2D_yhsd6")

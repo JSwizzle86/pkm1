@@ -19,7 +19,7 @@ func start_interaction(body : Object):
 func stop_interaction(body : Object):
 	if body is Player:
 		set_process_input(false)
-		Global.player_node = null
+	#	Global.player_node = null
 		can_talk = false
 
 func _input(event):
@@ -28,3 +28,6 @@ func _input(event):
 			can_talk = false
 			is_talking = true
 			Global.dialogue._start_dialogue(talk_data, self)
+			if movement_comp:
+				movement_comp.set_process(false)
+				movement_comp.set_physics_process(false)
