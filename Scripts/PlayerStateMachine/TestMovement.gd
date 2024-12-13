@@ -1,84 +1,60 @@
 extends MiniState
 
+var direction = Vector2()
 
-@export var walk_speed = 4.0
-var TILE_SIZE = Global.global_tile
-var initial_position = Vector2(0, 0)
-var input_direction = Vector2(0, 0)
+const MAX_SPEED = 400
+
+var speed = 0
+var velocity = Vector2()
+
+var world_target_pos = Vector2()
+var target_direction = Vector2()
 var is_moving = false
-var percent_moved_to_next_tile = 0.0
-@export var ray : RayCast2D
-# Called when the node enters the scene tree for the first time.
+
+var type
+var grid
+
+
 func _ready():
-	initial_position = state_machine.actor.position
-	
-func _physics_process(delta):
-	if is_moving == false:
-		process_player_movement_input()
-	elif input_direction != Vector2.ZERO:
-		move(delta)
-	else:
-		is_moving = false
-func process_player_movement_input():
-	if input_direction.y == 0:
-		input_direction.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	if input_direction.x == 0:
-		input_direction.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-	
-#	detect_direction_change()
-	if input_direction != Vector2.ZERO:
-		initial_position = state_machine.actor.position
-		is_moving = true
+	grid = state_machine.actor.grid
+	type = state_machine.actor.grid.PLAYER
+	set_process(true)
 
-func move(delta):
-	percent_moved_to_next_tile += walk_speed * delta
-	if percent_moved_to_next_tile >= 1.0:
-		state_machine.actor.position = initial_position + (input_direction * TILE_SIZE)
-		percent_moved_to_next_tile = 0.0
-		is_moving = false
-	var desired_step: Vector2 = input_direction * TILE_SIZE / 3.5
-	ray.target_position = desired_step
-	ray.force_raycast_update()
-	if !ray.is_colliding():
-		percent_moved_to_next_tile += walk_speed * delta
-		if percent_moved_to_next_tile >= 1.0:
-			state_machine.actor.position = initial_position + (input_direction * TILE_SIZE)
-			percent_moved_to_next_tile = 0.0
+
+func _process(delta):
+	direction = Vector2()
+	speed = 0
+
+	if Input.is_action_pressed("move_up"):
+		direction.y = -1
+	elif Input.is_action_pressed("move_down"):
+		direction.y = 1
+
+	if Input.is_action_pressed("move_left"):
+		direction.x = -1
+	elif Input.is_action_pressed("move_right"):
+		direction.x = 1
+
+	if not is_moving and direction != Vector2():
+		# if player is not moving and has no direction
+		# then set the target direction
+		target_direction = direction.normalized()
+
+		if grid.is_cell_vacant(state_machine.actor.position, direction):
+			world_target_pos = grid.update_child_pos(state_machine.actor.position, direction, type)
+			is_moving = true
+
+	elif is_moving:
+		speed = MAX_SPEED
+		velocity = speed * target_direction * delta
+
+		var distance_to_target = state_machine.actor.position.distance_to(world_target_pos)
+		var move_distance = velocity.length()
+
+		# Set the last movement distance to the distance to the target
+		# this will make the player stop exaclty on the target
+		if distance_to_target < move_distance:
+			velocity = target_direction * distance_to_target
 			is_moving = false
-		else:
-			state_machine.actor.position = initial_position + (input_direction * TILE_SIZE * percent_moved_to_next_tile)
-	else:
-		percent_moved_to_next_tile = 0
-		is_moving = false
 
-func detect_direction_change():
-	# Check for a change in direction to potentially trigger a turn animation
-	if Input.is_action_pressed("Left"):
-		state_machine.movement_direction = 0
-	elif Input.is_action_pressed("Right"):
-		state_machine.movement_direction = 1
-	elif Input.is_action_pressed("Down"):
-		state_machine.movement_direction = 2
-	elif Input.is_action_pressed("Up"):
-		state_machine.movement_direction = 3
-	
-	interaction_collision_direction(state_machine.movement_direction)
-
-func interaction_collision_direction(new_current_direction):
-	match new_current_direction:
-		0:
-	#		hit_box.position = Vector2(-10, 0)
-	#		hit_box.rotation = deg_to_rad(90)
-			ray.rotation = deg_to_rad(90)
-		1:
-		#	hit_box.position = Vector2(10, 0)
-		#	hit_box.rotation = deg_to_rad(-90)
-			ray.rotation = deg_to_rad(-90)
-		2:
-		#	hit_box.position = Vector2(0, 8)
-		#	hit_box.rotation = deg_to_rad(0)
-			ray.rotation = deg_to_rad(0)
-		3:
-		#	hit_box.position = Vector2(0, -8)
-		#	hit_box.rotation = deg_to_rad(180)
-			ray.rotation = deg_to_rad(180)
+		state_machine.actor.move_and_collide(velocity)

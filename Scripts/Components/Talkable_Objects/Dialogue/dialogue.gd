@@ -101,7 +101,6 @@ func _finish_dialogue() -> void:
 	Global.player_node.movement_state.set_process(true)
 	
 	if talkable_object.movement_comp:
-		talkable_object.movement_comp.set_process(true)
-		talkable_object.movement_comp.set_physics_process(true)
+		talkable_object.movement_comp.set_processes()
 
 	talkable_object = null
