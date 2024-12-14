@@ -8,8 +8,7 @@ func _ready():
 	set_state()
 
 func set_state():
-#	if movement_state.direction == Vector2.ZERO:
-		state_machine.current_mini_state = self
-		state_machine.current_state = StateMachine.State.Idle
-		state_machine.update_anim.emit()
+	state_machine.current_mini_state = self
+	state_machine.current_state = StateMachine.State.Idle
+#	state_machine.update_anim.emit()
 #		print("Idle")

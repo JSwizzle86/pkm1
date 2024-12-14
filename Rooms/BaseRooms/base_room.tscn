@@ -11,6 +11,9 @@ players_in_room = NodePath("Objects/Player")
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
 
+[node name="MapLimitsMarker" type="Marker2D" parent="."]
+visible = false
+
 [node name="Objects" type="TileMapLayer" parent="."]
 z_as_relative = false
 y_sort_enabled = true

@@ -46,15 +46,17 @@ func run_anim():
 func idle_anim():
 	match state_machine.movement_direction:
 		0:
+			animation.play("left")
 			animation.pause()
 			animation.frame = 0
 		1:
+			animation.play("right")
 			animation.pause()
 			animation.frame = 0
 		2:
-			animation.pause()
-			animation.frame = 0
-			animation.play("stop_down")
+			if animation.animation != "stop_down":
+				animation.play("stop_down")
 		3:
+			animation.play("up")
 			animation.pause()
 			animation.frame = 0

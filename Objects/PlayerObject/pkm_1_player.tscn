@@ -471,7 +471,7 @@ polygon = PackedVector2Array(128, 2.9, 128, 123, 123.6, 128, 3.8, 128, 0, 125, 0
 texture_filter = 1
 position = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_w3k2j")
-animation = &"left"
+animation = &"down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(12, 12)
@@ -500,11 +500,12 @@ collision_mask = 3
 [node name="NPCDetect" type="RayCast2D" parent="RaycastHolder"]
 target_position = Vector2(0, 24)
 collision_mask = 4
-hit_from_inside = true
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("actor")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("actor", "idle", "moving")]
 script = ExtResource("4_ng5bs")
 actor = NodePath("..")
+idle = NodePath("Idle")
+moving = NodePath("Movement")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state", "state_machine")]
 script = ExtResource("5_ysini")
@@ -520,6 +521,7 @@ npcray = NodePath("../../RaycastHolder/NPCDetect")
 state_machine = NodePath("..")
 
 [node name="AnimationHandler" type="Node" parent="." node_paths=PackedStringArray("state_machine", "animation")]
+unique_name_in_owner = true
 script = ExtResource("8_vl78t")
 state_machine = NodePath("../StateMachine")
 animation = NodePath("../AnimatedSprite2D")

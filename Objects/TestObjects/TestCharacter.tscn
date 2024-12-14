@@ -59,7 +59,6 @@ collision_mask = 4
 [node name="NewPlace" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
 position = Vector2(12, 12)
 shape = SubResource("RectangleShape2D_sifhd")
-disabled = true
 debug_color = Color(0.906051, 0.113516, 0.687782, 0.42)
 
 [node name="RaycastArea" type="Area2D" parent="." index="4"]
