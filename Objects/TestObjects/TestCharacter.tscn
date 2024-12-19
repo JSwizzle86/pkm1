@@ -13,6 +13,7 @@ size = Vector2(24, 24)
 length = 13.0
 
 [sub_resource type="Resource" id="Resource_njmna"]
+resource_local_to_scene = true
 script = ExtResource("5_swwd6")
 _name = "Npc"
 _texture = ExtResource("2_nkyv3")
@@ -23,8 +24,6 @@ _sentences = Array[String](["Hi!
 size = Vector2(26, 26)
 
 [node name="KinematicObjects" instance=ExtResource("1_hrkja")]
-collision_layer = 4
-collision_mask = 4
 motion_mode = 1
 slide_on_ceiling = false
 floor_constant_speed = true
@@ -41,37 +40,15 @@ texture = ExtResource("2_nkyv3")
 position = Vector2(12, 12)
 shape = SubResource("RectangleShape2D_sifhd")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
-top_level = true
-position = Vector2(-1, -1)
-collision_layer = 4
-collision_mask = 4
-
-[node name="OGPlace" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(13, 13)
-shape = SubResource("RectangleShape2D_sifhd")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." index="3"]
-top_level = true
-collision_layer = 4
-collision_mask = 4
-
-[node name="NewPlace" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
-position = Vector2(12, 12)
-shape = SubResource("RectangleShape2D_sifhd")
-debug_color = Color(0.906051, 0.113516, 0.687782, 0.42)
-
-[node name="RaycastArea" type="Area2D" parent="." index="4"]
+[node name="RaycastArea" type="Area2D" parent="." index="2"]
 
 [node name="Ray" type="CollisionShape2D" parent="RaycastArea" index="0"]
 position = Vector2(12, 12)
 shape = SubResource("SeparationRayShape2D_eomog")
 
-[node name="Movement" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("ray", "og_place", "new_place", "actor", "area")]
+[node name="Movement" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("ray", "actor", "area")]
 script = ExtResource("3_r2bh6")
 ray = NodePath("../../RaycastArea")
-og_place = NodePath("../../StaticBody2D")
-new_place = NodePath("../../StaticBody2D2")
 type = 1
 speed = 50.0
 steps = 2
@@ -86,8 +63,10 @@ actor = NodePath("../..")
 area = NodePath("../../InteractionArea")
 sprite = NodePath("../../SpriteHolder/Sprite2D")
 
-[node name="InteractionArea" type="Area2D" parent="." index="6"]
+[node name="InteractionArea" type="Area2D" parent="." index="4"]
 position = Vector2(12, 12)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
 shape = SubResource("RectangleShape2D_yhsd6")

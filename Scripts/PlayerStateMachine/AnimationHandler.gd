@@ -23,40 +23,77 @@ func _process(_delta):
 
 func walk_anim():
 	match state_machine.movement_direction:
-		0:
+		Vector2.LEFT:
 			animation.play("left")
-		1:
+		Vector2.RIGHT:
 			animation.play("right")
-		2:
+		Vector2.DOWN:
 			animation.play("down")
-		3:
+		Vector2.UP:
 			animation.play("up")
 
 func run_anim():
 	match state_machine.movement_direction:
-		0:
+		Vector2.LEFT:
 			animation.play("run_left")
-		1:
+		Vector2.RIGHT:
 			animation.play("run_right")
-		2:
+		Vector2.DOWN:
 			animation.play("run_down")
-		3:
+		Vector2.UP:
 			animation.play("run_up")
 
 func idle_anim():
 	match state_machine.movement_direction:
-		0:
+		Vector2.LEFT:
 			animation.play("left")
 			animation.pause()
-			animation.frame = 0
-		1:
+			animation.frame = 1
+		Vector2.RIGHT:
 			animation.play("right")
 			animation.pause()
-			animation.frame = 0
-		2:
+			animation.frame = 1
+		Vector2.DOWN:
 			if animation.animation != "stop_down":
 				animation.play("stop_down")
-		3:
+		Vector2.UP:
 			animation.play("up")
 			animation.pause()
-			animation.frame = 0
+			animation.frame = 1
+
+
+func attack_anim(attack_node : MiniState):
+	match state_machine.movement_direction:
+		Vector2.LEFT:
+			animation.play("attack_left")
+		Vector2.RIGHT:
+			animation.play("attack_right")
+		Vector2.DOWN:
+			animation.play("attack_down")
+		Vector2.UP:
+			animation.play("attack_up")
+	
+	if animation.is_playing():
+		await animation.animation_finished
+		attack_node.exist_state()
+
+func play_other_idle(_idle_node : MiniState):
+	if state_machine.movement_direction == Vector2.DOWN:
+		animation.play("idle_down")
+		print("test")
+
+
+func play_turning(turn_node):
+	match state_machine.movement_direction:
+		Vector2.LEFT:
+			animation.play("turn_left")
+		Vector2.RIGHT:
+			animation.play("turn_right")
+		Vector2.DOWN:
+			animation.play("turn_down")
+		Vector2.UP:
+			animation.play("turn_up")
+	
+	if animation.is_playing():
+		await animation.animation_finished
+		turn_node.exist_state()

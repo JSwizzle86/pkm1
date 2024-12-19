@@ -4,8 +4,7 @@ var steps_counter : int = 0
 var current_direction : int = 0
 
 @export var ray : Area2D
-@export var og_place : StaticBody2D
-@export var new_place : StaticBody2D
+
 var current_speed : float = 20
 var friction = 10.0
 var moving : bool = false
@@ -34,7 +33,6 @@ func _process(delta):
 		handle_input()
 		if !moving:
 			target_position = actor.position + direction * grid_size
-			new_place.position = actor.global_position + direction * grid_size
 			
 			moving = true
 			
@@ -74,7 +72,6 @@ func move_player(delta):
 	if actor.position.distance_to(target_position) < 1:
 		
 		actor.position = target_position.snapped(grid_size)
-		og_place.position = actor.global_position
 		steps_counter += 1
 		moving = false
 

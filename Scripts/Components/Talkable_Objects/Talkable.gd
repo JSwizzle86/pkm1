@@ -19,15 +19,15 @@ func start_interaction(body : Object):
 func stop_interaction(body : Object):
 	if body is Player:
 		set_process_input(false)
-	#	Global.player_node = null
 		can_talk = false
 
 func _input(event):
 	if talk_data:
 		if can_talk and event.is_action_pressed("DialogueInteract") and !is_talking:
-			can_talk = false
-			is_talking = true
-			Global.dialogue._start_dialogue(talk_data, self)
-			if movement_comp:
-				movement_comp.set_process(false)
-				movement_comp.set_physics_process(false)
+			if Global.player_node.get_node("%NPCDetect").get_collider() == actor:
+				can_talk = false
+				is_talking = true
+				Global.dialogue._start_dialogue(talk_data, self)
+				if movement_comp:
+					movement_comp.set_process(false)
+					movement_comp.set_physics_process(false)

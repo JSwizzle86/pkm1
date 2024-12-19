@@ -1,8 +1,10 @@
 extends Node
 
+signal room_entered
+
 var global_tile : int = 24
 var player_node : Player
-
+var player_enter_room_direction : Vector2 = Vector2.DOWN
 var dialogue 
 
 

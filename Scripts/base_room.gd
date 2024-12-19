@@ -1,7 +1,6 @@
 extends Node2D
 
-@export var players_in_room : Node2D
-
+@export var room_name : String = "placeholder"
 @export var max_cam_x = 10000000
 @export var min_cam_x = -10000000
 @export var max_cam_y = 10000000
@@ -9,8 +8,12 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for player in players_in_room.get_children():
-		player.get_node("Camera2D").limit_left = min_cam_x
-		player.get_node("Camera2D").limit_right = max_cam_x
-		player.get_node("Camera2D").limit_top = min_cam_y
-		player.get_node("Camera2D").limit_bottom = max_cam_y
+	if get_tree().get_root().has_node("Main"):
+		get_tree().get_root().get_node("Main").redo_limits(min_cam_x, max_cam_x, min_cam_y, max_cam_y)
+
+
+func _on_enter_area_collision_body_entered(body: Node2D) -> void:
+	if body is Player:
+		Global.room_entered.emit(room_name)
+		body.get_node("CollisionHandler").tile_map = %TileMap
+	#	body.movement_state._initialize_astar_grid()

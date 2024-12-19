@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdkuvcv17omjl"]
+[gd_scene load_steps=4 format=3 uid="uid://cdkuvcv17omjl"]
 
 [ext_resource type="Script" path="res://Scripts/base_room.gd" id="1_w7kw2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d380y"]
+resource_local_to_scene = true
+size = Vector2(240, 180)
+
 [sub_resource type="TileSet" id="TileSet_t56tc"]
 
-[node name="BaseRoom" type="Node2D" node_paths=PackedStringArray("players_in_room")]
+[node name="BaseRoom" type="Node2D"]
 script = ExtResource("1_w7kw2")
-players_in_room = NodePath("Objects/Player")
+
+[node name="EnterAreaCollision" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="EnterAreaCollision"]
+position = Vector2(120, 90)
+shape = SubResource("RectangleShape2D_d380y")
 
 [node name="TileMap" type="TileMap" parent="."]
+unique_name_in_owner = true
 format = 2
 
 [node name="MapLimitsMarker" type="Marker2D" parent="."]
@@ -27,10 +37,8 @@ y_sort_enabled = true
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="Player" type="Node2D" parent="Objects"]
-z_as_relative = false
-y_sort_enabled = true
-
 [node name="NPCs" type="Node2D" parent="Objects"]
 z_as_relative = false
 y_sort_enabled = true
+
+[connection signal="body_entered" from="EnterAreaCollision" to="." method="_on_enter_area_collision_body_entered"]

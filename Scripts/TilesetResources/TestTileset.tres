@@ -18,4 +18,6 @@ texture_region_size = Vector2i(24, 24)
 
 [resource]
 tile_size = Vector2i(24, 24)
+custom_data_layer_0/name = "Walkable"
+custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_lgegn")

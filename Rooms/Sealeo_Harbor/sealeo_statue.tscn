@@ -35,4 +35,3 @@ shape = SubResource("RectangleShape2D_4ttjw")
 
 [node name="Talkable" parent="Componenets" index="0"]
 talk_data = SubResource("Resource_u3sd5")
-movement_comp = NodePath("")
