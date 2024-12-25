@@ -23,30 +23,29 @@ func set_state(is_idle):
 		active = false
 
 func _process(delta: float) -> void:
+	handle_attacks()
 	handle_input()
+	
 
 func handle_input():
 	if state_machine.current_mini_state == self && active:
 		if Input.get_vector("Left", "Right", "Up", "Down"):
-			if state_machine.movement_direction != Input.get_vector("Left", "Right", "Up", "Down"):
-				state_machine.movement_direction = Input.get_vector("Left", "Right", "Up", "Down")
-				state_machine.new_state.emit("Turning")
-				print("Turning")
-				timer.stop()
-				return
-			
-			if state_machine.collision_handler.can_move_to(Input.get_vector("Left", "Right", "Up", "Down")):
-				state_machine.new_state.emit("Moving")
-				print("Moving")
-				timer.stop()
-		elif Input.is_action_just_pressed("attack"):
-			state_machine.new_state.emit("Attacking")
-			print("Speeen (Atacking)")
+			state_machine.new_state.emit("Moving")
+			print("Moving")
 			timer.stop()
 	else:
 		if state_machine.current_mini_state != self && !state_machine.current_mini_state.active:
 			state_machine.new_state.emit("Idle")
 			print("back to Idle")
+	
+
+
+func handle_attacks():
+	if Input.is_action_just_pressed("attack"):
+		state_machine.new_attack_state.emit("Attacking")
+		print("Speeen (Atacking)")
+		timer.stop()
+
 
 func play_rand():
 	state_machine.animation_handler.play_other_idle(self)

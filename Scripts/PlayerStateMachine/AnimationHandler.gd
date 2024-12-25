@@ -2,18 +2,23 @@ extends Node
 
 @export var state_machine : StateMachine
 @export var animation : AnimatedSprite2D
-
+@export var turn_node : MiniState
 func _ready():
 	state_machine.update_anim.connect(change_anim)
+	animation.animation_finished.connect(animation_finished)
 	change_anim()
 
 
 func change_anim():
-	if state_machine.current_state == StateMachine.State.Idle:
-		idle_anim()
+	if state_machine.attacking_state == StateMachine.Attack.None:
+		if state_machine.current_state == StateMachine.State.Idle && state_machine.attacking_state == StateMachine.Attack.None:
+			idle_anim()
+			set_process(false)
+		
+		if state_machine.current_state == StateMachine.State.Running or state_machine.current_state == StateMachine.State.Walking:
+			set_process(true)
+	elif state_machine.attacking_state != StateMachine.Attack.None:
 		set_process(false)
-	elif state_machine.current_state == StateMachine.State.Running or state_machine.current_state == StateMachine.State.Walking:
-		set_process(true)
 
 func _process(_delta):
 	if state_machine.current_state == StateMachine.State.Walking:
@@ -83,7 +88,8 @@ func play_other_idle(_idle_node : MiniState):
 		print("test")
 
 
-func play_turning(turn_node):
+func play_turning(turn):
+	turn_node = turn
 	match state_machine.movement_direction:
 		Vector2.LEFT:
 			animation.play("turn_left")
@@ -93,7 +99,8 @@ func play_turning(turn_node):
 			animation.play("turn_down")
 		Vector2.UP:
 			animation.play("turn_up")
-	
-	if animation.is_playing():
-		await animation.animation_finished
+
+
+func animation_finished():
+	if animation.animation in ["turn_left", "turn_right","turn_down", "turn_up"]:
 		turn_node.exist_state()

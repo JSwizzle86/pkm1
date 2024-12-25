@@ -7,27 +7,28 @@ var is_talking: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	area.body_entered.connect(start_interaction)
+	area.area_entered.connect(start_interaction)
 	area.body_exited.connect(stop_interaction)
+	
 
-func start_interaction(body : Object):
-	if body is Player:
+func start_interaction(area : Area2D):
+	print(area)
+	if area.name == "NpcRay":
 		set_process_input(true)
-		Global.player_node = body
+		Global.player_node = area.get_parent().get_parent()
 		can_talk = true
 
-func stop_interaction(body : Object):
-	if body is Player:
+func stop_interaction(area : Area2D):
+	if area.name == "NpcRay":
 		set_process_input(false)
 		can_talk = false
 
 func _input(event):
 	if talk_data:
 		if can_talk and event.is_action_pressed("DialogueInteract") and !is_talking:
-			if Global.player_node.get_node("%NPCDetect").get_collider() == actor:
-				can_talk = false
-				is_talking = true
-				Global.dialogue._start_dialogue(talk_data, self)
-				if movement_comp:
-					movement_comp.set_process(false)
-					movement_comp.set_physics_process(false)
+			can_talk = false
+			is_talking = true
+			Global.dialogue._start_dialogue(talk_data, self)
+			if movement_comp:
+				movement_comp.set_process(false)
+				movement_comp.set_physics_process(false)

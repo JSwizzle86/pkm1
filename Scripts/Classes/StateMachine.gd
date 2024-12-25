@@ -2,6 +2,7 @@ extends Node
 class_name StateMachine
 
 signal new_state
+signal new_attack_state
 signal update_anim
 
 
@@ -10,10 +11,14 @@ enum State {
 	Walking,
 	Running,
 	Turning,
-	Attacking,
-	Defending,
+
 }
 
+enum Attack {
+	None,
+	WindAttacking,
+	Defending,
+}
 
 enum StatusCondition {
 	None,
@@ -26,6 +31,7 @@ enum StatusCondition {
 
 @export var actor : Node
 @export var current_state : State
+@export var attacking_state : Attack 
 @export var status_condition : StatusCondition
 @export var collision_handler : Node
 @export var animation_handler : Node

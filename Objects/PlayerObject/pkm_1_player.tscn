@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://8tt47u50x83y" path="res://Objects/PlayerObject/PlayerAssets/idles.png" id="7_osjpm"]
 [ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="8_8523k"]
 [ext_resource type="Script" path="res://Scripts/PlayerStateMachine/AnimationHandler.gd" id="8_vl78t"]
-[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/turning.gd" id="13_s6oyq"]
 [ext_resource type="Script" path="res://Scripts/PlayerStateMachine/collision_handler.gd" id="15_xsjve"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jccc"]
@@ -449,7 +448,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_down",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -469,7 +468,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_left",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -489,7 +488,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_right",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -509,7 +508,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_up",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -833,9 +832,12 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpc86"]
 
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_7cxwd"]
+length = 13.0
+
 [node name="PKM!Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_state") groups=["player"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 9
+collision_mask = 9
 motion_mode = 1
 slide_on_ceiling = false
 floor_constant_speed = true
@@ -852,7 +854,7 @@ polygon = PackedVector2Array(128, 2.9, 128, 123, 123.6, 128, 3.8, 128, 0, 125, 0
 texture_filter = 1
 position = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_w3k2j")
-animation = &"left"
+animation = &"attack_up"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(12, 12)
@@ -868,19 +870,18 @@ script = ExtResource("3_x5qfo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 unique_name_in_owner = true
 position = Vector2(0, -8)
-rotation = 3.14159
 shape = SubResource("CircleShape2D_vpc86")
 
 [node name="RaycastHolder" type="Node2D" parent="."]
 position = Vector2(12, 12)
 
-[node name="WallDetect" type="RayCast2D" parent="RaycastHolder"]
-target_position = Vector2(0, 24)
-collision_mask = 2
+[node name="NpcRay" type="Area2D" parent="RaycastHolder"]
+collision_layer = 4
+collision_mask = 4
 
-[node name="NPCDetect" type="RayCast2D" parent="RaycastHolder"]
-unique_name_in_owner = true
-target_position = Vector2(0, 24)
+[node name="RayColl" type="CollisionShape2D" parent="RaycastHolder/NpcRay"]
+rotation = 4.71238
+shape = SubResource("SeparationRayShape2D_7cxwd")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("actor", "collision_handler", "animation_handler")]
 unique_name_in_owner = true
@@ -895,16 +896,11 @@ state_machine = NodePath("..")
 
 [node name="Movement" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("6_5d451")
-run_multiplier = 0.5
+speed = 65.0
 state_machine = NodePath("..")
 
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("7_c0noc")
-state_machine = NodePath("..")
-
-[node name="Turning" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_handler", "state_machine")]
-script = ExtResource("13_s6oyq")
-animation_handler = NodePath("../../AnimationHandler")
 state_machine = NodePath("..")
 
 [node name="AnimationHandler" type="Node" parent="." node_paths=PackedStringArray("state_machine", "animation")]
@@ -913,12 +909,11 @@ script = ExtResource("8_vl78t")
 state_machine = NodePath("../StateMachine")
 animation = NodePath("../AnimatedSprite2D")
 
-[node name="CollisionHandler" type="Node" parent="." node_paths=PackedStringArray("hit_box", "state_machine", "ray", "npcray")]
+[node name="CollisionHandler" type="Node" parent="." node_paths=PackedStringArray("hit_box", "state_machine", "npcray")]
 script = ExtResource("15_xsjve")
 hit_box = NodePath("../Hitbox/CollisionShape2D")
 state_machine = NodePath("../StateMachine")
-ray = NodePath("../RaycastHolder/WallDetect")
-npcray = NodePath("../RaycastHolder/NPCDetect")
+npcray = NodePath("../RaycastHolder/NpcRay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

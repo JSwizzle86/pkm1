@@ -16,6 +16,7 @@ func set_state(is_idle):
 		active = false
 
 func exist_state():
+	print("false")
 	if Input.get_vector("Left", "Right", "Up", "Down"):
 		state_machine.new_state.emit("Moving")
 	else:

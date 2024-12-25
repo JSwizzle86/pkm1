@@ -29,8 +29,6 @@ func _process(delta):
 		if state_machine.collision_handler.can_move_to(new_direction):
 			start_moving()
 		else:
-			if tween && tween.is_running():
-				tween.kill()
 			direction = new_direction
 			reset_movement()
 
@@ -39,23 +37,20 @@ func handle_input():
 	if new_direction != Vector2.ZERO:
 		animation_direction = new_direction
 		input_pressed = true
-		if state_machine.collision_handler.npcray.is_colliding():
-			active = false
 	else:
 		input_pressed = false
 		
 		
-	if state_machine.collision_handler.ray.is_colliding():
-		reset_movement()
+
 	update_direction()
 
 func start_moving():
 	moving = true
-	target_position = snapped_position(state_machine.actor.position + direction * grid_size)
 
 func reset_movement():
 	moving = false
 	input_pressed = false
+
 
 func update_animation():
 	state_machine.collision_handler.detect_direction_change(new_direction)
@@ -70,25 +65,16 @@ func snapped_position(position: Vector2) -> Vector2:
 	return position.snapped(grid_size)
 
 func move_player(delta):
-	if tween && tween.is_running():
-		return
-	tween = create_tween()
-	tween.tween_property(state_machine.actor, "position", target_position, current_speed * delta)
-#	var movement_vector = direction * current_speed * delta
-#	state_machine.actor.position += movement_vector
-
-	await tween.finished
-	tween.kill()
-	state_machine.actor.position = target_position
-	reset_movement()
-	state_machine.collision_handler.detect_direction_change(new_direction)
+	state_machine.actor.velocity = current_speed * new_direction
+	state_machine.actor.move_and_slide()
+	update_animation()
 	if input_pressed:
 		active = true
 		if state_machine.collision_handler.can_move_to(new_direction):
 			start_moving()
 		else:
 			active = false
-	elif Input.get_vector("Left", "Right", "Up", "Down").sign() == Vector2.ZERO:
+	elif !input_pressed:
 		active = false
 	
 
@@ -106,3 +92,6 @@ func set_state(is_moving):
 		set_process(true)
 		get_running_speed()
 		update_animation()
+	else:
+		active = false
+		set_process(false)

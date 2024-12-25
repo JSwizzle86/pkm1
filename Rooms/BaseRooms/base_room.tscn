@@ -12,6 +12,8 @@ size = Vector2(240, 180)
 script = ExtResource("1_w7kw2")
 
 [node name="EnterAreaCollision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="Collision" type="CollisionShape2D" parent="EnterAreaCollision"]
 position = Vector2(120, 90)
