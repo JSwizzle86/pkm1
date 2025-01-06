@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://csic416q0qhro"]
+
+[ext_resource type="Script" path="res://Main/PauseScene/menu.gd" id="1_mox50"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4112a"]
+font_size = 10
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mox50")
+
+[node name="Resume" type="Button" parent="Menu"]
+process_priority = -65
+layout_mode = 0
+offset_top = 159.0
+offset_right = 53.0
+offset_bottom = 176.0
+
+[node name="Label2" type="Label" parent="Menu/Resume"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 67.0
+offset_bottom = 23.0
+text = "Resume"
+label_settings = SubResource("LabelSettings_4112a")
+
+[node name="Quit" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 160.0
+offset_right = 234.0
+offset_bottom = 176.0
+
+[node name="Label3" type="Label" parent="Menu/Quit"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 74.0
+offset_bottom = 23.0
+text = "Quit"
+label_settings = SubResource("LabelSettings_4112a")
+
+[connection signal="pressed" from="Menu/Resume" to="Menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="Menu/Quit" to="Menu" method="_on_quit_pressed"]
