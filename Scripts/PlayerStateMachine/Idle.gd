@@ -39,12 +39,15 @@ func handle_input():
 			print("back to Idle")
 	
 
-
+# this is where the attack inputs is handled, it is in its own function just for organization.
 func handle_attacks():
 	if Input.is_action_just_pressed("attack"):
-		state_machine.new_attack_state.emit("Attacking")
+		state_machine.new_attack_state.emit("WindAttack")
 		print("Speeen (Atacking)")
 		timer.stop()
+	# if Input.is_action_just_pressed("attack2"): <- example
+		# etc...
+	
 
 
 func play_rand():

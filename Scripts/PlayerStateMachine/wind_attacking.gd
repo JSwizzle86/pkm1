@@ -7,7 +7,7 @@ func _ready():
 	state_machine.new_attack_state.connect(set_state)
 
 func set_state(is_attack):
-	if is_attack == "Attacking":
+	if is_attack == "WindAttack":
 		attack_active = true
 		state_machine.attacking_state = StateMachine.Attack.WindAttacking
 		state_machine.animation_handler.attack_anim(self)

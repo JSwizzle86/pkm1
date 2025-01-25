@@ -85,6 +85,7 @@ func ray_body_entered(body : Object):
 	if body is Player:
 		touching_player = true
 		set_process(false)
+		set_physics_process(false)
 
 func ray_body_exited(body : Object):
 	if body is Player:
@@ -92,6 +93,7 @@ func ray_body_exited(body : Object):
 			touching_player = false
 			await get_tree().create_timer(0.5).timeout
 			set_process(true)
+			set_physics_process(true)
 
 func set_processes():
 	if touching_player:

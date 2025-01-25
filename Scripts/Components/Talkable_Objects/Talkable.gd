@@ -8,7 +8,7 @@ var is_talking: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	area.area_entered.connect(start_interaction)
-	area.body_exited.connect(stop_interaction)
+	area.area_exited.connect(stop_interaction)
 	
 
 func start_interaction(area : Area2D):
@@ -26,7 +26,7 @@ func stop_interaction(area : Area2D):
 func _input(event):
 	if talk_data:
 		if can_talk and event.is_action_pressed("DialogueInteract") and !is_talking:
-			can_talk = false
+	#		can_talk = false
 			is_talking = true
 			Global.dialogue._start_dialogue(talk_data, self)
 			if movement_comp:

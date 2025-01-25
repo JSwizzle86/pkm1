@@ -56,9 +56,8 @@ sources/3 = SubResource("TileSetAtlasSource_axtv2")
 sources/0 = SubResource("TileSetAtlasSource_qt3hw")
 sources/1 = SubResource("TileSetAtlasSource_sgkgq")
 
-[node name="DebugRoom" type="Node2D" node_paths=PackedStringArray("players_in_room")]
+[node name="DebugRoom" type="Node2D"]
 script = ExtResource("1_0agj3")
-players_in_room = NodePath("Objects/Player")
 max_cam_x = 336
 min_cam_x = -48
 max_cam_y = 240
