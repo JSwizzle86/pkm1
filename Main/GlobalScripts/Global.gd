@@ -17,3 +17,17 @@ func _ready():
 	var new_window_size : Vector2 = DisplayServer.screen_get_size()/2
 	get_window().size = Vector2i(new_window_size)
 	get_window().position = new_window_size/2
+
+#function to add the scene as a child, function called in individual rooms at "exits"
+func _add_scene_manually(scene: Node2D, spawn_position: Vector2):
+	get_tree().root.add_child(scene)
+	
+	#Spawns player in a specific position based on incoming data
+	var player = get_node("res://Objects/PlayerObject/pkm_1_player.tscn")
+	if player:
+		player.position = spawn_position
+	
+#function to remove the scene from the tree, pauses all node processes but does not delete them
+func _remove_scene_manually(scene: Node2D):
+	get_tree().root.remove_child(scene)
+	

@@ -1,20 +1,49 @@
 extends Control
 
-@onready var quit_button = $Quit
-@onready var resume_button = $Resume
+@onready var select_arrow = $NinePatchRect/TextureRect
+@onready var menu = $"."
+@onready var player = $"PlayerHolder/PKM!Player"
+
+enum ScreenLoaded {NOTHING, JUST_MENU, DEX, USERINFO, INVENTORY, SAVE, SETTINGS, EXIT}
+var screen_loaded = ScreenLoaded.NOTHING
+
+var selected_option: int = 0
+var columns = 7
+var row = selected_option / columns
+
 
 func _ready():
-	#Solution to force buttons to work while game is paused
-	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-	get_tree().paused = true
-	if !quit_button.pressed.is_connected(_on_quit_pressed):
-		quit_button.connect("pressed", Callable(self, "_on_quit_pressed"))
-	if !resume_button.pressed.is_connected(_on_resume_pressed):
-		resume_button.connect("pressed", Callable(self, "_on_resume_pressed"))
+	grab_focus()
+	menu.visible = false
+	select_arrow.position.y = row * 22 + (22 - 41) / 2
+
 	
-func _on_quit_pressed():
-	get_tree().quit()
-
-
-func _on_resume_pressed():
-	GlobalPause.toggle_unpause()
+func _process(delta):
+	match screen_loaded:
+		ScreenLoaded.NOTHING:
+			if Input.is_action_just_pressed("pause"):
+				print(player)
+				if !player.is_moving():	
+					player._process(false)
+					menu.visible = true
+					screen_loaded = ScreenLoaded.JUST_MENU
+				
+		ScreenLoaded.JUST_MENU:
+			if Input.is_action_just_pressed("pause") or Input.is_action_pressed("Back"):
+				player._process(true)
+				menu.visible = false
+				screen_loaded = ScreenLoaded.NOTHING
+			elif Input.is_action_pressed("ui_down"):
+				selected_option += 1
+				row = selected_option / columns
+				select_arrow.position.y = row * 22 + (22 - 41) / 2
+			elif Input.is_action_pressed("ui_up"):
+				if selected_option == 0:
+					selected_option = 6
+					row = selected_option / columns
+				else:
+					selected_option -= 1
+					row = selected_option / columns
+				select_arrow.position.y = row * 22 + (22 - 41) / 2
+	
+	

@@ -43,6 +43,7 @@ script = ExtResource("4_45r60")
 
 [node name="RoomName" type="Panel" parent="UI"]
 unique_name_in_owner = true
+visible = false
 offset_right = 123.0
 offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gyk5f")
@@ -60,4 +61,4 @@ label_settings = SubResource("LabelSettings_aa5lq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menu" parent="." instance=ExtResource("6_4bfi3")]
+[node name="PauseMenu" parent="UI" instance=ExtResource("6_4bfi3")]

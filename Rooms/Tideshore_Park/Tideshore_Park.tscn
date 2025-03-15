@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://dnklckk88cij7"]
+[gd_scene load_steps=7 format=4 uid="uid://dnklckk88cij7"]
 
 [ext_resource type="PackedScene" uid="uid://cdkuvcv17omjl" path="res://Rooms/BaseRooms/base_room.tscn" id="1_swgfo"]
 [ext_resource type="Texture2D" uid="uid://bxmh2wgjpkvqx" path="res://Rooms/Sealeo_Harbor/basic_tileset.png" id="2_8kybo"]
-[ext_resource type="PackedScene" uid="uid://cyomxow7kne24" path="res://Objects/PlayerObject/pkm_1_player.tscn" id="3_buqdb"]
 [ext_resource type="PackedScene" uid="uid://bvygi4a5rcdc" path="res://Objects/TestObjects/TestSign.tscn" id="3_rvbrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvkdp"]
@@ -35,13 +34,10 @@ sources/0 = SubResource("TileSetAtlasSource_4euv2")
 
 [node name="BaseRoom" instance=ExtResource("1_swgfo")]
 
-[node name="Objects_Player#PKM!Player" parent="." index="0" instance=ExtResource("3_buqdb")]
-position = Vector2(835, 444)
-
 [node name="Collision" parent="EnterAreaCollision" index="0"]
 shape = SubResource("RectangleShape2D_fvkdp")
 
-[node name="TileMap" parent="." index="2"]
+[node name="TileMap" parent="." index="1"]
 tile_set = SubResource("TileSet_sltyb")
 
 [node name="Layer1" type="TileMapLayer" parent="TileMap" index="1"]

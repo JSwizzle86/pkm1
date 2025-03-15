@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bd15ypmfb8d22" path="res://Rooms/Sealeo_Harbor/sealeo_statue.tscn" id="3_wltk1"]
 [ext_resource type="PackedScene" uid="uid://dqyhfuupjdr4q" path="res://Objects/TestObjects/TestCharacter.tscn" id="4_gup6l"]
 [ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="6_eb1tk"]
-[ext_resource type="Script" path="res://Rooms/Sealeo_Harbor/tide_shore_park_exit.gd" id="7_87gay"]
+[ext_resource type="Script" path="res://Rooms/Sealeo_Harbor/Sealeo_Harbor_Room.gd" id="7_ov63k"]
 [ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="7_u6agw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivsb2"]
@@ -21,7 +21,7 @@ _sentences = Array[String](["Hi!
 "])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4r2i"]
-size = Vector2(24, 46)
+size = Vector2(24, 24)
 
 [node name="SealeoHarborRoom" instance=ExtResource("1_k3q1j")]
 room_name = "Sealeo Harbor"
@@ -52,12 +52,18 @@ position = Vector2(240, 72)
 talk_data = SubResource("Resource_k54tq")
 
 [node name="TideShoreParkExit" type="Area2D" parent="Objects/NPCs/KinematicObjects/InteractionArea" index="1"]
-script = ExtResource("7_87gay")
+script = ExtResource("7_ov63k")
+room_name = null
+max_cam_x = null
+min_cam_x = null
+max_cam_y = null
+min_cam_y = null
+connected_rooms = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/NPCs/KinematicObjects/InteractionArea/TideShoreParkExit" index="0"]
-position = Vector2(-192, -85)
+position = Vector2(-192, -96)
 shape = SubResource("RectangleShape2D_o4r2i")
 
-[connection signal="body_entered" from="Objects/NPCs/KinematicObjects/InteractionArea/TideShoreParkExit" to="Objects/NPCs/KinematicObjects/InteractionArea/TideShoreParkExit" method="_on_body_entered"]
+[connection signal="body_entered" from="Objects/NPCs/KinematicObjects/InteractionArea/TideShoreParkExit" to="." method="_on_tide_shore_park_exit_body_entered"]
 
 [editable path="Objects/NPCs/KinematicObjects"]
