@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://csic416q0qhro"]
 
-[ext_resource type="Script" path="res://Main/PauseScene/menu.gd" id="1_mox50"]
+[ext_resource type="Script" uid="uid://dw4pdusvc8ict" path="res://Main/PauseScene/menu.gd" id="1_mox50"]
 [ext_resource type="Texture2D" uid="uid://crs0423t7iihg" path="res://Assets/Menu_skeleton.png" id="2_qumg8"]
 [ext_resource type="Texture2D" uid="uid://ckf7c1fmcrwcu" path="res://Assets/Placeholders/Menu Mini Sprites 2/Dex.png" id="3_fuyjo"]
 [ext_resource type="Texture2D" uid="uid://d0d3fidxpi018" path="res://Assets/Placeholders/Menu Mini Sprites 2/Inventory Icon.png" id="4_hejyv"]
@@ -44,11 +44,13 @@ clip_children = 2
 light_mask = 4
 visibility_layer = 4
 layout_mode = 0
-offset_top = -2.0
-offset_right = 41.0
-offset_bottom = 160.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 55.0
+offset_bottom = 38.0
+scale = Vector2(0.645, 0.645)
 texture = ExtResource("9_gyg6l")
-stretch_mode = 2
+expand_mode = 2
 
 [node name="Dex" type="Sprite2D" parent="Menu"]
 light_mask = 4

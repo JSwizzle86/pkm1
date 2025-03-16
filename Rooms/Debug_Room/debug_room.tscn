@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://dmvgi3vyuhg3g"]
 
-[ext_resource type="Script" path="res://Scripts/base_room.gd" id="1_0agj3"]
+[ext_resource type="Script" uid="uid://es5n7pvg5751" path="res://Scripts/base_room.gd" id="1_0agj3"]
 [ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="1_pcbu7"]
 [ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Rooms/Debug_Room/Simpletileset.png" id="1_rppv1"]
 [ext_resource type="Texture2D" uid="uid://bxmh2wgjpkvqx" path="res://Rooms/Sealeo_Harbor/basic_tileset.png" id="3_cs2ij"]
