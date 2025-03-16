@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://47c23ihf6jx8"]
 
-[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/BattleDexScene.gd" id="1_i83cx"]
+[ext_resource type="Script" uid="uid://bv1xwh4n74mds" path="res://Dex_Scene_Stuff/Scripts/BattleDexScene.gd" id="1_i83cx"]
 
 [sub_resource type="Animation" id="Animation_bnbj7"]
 resource_name = "Close"
@@ -51,9 +51,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v8sma"]
 _data = {
-"Close": SubResource("Animation_bnbj7"),
-"Open": SubResource("Animation_1usim"),
-"RESET": SubResource("Animation_sxnch")
+&"Close": SubResource("Animation_bnbj7"),
+&"Open": SubResource("Animation_1usim"),
+&"RESET": SubResource("Animation_sxnch")
 }
 
 [node name="BattleDexScene" type="Control"]

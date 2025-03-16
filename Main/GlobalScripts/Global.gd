@@ -8,4 +8,3 @@ func _ready():
 	var new_window_size : Vector2 = DisplayServer.screen_get_size()/2
 	get_window().size = Vector2i(new_window_size)
 	get_window().position = new_window_size/2
-

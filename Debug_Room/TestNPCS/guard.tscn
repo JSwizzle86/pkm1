@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c73ul8aj2atq1"]
 
-[ext_resource type="Script" path="res://Talkable_Objects/Class/Static/static_object.gd" id="1_v11xe"]
+[ext_resource type="Script" uid="uid://cfkknu6y30oxy" path="res://Talkable_Objects/Class/Static/static_object.gd" id="1_v11xe"]
 [ext_resource type="Texture2D" uid="uid://dae0wnkp6dvc5" path="res://Talkable_Objects/Assets/human.png" id="2_8ahpf"]
-[ext_resource type="Script" path="res://Talkable_Objects/Resources/talkable-object-data.gd" id="3_aguya"]
+[ext_resource type="Script" uid="uid://ch58qanpadrph" path="res://Talkable_Objects/Resources/talkable-object-data.gd" id="3_aguya"]
 [ext_resource type="PackedScene" uid="uid://cvqm0spuwe3yi" path="res://Talkable_Objects/Areas/talking_area.tscn" id="4_5m71i"]
 
 [sub_resource type="Resource" id="Resource_3h1bw"]

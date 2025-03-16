@@ -1,7 +1,7 @@
 [gd_scene load_steps=76 format=3 uid="uid://cyomxow7kne24"]
 
-[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/PKM1Player.gd" id="1_fh3j7"]
-[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/Hitbox.gd" id="3_x5qfo"]
+[ext_resource type="Script" uid="uid://bb4c4nnqxmjde" path="res://Dex_Scene_Stuff/Scripts/PKM1Player.gd" id="1_fh3j7"]
+[ext_resource type="Script" uid="uid://dk0qg1ay7xcbn" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/Hitbox.gd" id="3_x5qfo"]
 [ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="4_afrh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7x08"]
