@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://482iowqmgwn"]
 
-[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Dialogue/dialogue.gd" id="1_oj50v"]
+[ext_resource type="Script" uid="uid://tdwx2duse1cu" path="res://Scripts/Components/Talkable_Objects/Dialogue/dialogue.gd" id="1_oj50v"]
 [ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="2_yt7v2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epa03"]

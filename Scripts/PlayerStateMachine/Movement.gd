@@ -39,8 +39,7 @@ func handle_input():
 		input_pressed = true
 	else:
 		input_pressed = false
-		
-		
+	
 
 	update_direction()
 
@@ -95,3 +94,4 @@ func set_state(is_moving):
 	else:
 		active = false
 		set_process(false)
+		

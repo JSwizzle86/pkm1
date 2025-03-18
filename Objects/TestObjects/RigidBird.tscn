@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://53mlx14v6vgf" path="res://Objects/BaseObjects/rigid_objects.tscn" id="1_fie33"]
 [ext_resource type="Texture2D" uid="uid://cqh8voxi55s85" path="res://Assets/swellow_icon_orange.png" id="2_v21yw"]
-[ext_resource type="Script" path="res://Scripts/Components/Pushable.gd" id="3_t38c4"]
-[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="4_otrty"]
-[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="5_agnhs"]
+[ext_resource type="Script" uid="uid://bbeeu1ovku6do" path="res://Scripts/Components/Pushable.gd" id="3_t38c4"]
+[ext_resource type="Script" uid="uid://cql8iui3qh8c8" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="4_otrty"]
+[ext_resource type="Script" uid="uid://djfxmlbafnmu4" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="5_agnhs"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tytie"]
 rough = true

@@ -11,7 +11,6 @@ enum State {
 	Walking,
 	Running,
 	Turning,
-
 }
 
 enum Attack {

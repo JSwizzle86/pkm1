@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bd15ypmfb8d22"]
 
 [ext_resource type="PackedScene" uid="uid://bvygi4a5rcdc" path="res://Objects/TestObjects/TestSign.tscn" id="1_1otje"]
-[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="3_yk3hv"]
+[ext_resource type="Script" uid="uid://djfxmlbafnmu4" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="3_yk3hv"]
 
 [sub_resource type="Gradient" id="Gradient_027p2"]
 colors = PackedColorArray(0.270222, 0.270222, 0.270222, 1, 0.270588, 0.270588, 0.270588, 1)

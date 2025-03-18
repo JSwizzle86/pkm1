@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bnpwugpnqa56d" path="res://Objects/BaseObjects/kinematic_objects.tscn" id="1_hrkja"]
 [ext_resource type="Texture2D" uid="uid://dae0wnkp6dvc5" path="res://Assets/Placeholders/human.png" id="2_nkyv3"]
-[ext_resource type="Script" path="res://Scripts/Components/Movements/Movement1.gd" id="3_r2bh6"]
-[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="4_5bveq"]
-[ext_resource type="Script" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="5_swwd6"]
+[ext_resource type="Script" uid="uid://b560ilbfvdepx" path="res://Scripts/Components/Movements/Movement1.gd" id="3_r2bh6"]
+[ext_resource type="Script" uid="uid://cql8iui3qh8c8" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="4_5bveq"]
+[ext_resource type="Script" uid="uid://djfxmlbafnmu4" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="5_swwd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sifhd"]
 size = Vector2(24, 24)
