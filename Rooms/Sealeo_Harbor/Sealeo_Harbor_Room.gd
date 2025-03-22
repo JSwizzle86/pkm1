@@ -6,4 +6,3 @@ var tideshore = preload("res://Rooms/Tideshore_Park/Tideshore_Park.tscn").instan
 
 func _ready() -> void:
 	super._ready()
-	
