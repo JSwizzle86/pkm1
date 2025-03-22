@@ -44,43 +44,48 @@ theme_override_constants/separation = 2
 [node name="Pokedex" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Exit")
-focus_neighbor_bottom = NodePath("../PoketechPlus")
+focus_neighbor_bottom = NodePath("../PoketchPlus")
 texture_normal = ExtResource("3_fuyjo")
 texture_focused = ExtResource("9_gyg6l")
 
-[node name="PoketechPlus" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PoketchPlus" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Pokedex")
 focus_neighbor_bottom = NodePath("../Bag")
 texture_normal = ExtResource("3_fuyjo")
+texture_focused = ExtResource("9_gyg6l")
 
 [node name="Bag" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../PoketechPlus")
+focus_neighbor_top = NodePath("../PoketchPlus")
 focus_neighbor_bottom = NodePath("../Status")
 texture_normal = ExtResource("4_hejyv")
-texture_hover = ExtResource("9_gyg6l")
+texture_focused = ExtResource("9_gyg6l")
 
 [node name="Status" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Bag")
 focus_neighbor_bottom = NodePath("../Settings")
 texture_normal = ExtResource("5_yvcx4")
+texture_focused = ExtResource("9_gyg6l")
 
 [node name="Settings" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Status")
 focus_neighbor_bottom = NodePath("../Save")
 texture_normal = ExtResource("6_qiooq")
+texture_focused = ExtResource("9_gyg6l")
 
 [node name="Save" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
 focus_neighbor_bottom = NodePath("../Exit")
 texture_normal = ExtResource("7_bxbxo")
+texture_focused = ExtResource("9_gyg6l")
 
 [node name="Exit" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Save")
 focus_neighbor_bottom = NodePath("../Pokedex")
 texture_normal = ExtResource("8_jnsak")
+texture_focused = ExtResource("9_gyg6l")
