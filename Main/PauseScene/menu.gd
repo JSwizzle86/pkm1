@@ -1,28 +1,33 @@
 extends Control
 
-@onready var menu = $"."
+@onready var menu = $PanelContainer  # Reference to the menu container
+@onready var default_button = $PanelContainer/MarginContainer/VBoxContainer/Pokedex  # Default button to focus on
 
-var input_pause = false
-
-##Needs an overhaul to work with current design constraints
+var is_paused = false  # Track pause state
 
 func _ready():
-	$PanelContainer/MarginContainer/VBoxContainer/Pokedex.grab_focus()
+	# Ensure the menu is hidden at the start
+	menu.visible = false
+	# Set the menu to process input even when the game is paused
+	menu.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause") and input_pause == false:
-		input_pause = true
-		get_tree().paused = true
-	elif event.is_action_pressed("pause") and input_pause == true:
-		input_pause = false
-		get_tree().paused = false
-		
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
-		get_viewport().set_input_as_handled()
-		
-func _process(delta):
-	if input_pause == true:
-		menu.visible = true
-	else:
-		menu.visible = false
+	# Toggle pause when the "pause" action is pressed
+	if event.is_action_pressed("pause"):
+		toggle_pause()
+
+	# Handle menu navigation input when paused
+	if is_paused:
+		if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
+			# Ensure the menu handles navigation input
+			get_viewport().set_input_as_handled()
+
+func toggle_pause():
+	# Toggle pause state
+	is_paused = !is_paused
+	get_tree().paused = is_paused
+	menu.visible = is_paused
+
+	# Set focus to the default button when pausing
+	if is_paused:
+		default_button.grab_focus()
