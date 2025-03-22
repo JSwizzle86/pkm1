@@ -20,7 +20,8 @@ func _input(event: InputEvent) -> void:
 	if is_paused:
 		if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
 			# Ensure the menu handles navigation input
-			get_viewport().set_input_as_handled()
+			#get_viewport().set_input_as_handled()
+			pass
 
 func toggle_pause():
 	# Toggle pause state
