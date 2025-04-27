@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pkm 1"
-run/main_scene="res://Debug_Room/debug_room.tscn"
+run/main_scene="uid://dp3dy8feihruj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
