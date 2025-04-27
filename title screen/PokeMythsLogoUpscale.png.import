@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bt5l6vhs5wgvg"
-path="res://.godot/imported/PokeMythsLogoUpscale.png-5c5a6d0c19da1c12c926f95c66720164.ctex"
+path="res://.godot/imported/PokeMythsLogoUpscale.png-bb10b1bc975131401a650261fa64642f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Talkable_Objects/title screen/PokeMythsLogoUpscale.png"
-dest_files=["res://.godot/imported/PokeMythsLogoUpscale.png-5c5a6d0c19da1c12c926f95c66720164.ctex"]
+source_file="res://title screen/PokeMythsLogoUpscale.png"
+dest_files=["res://.godot/imported/PokeMythsLogoUpscale.png-bb10b1bc975131401a650261fa64642f.ctex"]
 
 [params]
 

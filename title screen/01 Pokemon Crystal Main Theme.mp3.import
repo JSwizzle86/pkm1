@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://d3lqpxom4to3"
-path="res://.godot/imported/01 Pokemon Crystal Main Theme.mp3-2448795101ea38fce991d5e4b8b10286.mp3str"
+path="res://.godot/imported/01 Pokemon Crystal Main Theme.mp3-cbb4c2988b11fb83b61496399034bb5a.mp3str"
 
 [deps]
 
-source_file="res://Talkable_Objects/title screen/01 Pokemon Crystal Main Theme.mp3"
-dest_files=["res://.godot/imported/01 Pokemon Crystal Main Theme.mp3-2448795101ea38fce991d5e4b8b10286.mp3str"]
+source_file="res://title screen/01 Pokemon Crystal Main Theme.mp3"
+dest_files=["res://.godot/imported/01 Pokemon Crystal Main Theme.mp3-cbb4c2988b11fb83b61496399034bb5a.mp3str"]
 
 [params]
 
