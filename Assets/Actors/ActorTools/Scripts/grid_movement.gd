@@ -2,8 +2,12 @@ class_name GridMovement extends Node2D
 
 ##parent node
 @export var self_node: Node2D
-##movement speed
-@export var speed: float = 0.25
+##Walk Speed, the lower the value the higher the speed[br]
+##default: 25
+@export var walkSpeed: float = 25
+##Run Speed, the lower the value the higher the speed[br]
+##default: 12.5
+@export var runSpeed: float = 12.5
 
 var moving_direction: Vector2 = Vector2.ZERO
 var diagonal: bool = false
@@ -54,6 +58,7 @@ func move(direction: Vector2, magnitude: int) -> void:
 			moving_direction = movement * magnitude
 			var new_position = self_node.global_position + (moving_direction * Constants.TILE_SIZE)
 			var tween = create_tween()
+			var speed = runSpeed/100 * 2 if magHold > 1 else walkSpeed/100
 			
 			#Keep speed constant in different movement modes
 			if magHold > magnitude:
