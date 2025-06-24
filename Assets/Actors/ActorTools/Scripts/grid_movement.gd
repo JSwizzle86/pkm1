@@ -1,4 +1,4 @@
-extends Node2D
+class_name GridMovement extends Node2D
 
 ##parent node
 @export var self_node: Node2D
@@ -57,7 +57,8 @@ func move(direction: Vector2, magnitude: int) -> void:
 			
 			#Keep speed constant in different movement modes
 			if magHold > magnitude:
-				tween.tween_property(self_node, "position", new_position, speed / magHold if !diagonal else speed / magHold * (sqrt(2)/2)).set_trans(Tween.TRANS_LINEAR)
+				tween.tween_property(self_node, "position", new_position, speed / magHold if !diagonal else speed / magHold / (sqrt(2)/2)).set_trans(Tween.TRANS_LINEAR)
 			else:
-				tween.tween_property(self_node, "position", new_position, speed if !diagonal else speed * (sqrt(2)/2)).set_trans(Tween.TRANS_LINEAR)
+				tween.tween_property(self_node, "position", new_position, speed if !diagonal else speed / (sqrt(2)/2)).set_trans(Tween.TRANS_LINEAR)
 			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
+	diagonal = false
