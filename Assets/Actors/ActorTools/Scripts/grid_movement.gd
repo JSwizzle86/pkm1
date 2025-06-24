@@ -24,23 +24,21 @@ func move(direction: Vector2, magnitude: int) -> void:
 	if moving_direction.length() == 0 && direction.length() > 0:
 		var movement = Vector2.DOWN
 		if direction.y > 0.5: 
+			movement = Vector2.DOWN
 			if direction.x < -0.5: 
 				movement += Vector2.LEFT
 				diagonal = true
 			elif direction.x > 0.5: 
 				movement += Vector2.RIGHT
 				diagonal = true
-			else:
-				movement = Vector2.DOWN
 		elif direction.y < -0.5: 
+			movement = Vector2.UP
 			if direction.x < -0.5: 
 				movement += Vector2.LEFT
 				diagonal = true
 			elif direction.x > 0.5: 
 				movement += Vector2.RIGHT
-				diagonal = true
-			else:
-				movement = Vector2.UP
+				diagonal = true	
 		elif direction.x > 0.5: movement = Vector2.RIGHT
 		elif direction.x < -0.5: movement = Vector2.LEFT
 		
