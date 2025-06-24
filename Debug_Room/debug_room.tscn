@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmvgi3vyuhg3g"]
+[gd_scene load_steps=8 format=3 uid="uid://dmvgi3vyuhg3g"]
 
 [ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="1_pcbu7"]
 [ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Debug_Room/Simpletileset.png" id="1_rppv1"]
-[ext_resource type="PackedScene" uid="uid://dkvfkf012hd70" path="res://Debug_Room/Props/floor_sign.tscn" id="3_2lvif"]
-[ext_resource type="PackedScene" uid="uid://hxsf37bshyt7" path="res://Debug_Room/Props/wall_sign.tscn" id="4_7t0sj"]
-[ext_resource type="PackedScene" uid="uid://c73ul8aj2atq1" path="res://Debug_Room/TestNPCS/guard.tscn" id="6_dim0v"]
+[ext_resource type="PackedScene" uid="uid://bhfhn6033rex4" path="res://Assets/Actors/sign.tscn" id="3_sgnt5"]
 [ext_resource type="PackedScene" uid="uid://b566iokk5nmmk" path="res://Assets/Actors/Player.tscn" id="7_v4hoi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qt3hw"]
@@ -58,22 +56,13 @@ y_sort_enabled = true
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="FloorSign" parent="Objects/Props" instance=ExtResource("3_2lvif")]
-z_as_relative = false
-y_sort_enabled = true
-
-[node name="WallSign" parent="Objects/Props" instance=ExtResource("4_7t0sj")]
-z_as_relative = false
-y_sort_enabled = true
+[node name="Sign" parent="Objects/Props" instance=ExtResource("3_sgnt5")]
+position = Vector2(112, 80)
 
 [node name="NPCs" type="Node2D" parent="Objects"]
 z_as_relative = false
 y_sort_enabled = true
 position = Vector2(2, 6)
 
-[node name="Guard" parent="Objects/NPCs" instance=ExtResource("6_dim0v")]
-z_as_relative = false
-y_sort_enabled = true
-
 [node name="Player2" parent="Objects" instance=ExtResource("7_v4hoi")]
-position = Vector2(3, 105)
+position = Vector2(1, 112)

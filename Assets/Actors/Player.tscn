@@ -1,8 +1,11 @@
-[gd_scene load_steps=74 format=3 uid="uid://b566iokk5nmmk"]
+[gd_scene load_steps=75 format=3 uid="uid://b566iokk5nmmk"]
 
 [ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="1_bgn2l"]
 [ext_resource type="Script" uid="uid://cvx054nmy8n32" path="res://Assets/Actors/scripts/player.gd" id="2_8erg0"]
 [ext_resource type="Script" uid="uid://cxyw0n68b66bn" path="res://Assets/Actors/ActorTools/Scripts/grid_movement.gd" id="3_8erg0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmj61"]
+size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fa5tp"]
 atlas = ExtResource("1_bgn2l")
@@ -582,10 +585,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="AnimatedSprite2D"]
+[node name="Player" type="Area2D"]
+script = ExtResource("2_8erg0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vmj61")
+
+[node name="PlayerSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i6xbs")
 animation = &"up_walk"
-script = ExtResource("2_8erg0")
 
 [node name="GridMovement" type="Node2D" parent="." node_paths=PackedStringArray("self_node")]
 script = ExtResource("3_8erg0")

@@ -1,11 +1,11 @@
-extends AnimatedSprite2D
+class_name Player extends Area2D
 
 var facingDir: StringName = "down"
 
 func _ready():
 	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
 	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
-	play("down_idle")
+	$PlayerSprites.play("down_idle")
 
 func _process(_delta):
 	var input_direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -26,7 +26,7 @@ func _process(_delta):
 ##[param input_direction] the vector of the input[br]
 ##[param running] the input of the running state
 func animate_move(input_direction:Vector2, running: bool) -> void:
-	var animation_state: StringName = animation
+	var animation_state: StringName = ""
 	var moving_direction: Vector2 = $GridMovement.moving_direction
 	var vectorDirection = vector2Direction(moving_direction)
 	
@@ -40,7 +40,7 @@ func animate_move(input_direction:Vector2, running: bool) -> void:
 		else:
 			animation_state = vectorDirection + "_idle"
 			
-	play(animation_state)
+	$PlayerSprites.play(animation_state)
 
 func interact(facingDir) -> void:
 	var ray = $GridMovement/RayCast2D
@@ -53,10 +53,12 @@ func interact(facingDir) -> void:
 	ray.target_position = direction * Constants.TILE_SIZE
 	ray.force_raycast_update() # Update the `target_position` immediately
 	
-	var collisionArea = ray.get_collider()
-	
-	if collisionArea.has_method("interact"):
-		collisionArea.interact()
+	var collisionArea: Area2D = ray.get_collider()
+	if collisionArea != null:
+		var areas = collisionArea.get_overlapping_areas()
+		for area in areas:
+			if area.has_method("interact"):
+				area.interact()
 
 ##Returns a string description of the direction of the given vector. [br][br]
 ##[param vec] vector to proccess
