@@ -67,7 +67,7 @@ script = ExtResource("1_i83cx")
 
 [node name="SceneTransition" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_v8sma")
+&"": SubResource("AnimationLibrary_v8sma")
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]

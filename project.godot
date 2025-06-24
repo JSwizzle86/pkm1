@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pkm 1"
-run/main_scene="res://Debug_Room/debug_room.tscn"
+run/main_scene="uid://cyomxow7kne24"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 FakePokedex="*res://Dex_Scene_Stuff/Scripts/FakeDexData.gd"
 DialogueLoad="*res://Talkable_Objects/Dialogue/dialogue.tscn"
 Global="*res://Main/GlobalScripts/Global.gd"
+Constants="*res://constants.gd"
 
 [display]
 
