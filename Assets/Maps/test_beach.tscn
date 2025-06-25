@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cjjeqmgkvet1g" path="res://Assets/Maps/SceneTile/CollisionTile.tscn" id="2_xgpiu"]
 [ext_resource type="PackedScene" uid="uid://b566iokk5nmmk" path="res://Assets/Actors/Player.tscn" id="3_u87l3"]
 [ext_resource type="PackedScene" uid="uid://ksghuornwk3k" path="res://Assets/Maps/SceneTile/TalkTile.tscn" id="4_xgpiu"]
-[ext_resource type="Script" uid="uid://ch58qanpadrph" path="res://Talkable_Objects/Resources/talkable-object-data.gd" id="5_u87l3"]
+[ext_resource type="Script" uid="uid://ch58qanpadrph" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="5_u87l3"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bbu36"]
 scenes/1/scene = ExtResource("2_xgpiu")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmvgi3vyuhg3g"]
+[gd_scene load_steps=10 format=3 uid="uid://dmvgi3vyuhg3g"]
 
 [ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="1_pcbu7"]
 [ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Rooms/Debug_Room/Simpletileset.png" id="1_rppv1"]
+[ext_resource type="PackedScene" uid="uid://bhfhn6033rex4" path="res://Assets/Actors/sign.tscn" id="3_sgnt5"]
+[ext_resource type="Script" uid="uid://ch58qanpadrph" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="4_uu3mk"]
 [ext_resource type="PackedScene" uid="uid://b566iokk5nmmk" path="res://Assets/Actors/Player.tscn" id="7_v4hoi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qt3hw"]
@@ -36,6 +38,12 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_axtv2")
 sources/0 = SubResource("TileSetAtlasSource_qt3hw")
 
+[sub_resource type="Resource" id="Resource_gcxnf"]
+script = ExtResource("4_uu3mk")
+_name = "Test Sign"
+_sentences = Array[String](["test"])
+metadata/_custom_type_script = "uid://ch58qanpadrph"
+
 [node name="DebugRoom" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -54,6 +62,10 @@ y_sort_enabled = true
 [node name="Props" type="Node2D" parent="Objects"]
 z_as_relative = false
 y_sort_enabled = true
+
+[node name="Sign" parent="Objects/Props" instance=ExtResource("3_sgnt5")]
+position = Vector2(81, 81)
+object_data = SubResource("Resource_gcxnf")
 
 [node name="NPCs" type="Node2D" parent="Objects"]
 z_as_relative = false

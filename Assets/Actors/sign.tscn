@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhfhn6033rex4"]
 
-[ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Debug_Room/Simpletileset.png" id="1_8i8ee"]
+[ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Rooms/Debug_Room/Simpletileset.png" id="1_8i8ee"]
 [ext_resource type="Script" uid="uid://cluwlngq3aiie" path="res://Assets/Actors/scripts/sign.gd" id="1_mbcvd"]
 [ext_resource type="PackedScene" uid="uid://bntrxx3rb3vj8" path="res://Assets/Actors/ActorTools/talkable.tscn" id="2_mbcvd"]
 
