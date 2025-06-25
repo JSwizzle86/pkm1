@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://csic416q0qhro"]
+
+[ext_resource type="Theme" uid="uid://bbtvjxr12aa58" path="res://Assets/menu_theme.tres" id="1_7ut65"]
+[ext_resource type="Texture2D" uid="uid://ckf7c1fmcrwcu" path="res://Assets/Placeholders/Menu Mini Sprites 2/Dex.png" id="3_fuyjo"]
+[ext_resource type="Texture2D" uid="uid://d0d3fidxpi018" path="res://Assets/Placeholders/Menu Mini Sprites 2/Inventory Icon.png" id="4_hejyv"]
+[ext_resource type="Texture2D" uid="uid://c62fapgovvrss" path="res://Assets/Placeholders/Menu Mini Sprites 2/User Info.png" id="5_yvcx4"]
+[ext_resource type="Texture2D" uid="uid://c61da6ya3kqlm" path="res://Assets/Placeholders/Menu Mini Sprites 2/Settings.png" id="6_qiooq"]
+[ext_resource type="Texture2D" uid="uid://bgtaccb85fvo" path="res://Assets/Placeholders/Menu Mini Sprites 2/Save Icon.png" id="7_bxbxo"]
+[ext_resource type="Texture2D" uid="uid://bxeij8bp08e07" path="res://Assets/Placeholders/Menu Mini Sprites 2/Exit Icon.png" id="8_jnsak"]
+[ext_resource type="Texture2D" uid="uid://b2086c33eauxp" path="res://Assets/Placeholders/menu parts/Menu Parts/Cursor.png" id="9_gyg6l"]
+
+[node name="Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_bottom = -160.0
+grow_vertical = 2
+focus_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 4.0
+offset_right = 33.0
+offset_bottom = 160.0
+focus_mode = 2
+theme = ExtResource("1_7ut65")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+process_mode = 3
+layout_mode = 2
+focus_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+focus_mode = 2
+theme = ExtResource("1_7ut65")
+theme_override_constants/separation = 2
+
+[node name="Pokedex" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../PoketechPlus")
+texture_normal = ExtResource("3_fuyjo")
+texture_focused = ExtResource("9_gyg6l")
+
+[node name="PoketechPlus" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Pokedex")
+focus_neighbor_bottom = NodePath("../Bag")
+texture_normal = ExtResource("3_fuyjo")
+
+[node name="Bag" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PoketechPlus")
+focus_neighbor_bottom = NodePath("../Status")
+texture_normal = ExtResource("4_hejyv")
+texture_hover = ExtResource("9_gyg6l")
+
+[node name="Status" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Bag")
+focus_neighbor_bottom = NodePath("../Settings")
+texture_normal = ExtResource("5_yvcx4")
+
+[node name="Settings" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Status")
+focus_neighbor_bottom = NodePath("../Save")
+texture_normal = ExtResource("6_qiooq")
+
+[node name="Save" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Exit")
+texture_normal = ExtResource("7_bxbxo")
+
+[node name="Exit" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Save")
+focus_neighbor_bottom = NodePath("../Pokedex")
+texture_normal = ExtResource("8_jnsak")

@@ -1,8 +1,16 @@
 class_name Player extends CharacterBody2D
 
-const SPEED = 50.0  
-const RUN_MULTIPLIER = 1.5  
+@export var movement_state : MiniState
+@export var current_location : Node2D
+var is_paused = false
 
+<<<<<<< HEAD
+
+func _ready() -> void:
+	%StateMachine.movement_direction = Global.player_enter_room_direction
+	%StateMachine.new_state.emit("Idle")
+	
+=======
 var friction = 10.0
 var looking = "UP"  # current facing direction
 var moving = false  # check if the character is moving
@@ -196,3 +204,4 @@ func interaction_collision_direction(new_current_direction):
 		"UP":
 			%CollisionShape2D.position = Vector2(0, -8)
 			%CollisionShape2D.rotation = deg_to_rad(180)
+>>>>>>> 5b54ff5814528004eff25c277e3217690016366f

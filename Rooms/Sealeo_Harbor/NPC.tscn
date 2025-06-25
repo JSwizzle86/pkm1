@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://drwrlod3csyer"]
+
+[ext_resource type="PackedScene" uid="uid://dqyhfuupjdr4q" path="res://Objects/TestObjects/TestCharacter.tscn" id="1_hf43j"]
+
+[node name="KinematicObjects" instance=ExtResource("1_hf43j")]

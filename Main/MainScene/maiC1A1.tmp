@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://by2oaxeueb5rw"]
+
+[ext_resource type="PackedScene" uid="uid://cym3i31jm4svn" path="res://Rooms/Sealeo_Harbor/sealeo_harbor_room.tscn" id="1_cg2a3"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_y3pqq"]
+[ext_resource type="PackedScene" uid="uid://cyomxow7kne24" path="res://Objects/PlayerObject/pkm_1_player.tscn" id="2_pihu6"]
+[ext_resource type="Script" path="res://Scripts/UI/ui.gd" id="4_45r60"]
+[ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="4_a2663"]
+[ext_resource type="PackedScene" uid="uid://csic416q0qhro" path="res://Main/PauseScene/Pause_Scene.tscn" id="6_4bfi3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyk5f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aa5lq"]
+font = ExtResource("4_a2663")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("players_in_room")]
+script = ExtResource("1_y3pqq")
+players_in_room = NodePath("PlayerHolder/PKM!Player")
+
+[node name="CurrentRoom" type="Node2D" parent="."]
+
+[node name="SealeoHarborRoom" parent="CurrentRoom" instance=ExtResource("1_cg2a3")]
+
+[node name="PlayerHolder" type="Node2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="PKM!Player" parent="PlayerHolder" instance=ExtResource("2_pihu6")]
+visibility_layer = 15
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(264, 288)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("4_45r60")
+
+[node name="RoomName" type="Panel" parent="UI"]
+unique_name_in_owner = true
+offset_right = 123.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gyk5f")
+
+[node name="RoomNameLabel" type="Label" parent="UI/RoomName"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Placeholder"
+label_settings = SubResource("LabelSettings_aa5lq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" parent="." instance=ExtResource("6_4bfi3")]

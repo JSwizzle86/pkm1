@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvygi4a5rcdc"]
+
+[ext_resource type="PackedScene" uid="uid://cdy4ui6h12v8x" path="res://Objects/BaseObjects/static_objects.tscn" id="1_8l5fm"]
+[ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Rooms/Debug_Room/Simpletileset.png" id="2_jplpm"]
+[ext_resource type="Script" uid="uid://cql8iui3qh8c8" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="3_6n18v"]
+[ext_resource type="Script" uid="uid://djfxmlbafnmu4" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="4_7un31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5j4k"]
+atlas = ExtResource("2_jplpm")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dntb5"]
+size = Vector2(16, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oartv"]
+size = Vector2(14, 6)
+
+[sub_resource type="Resource" id="Resource_gw3m8"]
+script = ExtResource("4_7un31")
+_name = ""
+_sentences = Array[String](["This is a test", "Apologies for deleting the old test Mudkip ", "I can be a goofball xD"])
+
+[node name="StaticObjects" instance=ExtResource("1_8l5fm")]
+
+[node name="SpriteHolder" parent="." index="0"]
+position = Vector2(12, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteHolder" index="0"]
+texture = SubResource("AtlasTexture_p5j4k")
+
+[node name="InteractionArea" type="Area2D" parent="." index="1"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Coll" type="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(12, 12.25)
+shape = SubResource("RectangleShape2D_dntb5")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_oartv")
+
+[node name="Talkable" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("actor", "area", "sprite")]
+script = ExtResource("3_6n18v")
+talk_data = SubResource("Resource_gw3m8")
+actor = NodePath("../..")
+area = NodePath("../../InteractionArea")
+sprite = NodePath("../../SpriteHolder/Sprite2D")
