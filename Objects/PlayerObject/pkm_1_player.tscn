@@ -1,11 +1,11 @@
 [gd_scene load_steps=125 format=3 uid="uid://cyomxow7kne24"]
 
-[ext_resource type="Script" uid="uid://eshbhi4lad2h" path="res://Dex_Scene_Stuff/Scripts/PKM1Player.gd" id="1_fh3j7"]
+[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/PKM1Player.gd" id="1_fh3j7"]
 [ext_resource type="Texture2D" uid="uid://cjrvog1lfxir8" path="res://Objects/PlayerObject/PlayerAssets/windAttackDown.png" id="2_fpkr7"]
 [ext_resource type="Texture2D" uid="uid://8704ibcfrvn3" path="res://Objects/PlayerObject/PlayerAssets/windAttack.png" id="2_joa17"]
 [ext_resource type="Texture2D" uid="uid://os70abidg21m" path="res://Objects/PlayerObject/PlayerAssets/windAttackUp.png" id="2_kvy21"]
 [ext_resource type="Texture2D" uid="uid://bdxod0xvxn4or" path="res://Objects/PlayerObject/PlayerAssets/windAttack-Right.png" id="3_ix5ly"]
-[ext_resource type="Script" uid="uid://bcrtth4abswtl" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/Hitbox.gd" id="3_x5qfo"]
+[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/Hitbox.gd" id="3_x5qfo"]
 [ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Objects/PlayerObject/PlayerAssets/Final_sprites (1).png" id="4_afrh5"]
 [ext_resource type="Script" uid="uid://bejrjripy0sqx" path="res://Scripts/Classes/StateMachine.gd" id="4_ng5bs"]
 [ext_resource type="Script" uid="uid://cb0ux1pmvpfxm" path="res://Scripts/PlayerStateMachine/Idle.gd" id="5_ysini"]
