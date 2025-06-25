@@ -1,4 +1,4 @@
-extends Area2D
+class_name  Player extends Area2D
 
 var facingDir: StringName = "down"
 var paused: bool = false

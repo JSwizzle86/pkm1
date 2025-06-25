@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bntrxx3rb3vj8"]
 
 [ext_resource type="Script" uid="uid://bcm1d8p6quogr" path="res://Talkable_Objects/Class/Main/talkable_object.gd" id="1_f2bhy"]
-[ext_resource type="Script" uid="uid://ch58qanpadrph" path="res://Talkable_Objects/Resources/talkable-object-data.gd" id="2_dulg0"]
+[ext_resource type="Script" uid="uid://ch58qanpadrph" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="2_dulg0"]
 
 [sub_resource type="Resource" id="Resource_4q7lg"]
 script = ExtResource("2_dulg0")

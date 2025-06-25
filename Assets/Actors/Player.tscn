@@ -1,6 +1,6 @@
 [gd_scene load_steps=75 format=3 uid="uid://b566iokk5nmmk"]
 
-[ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Dex_Scene_Stuff/Assets/Final_sprites (1).png" id="1_bgn2l"]
+[ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Objects/PlayerObject/PlayerAssets/Final_sprites (1).png" id="1_bgn2l"]
 [ext_resource type="Script" uid="uid://cvx054nmy8n32" path="res://Assets/Actors/scripts/player.gd" id="2_8erg0"]
 [ext_resource type="Script" uid="uid://cxyw0n68b66bn" path="res://Assets/Actors/ActorTools/Scripts/grid_movement.gd" id="3_8erg0"]
 
