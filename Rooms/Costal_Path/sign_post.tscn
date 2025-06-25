@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgnt2102r2jnd"]
+
+[ext_resource type="PackedScene" uid="uid://cdy4ui6h12v8x" path="res://Objects/BaseObjects/static_objects.tscn" id="1_hyate"]
+[ext_resource type="Script" uid="uid://cql8iui3qh8c8" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="2_a2jai"]
+[ext_resource type="Script" uid="uid://djfxmlbafnmu4" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="3_wshm8"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rwi18"]
+
+[sub_resource type="Resource" id="Resource_st5hr"]
+script = ExtResource("3_wshm8")
+_name = "Sign Post"
+_sentences = Array[String](["North: Fungle Forest", "West: Aquaria Cove", "East: Tidalshore Park"])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_822rf"]
+size = Vector2(22, 21)
+
+[node name="StaticObjects" instance=ExtResource("1_hyate")]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteHolder" index="0"]
+modulate = Color(0.545098, 0.372549, 0.215686, 1)
+position = Vector2(0, -0.5)
+scale = Vector2(20, 19)
+texture = SubResource("CanvasTexture_rwi18")
+
+[node name="Talkable" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("actor", "area", "sprite")]
+script = ExtResource("2_a2jai")
+talk_data = SubResource("Resource_st5hr")
+actor = NodePath("../..")
+area = NodePath("../../InteractiveArea")
+sprite = NodePath("../../SpriteHolder/Sprite2D")
+
+[node name="InteractiveArea" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea" index="0"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_822rf")

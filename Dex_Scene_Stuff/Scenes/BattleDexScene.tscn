@@ -1,6 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://47c23ihf6jx8"]
 
+<<<<<<< HEAD
+[ext_resource type="Script" uid="uid://nqldkhof526" path="res://Dex_Scene_Stuff/Scripts/BattleDexScene.gd" id="1_i83cx"]
+=======
 [ext_resource type="Script" uid="uid://bv1xwh4n74mds" path="res://Dex_Scene_Stuff/Scripts/BattleDexScene.gd" id="1_i83cx"]
+>>>>>>> 5b54ff5814528004eff25c277e3217690016366f
 
 [sub_resource type="Animation" id="Animation_bnbj7"]
 resource_name = "Close"

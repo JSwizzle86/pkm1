@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bgqmk62jguk5r"]
+
+[ext_resource type="Texture2D" uid="uid://crs0423t7iihg" path="res://Assets/Menu_skeleton.png" id="1_358en"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_whbv6"]
+texture = ExtResource("1_358en")
+region_rect = Rect2(1.45494, 1.41185, 27.3385, 155.51)
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_whbv6")

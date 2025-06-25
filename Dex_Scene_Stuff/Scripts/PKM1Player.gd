@@ -1,12 +1,25 @@
 extends CharacterBody2D
 
-const SPEED = 50.0  
-const RUN_MULTIPLIER = 1.5  
-
+@export var movement_state : MiniState
+@export var current_location : Node2D
+var SPEED = 25
+var RUN_MULTIPLIER = .5
+var is_paused = false
 var friction = 10.0
 var looking = "UP"  # current facing direction
 var moving = false  # check if the character is moving
 var current_speed = SPEED
+
+
+func _ready() -> void:
+	%StateMachine.movement_direction = Global.player_enter_room_direction
+	%StateMachine.new_state.emit("Idle")
+	
+	# Connect the animation_finished signal to handle the completion of turn animations
+	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_animation_finished"))
+	#snap to position	
+	position = position.snapped(Vector2.ONE * tileSize)
+	position += Vector2.ONE * tileSize/2
 
 var tileSize = 32
 var inputs = {
@@ -36,13 +49,6 @@ var is_running = false:
 var last_direction = ""  # check last movement for turns
 var turning = false  # Checking if player is in the middle of a turn animation
 var target_direction = ""  # The direction the character should face after turning
-
-func _ready():
-	# Connect the animation_finished signal to handle the completion of turn animations
-	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_animation_finished"))
-	#snap to position	
-	position = position.snapped(Vector2.ONE * tileSize)
-	position += Vector2.ONE * tileSize/2
 
 
 func _physics_process(_delta):
