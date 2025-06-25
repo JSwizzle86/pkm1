@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 FakePokedex="*res://Dex_Scene_Stuff/Scripts/FakeDexData.gd"
 DialogueLoad="*res://Talkable_Objects/Dialogue/dialogue.tscn"
+Transition="*res://Debug_Room/Hollows_Test/transition.gd"
 Global="*res://Main/GlobalScripts/Global.gd"
 Constants="*res://constants.gd"
 
