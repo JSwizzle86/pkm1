@@ -17,6 +17,7 @@ func _ready():
 	var new_window_size : Vector2 = DisplayServer.screen_get_size()/2
 	get_window().size = Vector2i(new_window_size)
 	get_window().position = new_window_size/2
+<<<<<<< HEAD
 
 #function to add the scene as a child, function called in individual rooms at "exits"
 func _add_scene_manually(scene: Node2D, spawn_position: Vector2):
@@ -31,3 +32,5 @@ func _add_scene_manually(scene: Node2D, spawn_position: Vector2):
 func _remove_scene_manually(scene: Node2D):
 	get_tree().root.remove_child(scene)
 	
+=======
+>>>>>>> 5b54ff5814528004eff25c277e3217690016366f

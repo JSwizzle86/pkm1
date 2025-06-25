@@ -1,6 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://bs24bidogf4cc"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://bwub14s2wqgnj" path="res://Dex_Scene_Stuff/Scripts/dex_selection_scene.gd" id="1_yvimh"]
+=======
+[ext_resource type="Script" uid="uid://tavd0exoy11h" path="res://Dex_Scene_Stuff/Scripts/dex_selection_scene.gd" id="1_yvimh"]
+>>>>>>> 5b54ff5814528004eff25c277e3217690016366f
 [ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="4_6tdbq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ichh"]

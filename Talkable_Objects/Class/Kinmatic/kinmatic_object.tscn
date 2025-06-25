@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cksg3eken0yfi"]
+
+[ext_resource type="Script" uid="uid://cwj0mbncyjhdb" path="res://Talkable_Objects/Class/Kinmatic/kinmatic_object.gd" id="1_tuu4w"]
+
+[node name="KinmaticObject" type="CharacterBody2D"]
+script = ExtResource("1_tuu4w")
