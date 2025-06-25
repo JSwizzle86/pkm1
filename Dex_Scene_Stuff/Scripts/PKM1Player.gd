@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody2D
+extends CharacterBody2D
 
 @export var movement_state : MiniState
 @export var current_location : Node2D

@@ -37,14 +37,14 @@ func _start_dialogue(resource: TalkableObjectData, object: Component) -> void:
 	talkable_object = object
 	
 	# Simple way. to make player can't control.
-	if talkable_object is Component:
-		Global.player_node.movement_state.set_physics_process(false)
-		Global.player_node.movement_state.set_process(false)
-		Global.player_node.movement_state.state_machine.new_state.emit("Idle")
+	#if talkable_object is Component:
+		#Global.player_node.movement_state.set_physics_process(false)
+		#Global.player_node.movement_state.set_process(false)
+		#Global.player_node.movement_state.state_machine.new_state.emit("Idle")
 
-		if talkable_object.movement_comp:
-			talkable_object.movement_comp.set_process(false)
-			talkable_object.movement_comp.set_physics_process(false)
+		#if talkable_object.movement_comp:
+			#talkable_object.movement_comp.set_process(false)
+			#talkable_object.movement_comp.set_physics_process(false)
 	
 	if sentences.size() > 0:
 		current_sentence_index = 0

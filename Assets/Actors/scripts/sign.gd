@@ -1,8 +1,6 @@
-class_name Sign extends Area2D
+class_name TalkTile extends Area2D
 
-func _ready():
-	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
-	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
+@export var object_data: TalkableObjectData
 
-func interact():
-	$TalkableArea.interact()
+func interact(player: Player):
+	$TalkableArea._interact(object_data, player)
