@@ -1,12 +1,32 @@
 class_name Player extends CharacterBody2D
 
-const SPEED = 50.0  
-const RUN_MULTIPLIER = 1.5  
+@export var movement_state : MiniState
+@export var current_location : Node2D
+var is_paused = false
 
+<<<<<<< HEAD
+
+func _ready() -> void:
+	%StateMachine.movement_direction = Global.player_enter_room_direction
+	%StateMachine.new_state.emit("Idle")
+	
+=======
 var friction = 10.0
 var looking = "UP"  # current facing direction
 var moving = false  # check if the character is moving
-var current_speed = SPEED  
+var current_speed = SPEED
+
+var tileSize = 32
+var inputs = {
+	"right" : Vector2.RIGHT,
+	"left" : Vector2.LEFT,
+	"up" : Vector2.UP,
+	"down" : Vector2.DOWN,
+	#"northeast" : Vector2.from_angle(PI/4),
+	#"northwest" : Vector2.from_angle((3*PI)/4),
+	#"southwest" : Vector2.from_angle((5*PI)/4),
+	#"southeast" : Vector2.from_angle((7*PI)/4)
+}
 
 # Underlying variable to store running state
 var _is_running = false
@@ -28,6 +48,10 @@ var target_direction = ""  # The direction the character should face after turni
 func _ready():
 	# Connect the animation_finished signal to handle the completion of turn animations
 	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_animation_finished"))
+	#snap to position	
+	position = position.snapped(Vector2.ONE * tileSize)
+	position += Vector2.ONE * tileSize/2
+
 
 func _physics_process(_delta):
 	# Block input processing during turn
@@ -48,14 +72,13 @@ func _physics_process(_delta):
 	move_and_slide()  # Apply movement and sliding
 
 func handle_movement():
-	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
+	
 	# Disable vertical movement in case of turning
-	
-	
 	if turning: input_dir.x = 0.0
 	
 	if input_dir:
-		velocity = input_dir.normalized() * current_speed
+		velocity = input_dir * current_speed
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction)
 
@@ -181,3 +204,4 @@ func interaction_collision_direction(new_current_direction):
 		"UP":
 			%CollisionShape2D.position = Vector2(0, -8)
 			%CollisionShape2D.rotation = deg_to_rad(180)
+>>>>>>> 5b54ff5814528004eff25c277e3217690016366f

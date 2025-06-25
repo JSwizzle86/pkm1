@@ -9,7 +9,7 @@ func change_maps():
 func move_on_tilemap():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 

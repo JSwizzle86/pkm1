@@ -1,7 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgmsioe67j6lp"]
 
 [ext_resource type="Texture2D" uid="uid://dt7fdaa2x11us" path="res://Dex_Scene_Stuff/Assets/meg1.png" id="1_8ry3f"]
+<<<<<<< HEAD
+[ext_resource type="Script" uid="uid://d2v5fci7h7hhf" path="res://Dex_Scene_Stuff/Scripts/DexEntry.gd" id="1_j4whs"]
+=======
 [ext_resource type="Script" uid="uid://b4cpxeel0qlm8" path="res://Dex_Scene_Stuff/Scripts/DexEntry.gd" id="1_j4whs"]
+>>>>>>> 5b54ff5814528004eff25c277e3217690016366f
 [ext_resource type="Texture2D" uid="uid://dt033u26jh406" path="res://Dex_Scene_Stuff/Assets/meg2.png" id="2_ht4bq"]
 [ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="3_guy7m"]
 

@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bamh4ep7eshcn"]
+
+[ext_resource type="Texture2D" uid="uid://b2086c33eauxp" path="res://Assets/Placeholders/menu parts/Menu Parts/Cursor.png" id="1_xs3aj"]
+[ext_resource type="Texture2D" uid="uid://ckf7c1fmcrwcu" path="res://Assets/Placeholders/Menu Mini Sprites 2/Dex.png" id="2_nr0yn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvcx4"]
+texture = ExtResource("1_xs3aj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qiooq"]
+texture = ExtResource("2_nr0yn")
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxTexture_yvcx4")
+Button/styles/normal = SubResource("StyleBoxTexture_qiooq")
