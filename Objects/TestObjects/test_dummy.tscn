@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlxhhy2pbqpss"]
+
+[ext_resource type="Texture2D" uid="uid://dae0wnkp6dvc5" path="res://Assets/Placeholders/human.png" id="1_voxnu"]
+[ext_resource type="Script" uid="uid://ce08gvvydcu8k" path="res://Objects/TestObjects/test_dummy_collision_zone.gd" id="2_mc81b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc81b"]
+size = Vector2(18, 22)
+
+[node name="TestDummy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_voxnu")
+
+[node name="enemy_hitbox" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+script = ExtResource("2_mc81b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/enemy_hitbox"]
+shape = SubResource("RectangleShape2D_mc81b")
+
+[connection signal="body_entered" from="Sprite2D/enemy_hitbox" to="Sprite2D/enemy_hitbox" method="_on_body_entered"]

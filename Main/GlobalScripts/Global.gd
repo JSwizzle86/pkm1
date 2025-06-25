@@ -5,7 +5,8 @@ signal room_entered
 var global_tile : int = 24
 var player_node : Player
 var player_enter_room_direction : Vector2 = Vector2.DOWN
-var dialogue 
+var dialogue
+var player_attack : bool = false
 
 
 # Called when the node enters the scene tree for the first time.

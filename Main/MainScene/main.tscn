@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://by2oaxeueb5rw"]
+[gd_scene load_steps=11 format=3 uid="uid://by2oaxeueb5rw"]
 
 [ext_resource type="PackedScene" uid="uid://cym3i31jm4svn" path="res://Rooms/Sealeo_Harbor/sealeo_harbor_room.tscn" id="1_cg2a3"]
 [ext_resource type="Script" uid="uid://okllwdgxxp28" path="res://Scripts/main.gd" id="1_y3pqq"]
@@ -7,6 +7,14 @@
 [ext_resource type="FontFile" uid="uid://ygufj767va0w" path="res://Dex_Scene_Stuff/Assets/PokemonGb-RAeo.ttf" id="4_a2663"]
 [ext_resource type="PackedScene" uid="uid://csic416q0qhro" path="res://Main/PauseScene/Pause_Scene.tscn" id="6_4bfi3"]
 [ext_resource type="Script" uid="uid://deh4w3wplexqs" path="res://Main/PauseScene/menu.gd" id="7_3u517"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u517"]
+bg_color = Color(0.98, 0.98, 0.98, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyk5f"]
 bg_color = Color(1, 1, 1, 1)
@@ -42,6 +50,12 @@ position = Vector2(264, 288)
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_45r60")
+
+[node name="PlayerInfo" type="Panel" parent="UI"]
+offset_top = 134.0
+offset_right = 240.0
+offset_bottom = 160.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u517")
 
 [node name="RoomName" type="Panel" parent="UI"]
 unique_name_in_owner = true

@@ -5,6 +5,7 @@ extends MiniState
 
 var current_speed: float = speed
 var moving: bool = false
+var attacking: bool = false
 var grid_size: Vector2 = Vector2(Global.global_tile, Global.global_tile)
 var target_position: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.ZERO
@@ -22,6 +23,7 @@ func _process(delta):
 		handle_input()
 	else:
 		new_direction = Vector2.ZERO
+		
 	if moving:
 		current_speed = get_running_speed()
 		move_player(delta)
@@ -31,17 +33,20 @@ func _process(delta):
 		else:
 			direction = new_direction
 			reset_movement()
-
+			
 func handle_input():
 	new_direction = Input.get_vector("Left", "Right", "Up", "Down").sign().normalized()
+	attacking = Input.is_action_pressed("attack")
+	
 	if new_direction != Vector2.ZERO:
 		animation_direction = new_direction
 		input_pressed = true
 	else:
 		input_pressed = false
 	
-
+	
 	update_direction()
+
 
 func start_moving():
 	moving = true

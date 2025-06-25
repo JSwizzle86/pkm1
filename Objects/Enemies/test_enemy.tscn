@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=3 uid="uid://d31xgt3qbxa7g"]
+
+[ext_resource type="Script" uid="uid://v0c8txyfu3wt" path="res://Objects/Enemies/test_enemy.gd" id="1_52a53"]
+[ext_resource type="Texture2D" uid="uid://bj8n6365slr8j" path="res://Assets/Placeholders/enemy/zubat.png" id="1_l40is"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l40is"]
+atlas = ExtResource("1_l40is")
+region = Rect2(0, 62, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52a53"]
+atlas = ExtResource("1_l40is")
+region = Rect2(0, 93, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjxm5"]
+atlas = ExtResource("1_l40is")
+region = Rect2(31, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32sq0"]
+atlas = ExtResource("1_l40is")
+region = Rect2(31, 31, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u45fo"]
+atlas = ExtResource("1_l40is")
+region = Rect2(31, 62, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf72g"]
+atlas = ExtResource("1_l40is")
+region = Rect2(31, 93, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gq4o"]
+atlas = ExtResource("1_l40is")
+region = Rect2(0, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvq11"]
+atlas = ExtResource("1_l40is")
+region = Rect2(0, 31, 31, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqvjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l40is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52a53")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32sq0")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u45fo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf72g")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gq4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvq11")
+}],
+"loop": true,
+"name": &"up",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l40is"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjxm5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52a53"]
+radius = 60.0
+
+[node name="TestEnemy" type="CharacterBody2D"]
+script = ExtResource("1_52a53")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wqvjo")
+animation = &"up"
+autoplay = "down"
+frame_progress = 0.16696
+
+[node name="enemy_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
+position = Vector2(-1, 5)
+shape = SubResource("CircleShape2D_l40is")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 5)
+shape = SubResource("CircleShape2D_kjxm5")
+
+[node name="detection_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_zone"]
+position = Vector2(-1, 5)
+shape = SubResource("CircleShape2D_52a53")
+
+[connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]
+[connection signal="body_entered" from="detection_zone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="detection_zone" to="." method="_on_detection_zone_body_exited"]

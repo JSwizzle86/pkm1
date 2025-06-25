@@ -1,9 +1,10 @@
-[gd_scene load_steps=125 format=3 uid="uid://cyomxow7kne24"]
+[gd_scene load_steps=127 format=3 uid="uid://cyomxow7kne24"]
 
 [ext_resource type="Script" uid="uid://eshbhi4lad2h" path="res://Dex_Scene_Stuff/Scripts/PKM1Player.gd" id="1_fh3j7"]
 [ext_resource type="Texture2D" uid="uid://cjrvog1lfxir8" path="res://Objects/PlayerObject/PlayerAssets/windAttackDown.png" id="2_fpkr7"]
 [ext_resource type="Texture2D" uid="uid://8704ibcfrvn3" path="res://Objects/PlayerObject/PlayerAssets/windAttack.png" id="2_joa17"]
 [ext_resource type="Texture2D" uid="uid://os70abidg21m" path="res://Objects/PlayerObject/PlayerAssets/windAttackUp.png" id="2_kvy21"]
+[ext_resource type="Script" uid="uid://ctao41sflrl55" path="res://Objects/PlayerObject/player_attack_area.gd" id="2_ucnd0"]
 [ext_resource type="Texture2D" uid="uid://bdxod0xvxn4or" path="res://Objects/PlayerObject/PlayerAssets/windAttack-Right.png" id="3_ix5ly"]
 [ext_resource type="Script" uid="uid://bcrtth4abswtl" path="res://Dex_Scene_Stuff/Scripts/hit & hurt boxes/Hitbox.gd" id="3_x5qfo"]
 [ext_resource type="Texture2D" uid="uid://8yjyhusijptw" path="res://Objects/PlayerObject/PlayerAssets/Final_sprites (1).png" id="4_afrh5"]
@@ -18,6 +19,9 @@
 [ext_resource type="Script" uid="uid://elpowm44ifpg" path="res://Scripts/PlayerStateMachine/attack_3.gd" id="14_yime7"]
 [ext_resource type="Script" uid="uid://y2rv65j3ux8g" path="res://Scripts/PlayerStateMachine/attack_4.gd" id="15_tsx5r"]
 [ext_resource type="Script" uid="uid://ltdc842nxdh4" path="res://Scripts/PlayerStateMachine/collision_handler.gd" id="15_xsjve"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucnd0"]
+radius = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jccc"]
 atlas = ExtResource("2_fpkr7")
@@ -834,6 +838,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpc86"]
+radius = 17.0294
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_7cxwd"]
 length = 13.0
@@ -848,6 +853,15 @@ platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_fh3j7")
 movement_state = NodePath("StateMachine/Movement")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2_ucnd0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(12, -7)
+shape = SubResource("CircleShape2D_ucnd0")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(0.1875, 0.1875)
@@ -872,7 +886,7 @@ script = ExtResource("3_x5qfo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 unique_name_in_owner = true
-position = Vector2(0, -8)
+position = Vector2(1, -4)
 shape = SubResource("CircleShape2D_vpc86")
 
 [node name="RaycastHolder" type="Node2D" parent="."]
@@ -935,3 +949,10 @@ visible = false
 scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("8_8523k")
 centered = false
+
+[node name="AttackCooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="input_event" from="AttackArea" to="AttackArea" method="_on_input_event"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
