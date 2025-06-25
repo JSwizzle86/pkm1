@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://dupg1heoka3u8"]
+
+[ext_resource type="PackedScene" uid="uid://53mlx14v6vgf" path="res://Objects/BaseObjects/rigid_objects.tscn" id="1_fie33"]
+[ext_resource type="Texture2D" uid="uid://cqh8voxi55s85" path="res://Assets/swellow_icon_orange.png" id="2_v21yw"]
+[ext_resource type="Script" uid="uid://bbeeu1ovku6do" path="res://Scripts/Components/Pushable.gd" id="3_t38c4"]
+[ext_resource type="Script" uid="uid://cql8iui3qh8c8" path="res://Scripts/Components/Talkable_Objects/Talkable.gd" id="4_otrty"]
+[ext_resource type="Script" uid="uid://djfxmlbafnmu4" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="5_agnhs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tytie"]
+rough = true
+bounce = 0.02
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tln2b"]
+atlas = ExtResource("2_v21yw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_07apt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mruys"]
+radius = 12.1655
+
+[sub_resource type="Resource" id="Resource_1mc3l"]
+script = ExtResource("5_agnhs")
+_name = "RigiBird"
+_texture = SubResource("AtlasTexture_tln2b")
+_sentences = Array[String](["Huh, you finally noticed I can talk.", "Now stop pushing me.
+"])
+
+[node name="RigidObjects" instance=ExtResource("1_fie33")]
+collision_layer = 2
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_tytie")
+gravity_scale = 0.0
+can_sleep = false
+freeze_mode = 1
+contact_monitor = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteHolder" index="0"]
+texture = SubResource("AtlasTexture_tln2b")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_07apt")
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_mruys")
+
+[node name="Pushable" type="Node" parent="Componenets" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("3_t38c4")
+actor = NodePath("../..")
+
+[node name="Talkable" type="Node" parent="Componenets" index="1" node_paths=PackedStringArray("actor", "area", "sprite")]
+script = ExtResource("4_otrty")
+talk_data = SubResource("Resource_1mc3l")
+actor = NodePath("../..")
+area = NodePath("../../Area2D")
+sprite = NodePath("../../SpriteHolder/Sprite2D")

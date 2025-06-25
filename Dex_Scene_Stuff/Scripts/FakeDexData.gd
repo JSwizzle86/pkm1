@@ -14,4 +14,3 @@ func get_12_meganiums():
 		var new_meganium = Meganium.duplicate()
 		new_meganium.pokemon_dex_data.dex_number += 1
 		pokedex_array.append(new_meganium)
-
