@@ -1,6 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ci2buedvorgil"]
 
-[ext_resource type="Script" path="res://Dex_Scene_Stuff/Scripts/Habitat_scene.gd" id="1_rjofe"]
+<<<<<<< HEAD
+[ext_resource type="Script" uid="uid://ckht54btu4mum" path="res://Dex_Scene_Stuff/Scripts/Habitat_scene.gd" id="1_rjofe"]
+=======
+[ext_resource type="Script" uid="uid://dpr5k2mttp3uu" path="res://Dex_Scene_Stuff/Scripts/Habitat_scene.gd" id="1_rjofe"]
+>>>>>>> 5b54ff5814528004eff25c277e3217690016366f
 [ext_resource type="Texture2D" uid="uid://bmkfwsdinrsg1" path="res://Dex_Scene_Stuff/Assets/habitat_tilemap.png" id="2_ap7sg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewh4w"]
