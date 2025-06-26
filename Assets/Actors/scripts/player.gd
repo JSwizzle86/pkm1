@@ -12,13 +12,12 @@ func _process(_delta):
 		var input_direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		var run_input: bool = Input.is_action_pressed("run")
 		var interact_input: bool = Input.is_action_just_pressed("DialogueInteract")
-		var magnitude = 2 if run_input else 1
 		
 		if facingDir != vector2Direction(input_direction):
 			animate_move(input_direction, false)
 			facingDir = vector2Direction(input_direction)
 		else:
-			$GridMovement.move(input_direction, magnitude)
+			$GridMovement.move(input_direction, run_input)
 			animate_move(input_direction, run_input)
 		if interact_input: interact()
 
