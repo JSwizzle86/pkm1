@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://5piaihv55gu3"]
+
+[ext_resource type="Script" uid="uid://bf8tbi85ix6rd" path="res://Debug_Room/debug_room assets/push_block.gd" id="1_xmajb"]
+[ext_resource type="PackedScene" uid="uid://b5drnoxkvun5p" path="res://Assets/Actors/ActorTools/GridMovement.res" id="2_il1oj"]
+[ext_resource type="Texture2D" uid="uid://dae0wnkp6dvc5" path="res://Unsorted/Placeholders/human.png" id="3_dysrh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il1oj"]
+size = Vector2(32, 32)
+
+[node name="PushBlock" type="Area2D"]
+script = ExtResource("1_xmajb")
+collision = true
+interactable = true
+metadata/_custom_type_script = "uid://bhvjccbxak3wb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_il1oj")
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("linked_tile") instance=ExtResource("2_il1oj")]
+linked_tile = NodePath("..")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_dysrh")

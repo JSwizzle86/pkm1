@@ -67,7 +67,7 @@ func interact() -> void:
 		for area in areas:
 			if is_instance_of(area, GameTile) && area.global_position == collisionArea.global_position:
 				print("additional area Found" + area.to_string())
-				area.on_interact(self)
+				if area.interactable: area.on_interact(self)
 
 ##Returns a string description of the direction of the given vector. [br][br]
 ##[param vec] vector to proccess

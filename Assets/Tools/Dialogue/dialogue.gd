@@ -17,7 +17,7 @@ var full_text: String = ""
 var current_text: String = ""
 var char_index: int = 0
 var talking: bool = false
-var finished: bool = false
+var finished: bool = true
 
 func _ready() -> void:
 	_reset_dialogue()
@@ -32,6 +32,7 @@ func _reset_dialogue() -> void:
 	sentence_label.text = ""
 
 func _start_dialogue(resource: TalkableObjectData, player: Player) -> void:
+	finished = false
 	player_tile = player
 	show()
 	set_process_input(true)
@@ -81,7 +82,6 @@ func _input(event: InputEvent):
 		player_tile.set_process(true)
 		_finish_dialogue()
 		
-	
 	elif event.is_action_pressed("DialogueSkip"):
 		skip_dialogue()
 
@@ -93,6 +93,4 @@ func skip_dialogue():
 func _finish_dialogue() -> void:
 	hide()
 	_reset_dialogue()
-	finished = false
-	# Simple way.
 	

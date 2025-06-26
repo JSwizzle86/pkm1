@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq1tqctjfyq5g"]
+
+[ext_resource type="Script" uid="uid://beblq5mcwvggj" path="res://Assets/Actors/scripts/npc.gd" id="1_xyyav"]
+[ext_resource type="PackedScene" uid="uid://b5drnoxkvun5p" path="res://Assets/Actors/ActorTools/GridMovement.res" id="3_r1n8r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daa5d"]
+size = Vector2(32, 32)
+
+[node name="Npc" type="Area2D"]
+script = ExtResource("1_xyyav")
+collision = true
+interactable = true
+metadata/_custom_type_script = "uid://bhvjccbxak3wb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_daa5d")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("linked_tile") instance=ExtResource("3_r1n8r")]
+linked_tile = NodePath("..")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

@@ -12,9 +12,8 @@ func _ready():
 	$RayCast2D.target_position = Vector2.DOWN * Constants.TILE_SIZE
 
 ##Applies movement of the linked actor [br][br]
-##[param actor] pass the actor to move
 ##[param direction] the direction vector of the movement input [br]
-##[param running] if running
+##[param speed] speed of the movement
 func move(direction: Vector2, speed: float) -> void:
 	if moving_direction.length() == 0 && direction.length() > 0:
 		var movement = Vector2.DOWN

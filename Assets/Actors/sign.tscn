@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhfhn6033rex4"]
 
 [ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Rooms/Debug_Room/Simpletileset.png" id="1_8i8ee"]
-[ext_resource type="Script" uid="uid://cluwlngq3aiie" path="res://Assets/Actors/scripts/sign.gd" id="1_mbcvd"]
+[ext_resource type="Script" uid="uid://0idcjkcao5ff" path="res://Assets/Tools/scripts/talk_tile.gd" id="1_mbcvd"]
 [ext_resource type="Script" uid="uid://ch58qanpadrph" path="res://Scripts/Components/Talkable_Objects/Resources/talkable-object-data.gd" id="2_mbcvd"]
 
-[sub_resource type="Resource" id="Resource_7qq3l"]
+[sub_resource type="Resource" id="Resource_mbcvd"]
 script = ExtResource("2_mbcvd")
 _name = "Test"
 _sentences = Array[String](["test"])
@@ -15,7 +15,7 @@ size = Vector2(32, 32)
 
 [node name="Sign" type="Area2D"]
 script = ExtResource("1_mbcvd")
-object_data = SubResource("Resource_7qq3l")
+object_data = SubResource("Resource_mbcvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7qq3l")
