@@ -595,13 +595,13 @@ shape = SubResource("RectangleShape2D_vmj61")
 sprite_frames = SubResource("SpriteFrames_i6xbs")
 animation = &"up_walk"
 
-[node name="GridMovement" type="Node2D" parent="." node_paths=PackedStringArray("self_node")]
+[node name="GridMovement" type="Node2D" parent="." node_paths=PackedStringArray("linked_tile")]
 script = ExtResource("3_8erg0")
-self_node = NodePath("..")
-walkSpeed = null
-runSpeed = null
+linked_tile = NodePath("..")
 
 [node name="RayCast2D" type="RayCast2D" parent="GridMovement"]
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

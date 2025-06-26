@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgd5mrewxhfr3"]
+
+[ext_resource type="Script" uid="uid://b6gv7noqw8b47" path="res://Assets/Tools/scripts/collision_tile.gd" id="1_ip3a6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x2lw"]
+size = Vector2(32, 32)
+
+[node name="CollisionTile" type="Area2D"]
+script = ExtResource("1_ip3a6")
+collision = true
+metadata/_custom_type_script = "uid://bhvjccbxak3wb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7x2lw")
