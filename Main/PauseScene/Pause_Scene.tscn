@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://csic416q0qhro"]
 
-[ext_resource type="Theme" uid="uid://bbtvjxr12aa58" path="res://Assets/menu_theme.tres" id="1_7ut65"]
-[ext_resource type="Texture2D" uid="uid://ckf7c1fmcrwcu" path="res://Assets/Placeholders/Menu Mini Sprites 2/Dex.png" id="3_fuyjo"]
-[ext_resource type="Texture2D" uid="uid://d0d3fidxpi018" path="res://Assets/Placeholders/Menu Mini Sprites 2/Inventory Icon.png" id="4_hejyv"]
-[ext_resource type="Texture2D" uid="uid://c62fapgovvrss" path="res://Assets/Placeholders/Menu Mini Sprites 2/User Info.png" id="5_yvcx4"]
-[ext_resource type="Texture2D" uid="uid://c61da6ya3kqlm" path="res://Assets/Placeholders/Menu Mini Sprites 2/Settings.png" id="6_qiooq"]
-[ext_resource type="Texture2D" uid="uid://bgtaccb85fvo" path="res://Assets/Placeholders/Menu Mini Sprites 2/Save Icon.png" id="7_bxbxo"]
-[ext_resource type="Texture2D" uid="uid://bxeij8bp08e07" path="res://Assets/Placeholders/Menu Mini Sprites 2/Exit Icon.png" id="8_jnsak"]
-[ext_resource type="Texture2D" uid="uid://b2086c33eauxp" path="res://Assets/Placeholders/menu parts/Menu Parts/Cursor.png" id="9_gyg6l"]
+[ext_resource type="Theme" path="res://Assets/menu_theme.tres" id="1_7ut65"]
+[ext_resource type="Texture2D" uid="uid://ckf7c1fmcrwcu" path="res://Unsorted/Placeholders/Menu Mini Sprites 2/Dex.png" id="3_fuyjo"]
+[ext_resource type="Texture2D" uid="uid://d0d3fidxpi018" path="res://Unsorted/Placeholders/Menu Mini Sprites 2/Inventory Icon.png" id="4_hejyv"]
+[ext_resource type="Texture2D" uid="uid://c62fapgovvrss" path="res://Unsorted/Placeholders/Menu Mini Sprites 2/User Info.png" id="5_yvcx4"]
+[ext_resource type="Texture2D" uid="uid://c61da6ya3kqlm" path="res://Unsorted/Placeholders/Menu Mini Sprites 2/Settings.png" id="6_qiooq"]
+[ext_resource type="Texture2D" uid="uid://bgtaccb85fvo" path="res://Unsorted/Placeholders/Menu Mini Sprites 2/Save Icon.png" id="7_bxbxo"]
+[ext_resource type="Texture2D" uid="uid://bxeij8bp08e07" path="res://Unsorted/Placeholders/Menu Mini Sprites 2/Exit Icon.png" id="8_jnsak"]
+[ext_resource type="Texture2D" uid="uid://b2086c33eauxp" path="res://Unsorted/Placeholders/menu parts/Menu Parts/Cursor.png" id="9_gyg6l"]
 
 [node name="Menu" type="Control"]
 process_mode = 3

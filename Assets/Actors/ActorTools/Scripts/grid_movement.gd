@@ -11,6 +11,7 @@ class_name GridMovement extends Node2D
 
 var moving_direction: Vector2 = Vector2.ZERO
 var diagonal: bool = false
+var collided = false
 
 func _ready():
 	# Set movement direction as DOWN by default
@@ -46,15 +47,33 @@ func move(direction: Vector2, magnitude: int) -> void:
 		for i in range(magnitude):
 			$RayCast2D.target_position = movement * Constants.TILE_SIZE * (magnitude - i)
 			$RayCast2D.force_raycast_update() # Update the `target_position` immediately
+			
 			if $RayCast2D.is_colliding():
-				magnitude -= i + 1
+				
+				var collidedArea:Area2D = $RayCast2D.get_collider() if is_instance_of($RayCast2D.get_collider(), Area2D) else null
+				if collidedArea != null:
+					var areas = collidedArea.get_overlapping_areas()
+					for area in areas:
+						if is_instance_of(area, GameTile):
+							if area.collision: magnitude -= i + 1
+							break
+				
 		
 		#check adjacent tile
 		$RayCast2D.target_position = movement * Constants.TILE_SIZE * magnitude
 		$RayCast2D.force_raycast_update() # Update the `target_position` immediately
+		var collidedArea:Area2D = $RayCast2D.get_collider() if is_instance_of($RayCast2D.get_collider(), Area2D) else null
+		if collidedArea != null:
+			var areas = collidedArea.get_overlapping_areas()
+			for area in areas:
+				if is_instance_of(area, GameTile):
+					if area.collision: 
+						collided = true
+						area.on_collision()
+						break
 		
 		# Allow movement only if no collision in next tile
-		if magnitude > 0 && !$RayCast2D.is_colliding():
+		if magnitude > 0 && !collided:
 			moving_direction = movement * magnitude
 			var new_position = self_node.global_position + (moving_direction * Constants.TILE_SIZE)
 			var tween = create_tween()
@@ -67,3 +86,4 @@ func move(direction: Vector2, magnitude: int) -> void:
 				tween.tween_property(self_node, "position", new_position, speed if !diagonal else speed / (sqrt(2)/2)).set_trans(Tween.TRANS_LINEAR)
 			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
 	diagonal = false
+	collided = false

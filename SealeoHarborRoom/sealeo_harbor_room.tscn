@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cohdce8f36mjm"]
 
 [ext_resource type="Texture2D" uid="uid://dfvxlswxilo2" path="res://SealeoHarborRoom/Screenshot_2024-12-11_161056.png" id="1_t34yj"]
-[ext_resource type="PackedScene" uid="uid://cyomxow7kne24" path="res://Dex_Scene_Stuff/Scenes/pkm_1_player.tscn" id="2_emgcs"]
+[ext_resource type="PackedScene" uid="uid://cyomxow7kne24" path="res://Objects/PlayerObject/pkm_1_player.tscn" id="2_emgcs"]
 
 [node name="SealeoHarborRoom" type="Node2D"]
 

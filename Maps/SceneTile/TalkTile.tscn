@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ksghuornwk3k"]
+
+[ext_resource type="Script" uid="uid://cluwlngq3aiie" path="res://Assets/Actors/scripts/sign.gd" id="1_susre"]
+[ext_resource type="PackedScene" uid="uid://bntrxx3rb3vj8" path="res://Assets/Actors/ActorTools/talkable.tscn" id="2_xx37t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qq3l"]
+size = Vector2(32, 32)
+
+[node name="TalkTile" type="Area2D"]
+script = ExtResource("1_susre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7qq3l")
+
+[node name="TalkableArea" parent="." instance=ExtResource("2_xx37t")]
