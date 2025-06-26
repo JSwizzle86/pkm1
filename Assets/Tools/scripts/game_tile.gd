@@ -4,7 +4,7 @@ class_name GameTile extends Area2D
 @export var collision = false ##Enables collision
 @export var interactable = false ##Enables interaction if on_interact() is defined
 @export var attackable = false ##Enables on_hit() if it is defined
-@export var is_warp = false ##Enables on_warp() if it is defined
+@export var steppable = false ##Enables on_step() if it is defined
 
 ##Enforces adherence to the grid position
 func _ready():
@@ -23,6 +23,6 @@ func on_interact(player: Player):
 func on_hit():
 	return
 
-##Define with an override to do actions on warp activation
-func on_warp(player: Player):
+##Define with an override to do actions on step activation
+func on_step(player: Player):
 	return
