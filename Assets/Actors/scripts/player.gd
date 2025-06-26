@@ -4,7 +4,7 @@ var facingDir: StringName = "down"
 var paused: bool = false
 
 func _ready():
-	super()
+	super._ready()
 	$PlayerSprites.play("down_idle")
 
 func _process(_delta):
@@ -17,10 +17,9 @@ func _process(_delta):
 		if facingDir != vector2Direction(input_direction):
 			animate_move(input_direction, false)
 			facingDir = vector2Direction(input_direction)
-		else:	
+		else:
 			$GridMovement.move(input_direction, magnitude)
 			animate_move(input_direction, run_input)
-		
 		if interact_input: interact()
 
 ##Animates the movement of the actor [br][br]
@@ -58,10 +57,11 @@ func interact() -> void:
 	var collisionArea: Area2D = ray.get_collider() if is_instance_of(ray.get_collider(), Area2D) else null
 	if collisionArea != null:
 		var areas = collisionArea.get_overlapping_areas()
-		print("found some areas")
+		collisionArea.on_interact(self)
+		print("found an area")
 		for area in areas:
-			if is_instance_of(area, GameTile):
-				print("area Found")
+			if is_instance_of(area, GameTile) && area.global_position == collisionArea.global_position:
+				print("additional area Found" + area.to_string())
 				area.on_interact(self)
 
 ##Returns a string description of the direction of the given vector. [br][br]

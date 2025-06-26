@@ -53,10 +53,11 @@ func move(direction: Vector2, magnitude: int) -> void:
 				var collidedArea:Area2D = $RayCast2D.get_collider() if is_instance_of($RayCast2D.get_collider(), Area2D) else null
 				if collidedArea != null:
 					var areas = collidedArea.get_overlapping_areas()
+					if collidedArea.collision: magnitude -= i + 1
 					for area in areas:
-						if is_instance_of(area, GameTile):
+						if is_instance_of(area, GameTile) && area.global_position == collidedArea.global_position:
 							if area.collision: magnitude -= i + 1
-							break
+							
 				
 		
 		#check adjacent tile
@@ -65,12 +66,14 @@ func move(direction: Vector2, magnitude: int) -> void:
 		var collidedArea:Area2D = $RayCast2D.get_collider() if is_instance_of($RayCast2D.get_collider(), Area2D) else null
 		if collidedArea != null:
 			var areas = collidedArea.get_overlapping_areas()
+			if collidedArea.collision:
+				collided = true
+				collidedArea.on_collision(self_node)
 			for area in areas:
-				if is_instance_of(area, GameTile):
+				if is_instance_of(area, GameTile) && area.global_position == collidedArea.global_position:
 					if area.collision: 
 						collided = true
-						area.on_collision()
-						break
+						area.on_collision(self_node)
 		
 		# Allow movement only if no collision in next tile
 		if magnitude > 0 && !collided:

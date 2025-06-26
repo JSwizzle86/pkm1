@@ -11,20 +11,23 @@ func _ready():
 	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
 	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
 
-##Define with an override to do actions on collision
-func on_collision():
+##Define with an override to do actions on collision[br]
+##[param actor] the triggering actor
+func on_collision(actor: GameTile):
+	##[param actor] the triggering actor
 	return
 
-##Define with an override to do actions on interact
-##[param player] the player
-func on_interact(player: Player):
+##Define with an override to do actions on interact[br]
+##[param actor] the triggering actor
+func on_interact(actor: GameTile):
 	return
 
-##Define with an override to do actions on hit
-func on_hit():
+##Define with an override to do actions on hit[br]
+##[param actor] the triggering actor
+func on_hit(actor: GameTile):
 	return
 
 ##Define with an override to do actions on step activation[br]
-##[param player] the player
-func on_step(player: Player):
+##[param actor] the triggering actor
+func on_step(actor: GameTile):
 	return
