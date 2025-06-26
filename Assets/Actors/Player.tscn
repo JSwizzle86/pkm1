@@ -598,6 +598,8 @@ animation = &"up_walk"
 [node name="GridMovement" type="Node2D" parent="." node_paths=PackedStringArray("self_node")]
 script = ExtResource("3_8erg0")
 self_node = NodePath("..")
+walkSpeed = null
+runSpeed = null
 
 [node name="RayCast2D" type="RayCast2D" parent="GridMovement"]
 

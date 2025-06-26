@@ -21,6 +21,7 @@ func _ready():
 ##[param magnitude] the number of grid spaces the movement takes
 func move(direction: Vector2, magnitude: int) -> void:
 	var magHold = magnitude
+func move(direction: Vector2, speed:float) -> void:
 	if moving_direction.length() == 0 && direction.length() > 0:
 		var movement = Vector2.DOWN
 		if direction.y > 0.5: 
