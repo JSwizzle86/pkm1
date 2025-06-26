@@ -16,6 +16,7 @@ func on_collision():
 	return
 
 ##Define with an override to do actions on interact
+##[param player] the player
 func on_interact(player: Player):
 	return
 
@@ -23,6 +24,7 @@ func on_interact(player: Player):
 func on_hit():
 	return
 
-##Define with an override to do actions on step activation
+##Define with an override to do actions on step activation[br]
+##[param player] the player
 func on_step(player: Player):
 	return
