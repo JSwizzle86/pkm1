@@ -4,8 +4,7 @@ var facingDir: StringName = "down"
 var paused: bool = false
 
 func _ready():
-	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
-	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
+	super()
 	$PlayerSprites.play("down_idle")
 
 func _process(_delta):
