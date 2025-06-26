@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2aot4ch18558"]
 
-[ext_resource type="Script" uid="uid://bjt77pobtnyv8" path="res://Assets/Tools/Tiles/step_tile.gd" id="1_orngf"]
+[ext_resource type="Script" uid="uid://bjt77pobtnyv8" path="res://Assets/Tools/scripts/step_tile.gd" id="1_orngf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x2lw"]
 size = Vector2(32, 32)

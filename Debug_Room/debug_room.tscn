@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://dmvgi3vyuhg3g"]
+[gd_scene load_steps=12 format=4 uid="uid://dmvgi3vyuhg3g"]
 
 [ext_resource type="Texture2D" uid="uid://p3qx6fuyj1an" path="res://icon.svg" id="1_pcbu7"]
 [ext_resource type="Texture2D" uid="uid://qfrykxoeryox" path="res://Rooms/Debug_Room/Simpletileset.png" id="1_rppv1"]
+[ext_resource type="PackedScene" uid="uid://bhfhn6033rex4" path="res://Assets/Actors/sign.tscn" id="4_gcxnf"]
 [ext_resource type="PackedScene" uid="uid://cgd5mrewxhfr3" path="res://Assets/Tools/Tiles/CollisionTile.tscn" id="4_sgnt5"]
 [ext_resource type="PackedScene" uid="uid://b2aot4ch18558" path="res://Assets/Tools/Tiles/StepTile.tscn" id="5_uu3mk"]
 [ext_resource type="PackedScene" uid="uid://b566iokk5nmmk" path="res://Assets/Actors/Player.tscn" id="7_v4hoi"]
@@ -72,6 +73,9 @@ position = Vector2(2, 6)
 
 [node name="Player2" parent="Objects" instance=ExtResource("7_v4hoi")]
 position = Vector2(1, 112)
+
+[node name="Sign" parent="Objects" instance=ExtResource("4_gcxnf")]
+position = Vector2(80, 80)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAQAAAAQAAAAAAAAAAQD//wQAAAAAAAAAAQD+/wQAAAAAAAAAAQD+/wMAAAAAAAAAAQD+/wIAAAAAAAAAAQD+/wEAAAAAAAAAAQD//wEAAAAAAAAAAQAAAAEAAAAAAAAAAQABAAEAAAAAAAAAAQABAAAAAAAAAAAAAQABAP//AAAAAAAAAQABAP7/AAAAAAAAAQACAP7/AAAAAAAAAQADAP7/AAAAAAAAAQAFAP7/AAAAAAAAAQAEAP7/AAAAAAAAAQAGAP7/AAAAAAAAAQAHAP7/AAAAAAAAAQAIAP7/AAAAAAAAAQAJAP7/AAAAAAAAAQAKAP7/AAAAAAAAAQAKAP//AAAAAAAAAQAKAAAAAAAAAAAAAQAKAAEAAAAAAAAAAQAKAAIAAAAAAAAAAQAKAAMAAAAAAAAAAQAKAAQAAAAAAAAAAQAKAAUAAAAAAAAAAQAKAAYAAAAAAAAAAQAKAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAJAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAGAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQACAAcAAAAAAAAAAQABAAcAAAAAAAAAAQABAAYAAAAAAAAAAQABAAUAAAAAAAAAAQACAAMAAAAAAAAAAgA=")

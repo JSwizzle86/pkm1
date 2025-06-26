@@ -2,12 +2,6 @@ class_name GridMovement extends Node2D
 
 ##parent node
 @export var linked_tile: GameTile
-##Walk Speed, the lower the value the higher the speed[br]
-##default: 25
-@export var walkSpeed: float = 25
-##Run Speed, the lower the value the higher the speed[br]
-##default: 12.5
-@export var runSpeed: float = 12.5
 
 var moving_direction: Vector2 = Vector2.ZERO
 var diagonal: bool = false
@@ -18,9 +12,10 @@ func _ready():
 	$RayCast2D.target_position = Vector2.DOWN * Constants.TILE_SIZE
 
 ##Applies movement of the linked actor [br][br]
+##[param actor] pass the actor to move
 ##[param direction] the direction vector of the movement input [br]
 ##[param running] if running
-func move(direction: Vector2, running: bool) -> void:
+func move(direction: Vector2, speed: float) -> void:
 	if moving_direction.length() == 0 && direction.length() > 0:
 		var movement = Vector2.DOWN
 		if direction.y > 0.5: 
@@ -68,9 +63,8 @@ func move(direction: Vector2, running: bool) -> void:
 			moving_direction = movement
 			var new_position = linked_tile.global_position + (moving_direction * Constants.TILE_SIZE)
 			var tween = create_tween()
-			var speed = runSpeed/100 if running else walkSpeed/100
 	
-			tween.tween_property(linked_tile, "position", new_position, speed if !diagonal else speed / (sqrt(2)/2)).set_trans(Tween.TRANS_LINEAR)
+			tween.tween_property(linked_tile, "position", new_position, (1/speed) if !diagonal else (1/speed) / (sqrt(2)/2)).set_trans(Tween.TRANS_LINEAR)
 			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
 			
 	diagonal = false
