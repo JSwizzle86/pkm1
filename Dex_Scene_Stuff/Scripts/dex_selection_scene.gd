@@ -23,7 +23,7 @@ func _process(_delta):
 		dex_loaded = true
 
 #This is called when inputing shit so I'm using this intead of process which is always active
-func _unhandled_input(_event):
+func _unhandled_input(event):
 	var input_direction = Input.get_axis(up_input, down_input)
 	
 

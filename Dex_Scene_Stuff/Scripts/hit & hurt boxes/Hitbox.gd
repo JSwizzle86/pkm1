@@ -3,3 +3,4 @@ class_name Hitbox
 
 
 @export var damage: int
+
