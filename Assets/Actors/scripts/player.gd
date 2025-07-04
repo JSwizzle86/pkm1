@@ -1,5 +1,10 @@
 class_name  Player extends GameTile
 
+@export var interact_enabled = true ##interaction toggle
+@export var movement_enabled = true ##movement toggle
+@export var walking_speed = 4 ## 1/input seconds to complete 1 square move
+@export var running_speed = 8 ## 1/input seconds to complete 1 square move
+
 var facingDir: StringName = "down"
 var paused: bool = false
 
@@ -8,18 +13,19 @@ func _ready():
 	$PlayerSprites.play("down_idle")
 
 func _process(_delta):
-	if !paused:
 		var input_direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		var run_input: bool = Input.is_action_pressed("run")
 		var interact_input: bool = Input.is_action_just_pressed("DialogueInteract")
 		
-		if facingDir != vector2Direction(input_direction):
-			animate_move(input_direction, false)
-			facingDir = vector2Direction(input_direction)
-		else:
-			$GridMovement.move(input_direction, run_input)
-			animate_move(input_direction, run_input)
-		if interact_input: interact()
+		if movement_enabled:
+			if facingDir != vector2Direction(input_direction):
+				animate_move(input_direction, false)
+				facingDir = vector2Direction(input_direction)
+			else:
+				$GridMovement.move(input_direction, running_speed if run_input else walking_speed)
+				animate_move(input_direction, run_input)
+		if interact_enabled:
+			if interact_input: interact()
 
 ##Animates the movement of the actor [br][br]
 ##[param input_direction] the vector of the input[br]
@@ -56,12 +62,12 @@ func interact() -> void:
 	var collisionArea: Area2D = ray.get_collider() if is_instance_of(ray.get_collider(), Area2D) else null
 	if collisionArea != null:
 		var areas = collisionArea.get_overlapping_areas()
-		collisionArea.on_interact(self)
+		if collisionArea.interactable: collisionArea.on_interact(self)
 		print("found an area")
 		for area in areas:
 			if is_instance_of(area, GameTile) && area.global_position == collisionArea.global_position:
 				print("additional area Found" + area.to_string())
-				area.on_interact(self)
+				if area.interactable: area.on_interact(self)
 
 ##Returns a string description of the direction of the given vector. [br][br]
 ##[param vec] vector to proccess

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://di8s5k8jd6kcu"]
+
+[ext_resource type="Script" uid="uid://dhfwyvrwihvvd" path="res://Debug_Room/debug_room assets/step_on_me.gd" id="1_qsowr"]
+[ext_resource type="Texture2D" uid="uid://dae0wnkp6dvc5" path="res://Unsorted/Placeholders/human.png" id="2_ddvqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbgu1"]
+size = Vector2(32, 32)
+
+[node name="StepOnMe" type="Area2D"]
+script = ExtResource("1_qsowr")
+steppable = true
+metadata/_custom_type_script = "uid://bhvjccbxak3wb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dbgu1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_ddvqw")

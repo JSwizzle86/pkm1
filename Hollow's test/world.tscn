@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://drw7rigrixdj3"]
 
-[ext_resource type="Script" path="res://Debug_Room/Hollow's test/Transition.gd" id="1_tyai7"]
+[ext_resource type="Script" uid="uid://cfyn05wtsw4m2" path="res://Hollow's test/Transition.gd" id="1_tyai7"]
 
 [sub_resource type="Animation" id="Animation_aoq8l"]
 length = 0.001

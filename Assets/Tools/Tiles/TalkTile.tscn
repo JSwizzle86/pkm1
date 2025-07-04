@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://x70wynuq2j1k"]
 
-[ext_resource type="Script" uid="uid://0idcjkcao5ff" path="res://Assets/Tools/scripts/interact_tile.gd" id="1_luwm0"]
+[ext_resource type="Script" uid="uid://0idcjkcao5ff" path="res://Assets/Tools/scripts/talk_tile.gd" id="1_luwm0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pyvs"]
 size = Vector2(32, 32)
 
-[node name="InteractTile" type="Area2D"]
+[node name="TalkTile" type="Area2D"]
 script = ExtResource("1_luwm0")
 interactable = true
 metadata/_custom_type_script = "uid://bhvjccbxak3wb"

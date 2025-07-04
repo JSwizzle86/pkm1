@@ -1,6 +1,6 @@
 class_name Dialogue extends CanvasLayer
 
-var talkable_object: Node2D = null
+var player_tile:Player
 
 @onready var name_label: Label = %Name
 @onready var char_texture: TextureRect = %CharacterTexture
@@ -17,6 +17,7 @@ var full_text: String = ""
 var current_text: String = ""
 var char_index: int = 0
 var talking: bool = false
+var finished: bool = true
 
 func _ready() -> void:
 	_reset_dialogue()
@@ -30,16 +31,15 @@ func _reset_dialogue() -> void:
 	typing_speed = normal_speed
 	sentence_label.text = ""
 
-func _start_dialogue(resource: TalkableObjectData, object: TalkableObject2D) -> void:
+func _start_dialogue(resource: TalkableObjectData, player: Player) -> void:
+	finished = false
+	player_tile = player
 	show()
 	set_process_input(true)
 	sentences = resource._sentences
-	talkable_object = object
 	
 	# Simple way. to make player can't control.
-	if talkable_object is StaticObject2D:
-		talkable_object.player_node.set_physics_process(false)
-		talkable_object.player_node.set_process(false)
+	player_tile.set_process(false)
 	
 	if sentences.size() > 0:
 		current_sentence_index = 0
@@ -68,14 +68,20 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("DialogueInteract") and talking:
 		typing_speed = fast_speed
 	
-	elif event.is_action_pressed("DialogueInteract") and !talking:
+	elif event.is_action_pressed("DialogueInteract") and !talking and !finished:
 		typing_speed = normal_speed
+		print("input detected 1")
 		if current_sentence_index < sentences.size() - 1:
 			current_sentence_index += 1
 			show_sentence()
 		else:
-			_finish_dialogue()
-	
+			finished = true
+			hide()
+	elif finished:
+		print("input detected 2")
+		player_tile.set_process(true)
+		_finish_dialogue()
+		
 	elif event.is_action_pressed("DialogueSkip"):
 		skip_dialogue()
 
@@ -87,10 +93,4 @@ func skip_dialogue():
 func _finish_dialogue() -> void:
 	hide()
 	_reset_dialogue()
-	talkable_object.is_talking = false
 	
-	# Simple way.
-	talkable_object.player_node.set_physics_process(true)
-	talkable_object.player_node.set_process(true)
-	
-	talkable_object = null

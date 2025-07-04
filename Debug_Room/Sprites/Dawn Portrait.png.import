@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0qkt2d7n1ll2"
-path="res://.godot/imported/whalebeach.png-d13d7916cdcb3cbcee1ec6a6bf84953e.ctex"
+uid="uid://b6y654chburiu"
+path="res://.godot/imported/Dawn Portrait.png-38817112cdab2a33608e31dd0f12fdd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Maps/Sprites/whalebeach.png"
-dest_files=["res://.godot/imported/whalebeach.png-d13d7916cdcb3cbcee1ec6a6bf84953e.ctex"]
+source_file="res://Debug_Room/Sprites/Dawn Portrait.png"
+dest_files=["res://.godot/imported/Dawn Portrait.png-38817112cdab2a33608e31dd0f12fdd3.ctex"]
 
 [params]
 
