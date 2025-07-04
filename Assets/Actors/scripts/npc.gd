@@ -80,6 +80,7 @@ func meander():
 			if !collide : break
 		facingDir = vector2Direction(direction)
 		$AnimatedSprite2D.play(facingDir + "_walk")
+		movingDir = $GridMovement.moving_direction
 		$GridMovement.move(direction, 4)
 		$Timer.start(wanderRate)
 		

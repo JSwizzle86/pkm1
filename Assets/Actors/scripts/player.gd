@@ -21,8 +21,9 @@ func _process(_delta):
 			if facingDir != vector2Direction(input_direction):
 				animate_move(input_direction, false)
 				facingDir = vector2Direction(input_direction)
-			else:
+			else: 
 				$GridMovement.move(input_direction, running_speed if run_input else walking_speed)
+				movingDir = $GridMovement.moving_direction
 				animate_move(input_direction, run_input)
 		if interact_enabled:
 			if interact_input: interact()

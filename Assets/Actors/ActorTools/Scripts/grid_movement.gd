@@ -58,6 +58,19 @@ func move(direction: Vector2, speed: float) -> void:
 						print("stepped")
 						stepAreas.push_back(area)
 		
+		var checkDirections: Array[Vector2] = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2(1,1), Vector2(-1, 1), Vector2(-1, -1), Vector2(1, -1)]
+		for check in checkDirections:
+			$RayCast2D.target_position = (movement * Constants.TILE_SIZE) + (check * Constants.TILE_SIZE)
+			$RayCast2D.force_raycast_update() # Update the `target_position` immediately
+			collidedArea = $RayCast2D.get_collider() if is_instance_of($RayCast2D.get_collider(), Area2D) else null
+			if collidedArea != null:
+				var areas: Array[Area2D] = collidedArea.get_overlapping_areas()
+				areas.append(collidedArea)
+				for area in areas:
+					if is_instance_of(area, GameTile):
+						if area.movingDir == check * -1:
+							collided = true
+		
 		# Allow movement only if no collision in next tile
 		if!collided:
 			moving_direction = movement
@@ -65,7 +78,10 @@ func move(direction: Vector2, speed: float) -> void:
 			var tween = create_tween()
 	
 			tween.tween_property(linked_tile, "position", new_position, (1/speed) if !diagonal else (1/speed) / (sqrt(2)/2)).set_trans(Tween.TRANS_LINEAR)
-			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
+			tween.tween_callback(func():
+				moving_direction = Vector2.ZERO
+				linked_tile.movingDir = Vector2.ZERO
+				)
 			
 			for area in stepAreas:
 				area.on_step(linked_tile)

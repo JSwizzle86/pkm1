@@ -6,6 +6,8 @@ class_name GameTile extends Area2D
 @export var attackable = false ##Enables on_hit() if it is defined
 @export var steppable = false ##Enables on_step() if it is defined
 
+var movingDir: Vector2= Vector2.ZERO ##A flag for if the tile is moving, used to correct simulatneous movements
+
 ##Enforces adherence to the grid position
 func _ready():
 	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
