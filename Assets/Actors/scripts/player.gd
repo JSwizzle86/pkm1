@@ -62,7 +62,7 @@ func interact() -> void:
 	var collisionArea: Area2D = ray.get_collider() if is_instance_of(ray.get_collider(), Area2D) else null
 	if collisionArea != null:
 		var areas = collisionArea.get_overlapping_areas()
-		collisionArea.on_interact(self)
+		if collisionArea.interactable: collisionArea.on_interact(self)
 		print("found an area")
 		for area in areas:
 			if is_instance_of(area, GameTile) && area.global_position == collisionArea.global_position:
